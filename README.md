@@ -1,8 +1,6 @@
-# React + Vite
+# ABDIMASA 2024 DESA TOYOMARTO
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Goodluck semua dan terima kasih semua udah mau bekerja sama merealisasikan memajukan dan digitalisasi Desa Toyomarto!
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Apa itu Desa Toyomarto?
+Sebuah desa dengan pesona alam tersembunyi di Kabupaten Malang. Desa Wisata Toyomarto dikelilingi keindahan Gunung Arjuna dan pemandangan hijau yang memukau. Terkenal dengan kerajinan cobek batu, klompen batik, dan batik tulis yang luar biasa. desa ini adalah surga bagi pecinta kerajinan untuk mengagumi kearifan budaya setempat.
