@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React from 'react';
-const profil = () => {
+const Profil = () => {
 
     return(
         <>
@@ -11,4 +11,4 @@ const profil = () => {
     );
 };
 
-export default profil;
+export default Profil;
