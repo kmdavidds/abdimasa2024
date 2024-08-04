@@ -1,0 +1,101 @@
+#We Need
+
+* BERANDA *
+
+Wisata:
+- Get Foto
+- Get Nama Wisata
+- Get Lokasi
+
+UMKM:
+- Get Nama UMKM
+- Get rentang Harga
+- Get Nomor WA UMKM
+
+Kotak Saran:
+- Post Form ( Nama, Pengaduan, Lampiran File )
+
+Kalender:
+- 
+
+Apa Kata Mereka:
+- Get Kata-Kata
+- Get Nama Orang
+- Get Posisi/Jabatan
+
+* PROFIL *
+
+Jumlah Penduduk:
+- Get Jiwa Laki-Laki
+- Get Jiwa Perempuan
+
+* WISATA *
+
+Wisata populer:
+- Get Foto
+- Get Nama Wisata
+- Get Lokasi 
+
+Wisata Lainnya:
+- Get Foto
+- Get Nama Wisata
+- Get Deskripsi Wisata
+
+* DETAIL WISATA *
+
+- Get Foto (3)
+- Get Nama Wisata
+- Get Lokasi
+- Get Deskripsi Wisata
+- Get Alamat Lengkap Wisata
+- Get Jam Buka dan Tutup
+- Get Harga Tiket Masuk
+
+Ulasan:
+- Get Nama Orang
+- Get Tanggal Ulasan
+- Get Text Ulasan
+- Get Like & UnLike
+- Get Rating
+
+Peta Lokasi
+- Get iframe Detail Wisata
+
+* UMKM *
+- Get Foto UMKM
+- Get Nama UMKM
+- Get Deskripsi UMKM
+- Get Harga UMKM
+- Get Nomor WA UMKM
+
+
+* DETAIL UMKM *
+- Get Nama UMKM
+- Get Lokasi UMKM
+- Get Foto UMKM (3)
+- Get Deskripsi UMKM
+- Get Detail Alamat UMKM
+- Get Harga
+- Get nomor WA UMKM
+
+Ulasan:
+- Get Nama Orang
+- Get Tanggal Ulasan
+- Get Text Ulasan
+- Get Like & UnLike
+- Get Rating
+
+Peta Lokasi
+- Get iframe Detail UMKM
+
+* BERITA DESA *
+- Get Foto Berita
+- Get Judul Berita
+- Get Deskripsi singkat
+- Get Terbit Berita
+
+* DETAIL BERITA DESA *
+- Get Foto Berita
+- Get Judul Berita
+- Get Terbit Berita
+- Get Isi Berita
