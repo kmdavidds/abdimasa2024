@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
 // User
 import Home from './views/UserViews/Home/Home.jsx';
@@ -8,28 +8,65 @@ import Berita from './views/UserViews/Berita/Berita.jsx';
 import Wisata from './views/UserViews/Wisata/Wisata.jsx';
 import UMKM from './views/UserViews/UMKM/UMKM.jsx';
 import NotFound from './views/NotFound.jsx';
+import PageLayout from './components/UserComp/PageLayout.jsx';
 
 // Admin
 import LoginAdmin from './views/AdminViews/Login/LoginAdmin.jsx';
+import Navbar from './components/UserComp/Nav.jsx';
 
-
-const App = () => {
-  return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profil" element={<Profil />} />
-          <Route path="/berita" element={<Berita />} />
-          <Route path="/wisata" element={<Wisata />} />
-          <Route path="/UMKM" element={<UMKM />} />
-          <Route path="/*" element={<NotFound />} />
-
-          <Route path="/admin/login" element={<LoginAdmin />} />
-        </Routes>
-      </Router>
-    </>
-  );
-};
+const App = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <PageLayout>
+        <Home />
+      </PageLayout>
+    ),
+  },
+  {
+    path: "/profil",
+    element: (
+      <PageLayout>
+        <Profil />
+      </PageLayout>
+    ),
+  },
+  {
+    path: "/berita",
+    element: (
+      <PageLayout>
+        <Berita />
+      </PageLayout>
+    ),
+  },
+  {
+    path: "/wisata",
+    element: (
+      <PageLayout>
+        <Wisata />
+      </PageLayout>
+    ),
+  },
+  {
+    path: "/UMKM",
+    element: (
+      <PageLayout>
+        <UMKM />
+      </PageLayout>
+    ),
+  },
+  {
+    path: "/*",
+    element: (
+      <NotFound />
+    ),
+  },
+  {
+    path: "/admin/login",
+    element: (
+      <LoginAdmin />
+    ),
+  },
+]);
 
 export default App;
