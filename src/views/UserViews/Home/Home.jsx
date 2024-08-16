@@ -7,21 +7,21 @@ import AboutDesa from "./section/AboutDesa";
 // import WisataUMKM from "./section/WisataUMKM";
 // import KotakSaran from "./section/KotakSaran";
 // import Kalender from "./section/Kalender";
-// import KataMereka from "./section/KataMereka";
+import KataMereka from "./section/KataMereka";
 
 const Home = () => {
 
-    return(
+    return (
         <>
-        <div>
-            <Landing />
-            <AboutDesa />
-            {/* 
+            <div>
+                <Landing />
+                <AboutDesa />
+                {/* 
             <WisataUMKM/>
             <KotakSaran/>
-            <Kalender/>
-            <KataMereka/> */}
-        </div>
+            <Kalender/>*/}
+                <KataMereka />
+            </div>
         </>
     );
 };
