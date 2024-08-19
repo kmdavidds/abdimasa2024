@@ -5,8 +5,8 @@ import React from 'react';
 import Landing from "./section/Landing";
 import AboutDesa from "./section/AboutDesa";
 import WisataUMKM from "./section/WisataUMKM";
-// import KotakSaran from "./section/KotakSaran";
-// import Kalender from "./section/Kalender";
+import KotakSaran from "./section/KotakSaran";
+import Kalender from "./section/Kalender";
 import KataMereka from "./section/KataMereka";
 
 const Home = () => {
@@ -17,9 +17,8 @@ const Home = () => {
                 <Landing />
                 <AboutDesa />
                 <WisataUMKM />
-                {/*
-            <KotakSaran/>
-            <Kalender/>*/}
+                <KotakSaran />
+                <Kalender />
                 <KataMereka />
             </div>
         </>

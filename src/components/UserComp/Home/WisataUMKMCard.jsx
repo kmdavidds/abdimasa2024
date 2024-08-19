@@ -4,7 +4,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink }) => {
     if (type === 'wisata') {
         return (
-            <div className="bg-white relative font-poppins shadow-lg rounded-lg overflow-hidden w-1/3 max-w-[360px] max-h-[416px]">
+            <div className="bg-white relative font-poppins  rounded-lg overflow-hidden w-1/3 max-w-[360px] max-h-[416px]">
                 <img
                     src={image}
                     alt={title}
@@ -20,7 +20,7 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
 
     if (type === 'umkm') {
         return (
-            <div className="bg-white relative font-poppins shadow-lg rounded-lg overflow-hidden w-1/3 max-w-[360px] max-h-[416px]">
+            <div className="bg-white relative font-poppins rounded-lg overflow-hidden w-1/3 max-w-[360px] max-h-[416px]">
                 <img
                     src={image}
                     alt={name}

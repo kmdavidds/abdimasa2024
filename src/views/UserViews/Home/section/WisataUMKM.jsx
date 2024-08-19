@@ -144,13 +144,13 @@ const WisataUMKM = () => {
 
     return (
         <div className="bg-cust-blue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex items-center font-poppins justify-center py-28">
-            <div className='container w-full min-h-screen space-y-20'>
+            <div className='container w-full min-h-screen space-y-20 relative'>
                 <div className='w-full flex justify-end'>
                     {/* Tabs */}
-                    <div className="flex w-max h-max rounded-e-full bg-cust-softblue rounded-full bg-opacity-25">
+                    <div className="select-none flex w-max h-max rounded-e-full bg-cust-softblue rounded-full bg-opacity-25">
                         <button
                             onClick={() => setActiveTab('wisata')}
-                            className={`px-6 py-2 text-2xl rounded-full ${activeTab === 'wisata'
+                            className={`px-8 py-3 text-2xl rounded-full ${activeTab === 'wisata'
                                 ? 'bg-cust-softblue text-cust-darkblue font-bold'
                                 : 'text-white'
                                 }`}
@@ -159,7 +159,7 @@ const WisataUMKM = () => {
                         </button>
                         <button
                             onClick={() => setActiveTab('umkm')}
-                            className={`px-6 py-2 text-2xl rounded-full ${activeTab === 'umkm'
+                            className={`px-8 py-3 text-2xl rounded-full ${activeTab === 'umkm'
                                 ? 'bg-cust-softblue text-cust-darkblue font-bold'
                                 : 'text-white'
                                 }`}
@@ -169,10 +169,10 @@ const WisataUMKM = () => {
                     </div>
                 </div>
                 {/* Content */}
-                <div className="w-full h-full rounded-lg overflow-hidden">
-                    <div className='w-full h-full flex flex-col gap-16 mx-auto relative'>
+                <div className="w-full h-full rounded-lg overflow-hidden py-10">
+                    <div className='w-full h-full flex flex-col gap-16 mx-auto'>
                         <div
-                            className="flex transition-transform duration-500"
+                            className="flex transition-transform duration-500 relative"
                             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                         >
                             {Array.from({ length: totalSlides }).map((_, slideIndex) => (
@@ -199,6 +199,7 @@ const WisataUMKM = () => {
                             ))}
                         </div>
 
+
                         <div className="flex justify-center mt-4 space-x-2">
                             {Array.from({ length: totalSlides }).map((_, index) => (
                                 <button
@@ -210,6 +211,8 @@ const WisataUMKM = () => {
                         </div>
                     </div>
                 </div>
+                <img src="/public/images/Landing/WisataUMKMSection/iconAir.svg" alt="" className='absolute top-10 -left-10' />
+                <img src="/public/images/Landing/WisataUMKMSection/seahorse.svg" alt="" className='absolute bottom-24 -right-10' />
 
             </div>
         </div>

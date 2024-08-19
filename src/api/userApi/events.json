@@ -1,0 +1,30 @@
+{
+  "2024-08-15": {
+    "title": "Workshop React",
+    "image": "https://via.placeholder.com/150?text=Workshop+React",
+    "date": "2024-08-15",
+    "time": "10:00 WIB",
+    "location": "Online via Zoom"
+  },
+  "2024-08-20": {
+    "title": "Webinar Cyber Security",
+    "image": "https://via.placeholder.com/150?text=Webinar+Cyber+Security",
+    "date": "2024-08-20",
+    "time": "14:00 WIB",
+    "location": "Auditorium Gedung B"
+  },
+  "2024-08-25": {
+    "title": "Conference on AI",
+    "image": "https://via.placeholder.com/150?text=Conference+on+AI",
+    "date": "2024-08-25",
+    "time": "09:00 WIB",
+    "location": "Convention Center"
+  },
+  "2024-09-26": {
+    "title": "Birthday kuh",
+    "image": "https://via.placeholder.com/150?text=Birthday+kuh",
+    "date": "2024-09-26",
+    "time": "00:00 WIB",
+    "location": "Kos Bu Yun wk"
+  }
+}
