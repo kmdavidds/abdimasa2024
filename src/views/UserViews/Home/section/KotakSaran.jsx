@@ -37,7 +37,7 @@ const KotakSaran = () => {
     return (
         <div className='bg-cust-softblue w-full flex items-center font-poppins justify-center py-28'>
             <div className='flex justify-center container w-full min-h-screen'>
-                <div className='w-1/2 flex items-center justify-end relative'>
+                <div className='w-1/2 flex items-center justify-end relative text-cust-blue'>
                     <img src="/images/Landing/KotakSaranSection/saranImg.svg" alt="" className='select-none ' />
                     <Atropos
                         shadow={true}
@@ -47,7 +47,7 @@ const KotakSaran = () => {
                         className='absolute group top-[30%] right-[20%]'
 
                     >
-                        <div data-atropos-offset="15" className='max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-5 py-3 text-center'>
+                        <div data-atropos-offset="15" className='max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-5 py-3 text-center border-2 border-gray-300'>
                             Lorem ipsum dolor sit amet  adipisicing elit.
                         </div>
                     </Atropos>
@@ -59,7 +59,7 @@ const KotakSaran = () => {
                         className='absolute group bottom-[27%] left-[7%]'
 
                     >
-                        <div data-atropos-offset="15" className='max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-5 py-3 text-center'>
+                        <div data-atropos-offset="15" className='max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-5 py-3 text-center border-2 border-gray-300'>
                             Lorem ipsum dolor sit amet  adipisicing elit.
                         </div>
                     </Atropos>
@@ -71,7 +71,7 @@ const KotakSaran = () => {
                         className='absolute group top-[41%] left-[-2%]'
 
                     >
-                        <div data-atropos-offset="15" className='max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-5 py-3 text-center'>
+                        <div data-atropos-offset="15" className='max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-5 py-3 text-center border-2 border-gray-300'>
                             Lorem ipsum dolor sit amet  adipisicing elit.
                         </div>
                     </Atropos>

@@ -95,12 +95,12 @@ const Kalender = () => {
                     key={dateKey}
                     onClick={() => handleDateClick(day)}
                     className={`size-12 rounded-full flex flex-col items-center justify-center
-                        ${isSelected ? 'bg-blue-500 text-white' : ''}  
+                        ${isSelected ? 'bg-cust-blue text-white' : ''}  
                         ${hasEvent ? '' : ''}`}
                 >
                     {day}
                     {hasEvent && (
-                        <span className={`w-2 h-2 rounded-full mt-1 ${isSelected ? 'bg-white' : 'bg-blue-500'}`}></span>
+                        <span className={`w-2 h-2 rounded-full mt-1 ${isSelected ? 'bg-white' : 'bg-cust-blue'}`}></span>
                     )}
                 </button>
             );
