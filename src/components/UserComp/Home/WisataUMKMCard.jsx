@@ -10,7 +10,7 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
                     alt={title}
                     className="w-full object-cover"
                 />
-                <div className="p-4 absolute bottom-0 text-white">
+                <div className="p-4 absolute bottom-0 flex flex-col justify-end h-full bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent w-full text-white">
                     <h3 className="text-2xl font-bold">{title}</h3>
                     <p className="text-opacity-70">{location}</p>
                 </div>
@@ -26,7 +26,7 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
                     alt={name}
                     className="w-full object-cover"
                 />
-                <div className="p-4 absolute bottom-0 text-white flex justify-between items-center w-full">
+                <div className="p-4 absolute bottom-0 text-white flex justify-between items-end w-full h-full bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent">
                     <div>
                         <h3 className="text-2xl font-bold">{name}</h3>
                         <p className="text-opacity-70">{priceRange}</p>

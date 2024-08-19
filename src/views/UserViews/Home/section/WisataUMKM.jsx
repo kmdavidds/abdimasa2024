@@ -8,19 +8,19 @@ const WisataUMKM = () => {
     const wisataData = [
         {
             type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
+            image: 'https://picsum.photos/360/415',
             title: 'Bukit Kuneer',
             location: 'Kebun Teh Wonosari, Toyomarto',
         },
         {
             type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
+            image: 'https://picsum.photos/360/415',
             title: 'Stupa Sumberawan',
             location: 'Dusun Sumberawan, Toyomarto',
         },
         {
             type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
+            image: 'https://picsum.photos/360/415',
             title: 'Pentungansari',
             location: 'Bodean Krajan, Toyomarto',
         },
@@ -65,21 +65,21 @@ const WisataUMKM = () => {
     const umkmData = [
         {
             type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
+            image: 'https://picsum.photos/360/415',
             name: 'UMKM Product 1',
             priceRange: 'Rp 50.000 - Rp 150.000',
             waLink: 'https://wa.me/1234567890',
         },
         {
             type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
+            image: 'https://picsum.photos/360/415',
             name: 'UMKM Product 2',
             priceRange: 'Rp 100.000 - Rp 200.000',
             waLink: 'https://wa.me/1234567890',
         },
         {
             type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
+            image: 'https://picsum.photos/360/415',
             name: 'UMKM Product 3',
             priceRange: 'Rp 75.000 - Rp 175.000',
             waLink: 'https://wa.me/1234567890',
