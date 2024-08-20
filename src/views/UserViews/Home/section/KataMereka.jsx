@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TestiCard from '../../../../components/UserComp/Home/TestiCard';
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 
 const KataMereka = () => {
     const cards = [
@@ -68,6 +69,19 @@ const KataMereka = () => {
         setCurrentIndex(index);
     };
 
+    const goToNextSlide = () => {
+        if (currentIndex === totalSlides - 1) {
+            setCurrentIndex(0);
+        } else {
+            setCurrentIndex(currentIndex + 1);
+        }
+    };
+
+    const goToPrevSlide = () => {
+        if (currentIndex === 0) return;
+        setCurrentIndex(currentIndex - 1);
+    };
+
     return (
         <div className="bg-cust-softblue w-full flex items-center font-poppins justify-center py-32">
             <div className="flex flex-col items-center gap-16 container w-full min-h-screen">
@@ -102,14 +116,29 @@ const KataMereka = () => {
                         ))}
                     </div>
 
-                    <div className="flex justify-center mt-4 space-x-2">
-                        {Array.from({ length: totalSlides }).map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToSlide(index)}
-                                className={`h-4 w-4 rounded-full bg-cust-blue ${index === currentIndex ? 'opacity-100' : 'opacity-30'}`}
-                            ></button>
-                        ))}
+                    <div className="flex justify-center items-center mt-4 space-x-10">
+                        <button
+                            onClick={goToPrevSlide}
+                            className={`h-16 w-16 flex justify-center items-center rounded-full text-3xl bg-cust-blue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            disabled={currentIndex === 0}
+                        >
+                            <FaChevronLeft />
+                        </button>
+                        <div className='flex justify-center space-x-5'>
+                            {Array.from({ length: totalSlides }).map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => goToSlide(index)}
+                                    className={`h-4 w-4 rounded-full bg-cust-blue ${index === currentIndex ? 'opacity-100' : 'opacity-30'}`}
+                                ></button>
+                            ))}
+                        </div>
+                        <button
+                            onClick={goToNextSlide}
+                            className="h-16 w-16 flex justify-center items-center rounded-full text-3xl bg-cust-blue"
+                        >
+                            <FaChevronRight />
+                        </button>
                     </div>
                 </div>
             </div>

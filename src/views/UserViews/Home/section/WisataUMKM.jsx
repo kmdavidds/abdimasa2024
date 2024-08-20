@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import WisataUMKMCard from '../../../../components/UserComp/Home/WisataUMKMCard'
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 
 
 const WisataUMKM = () => {
@@ -142,6 +143,19 @@ const WisataUMKM = () => {
         setCurrentIndex(index);
     };
 
+    const goToNextSlide = () => {
+        if (currentIndex === totalSlides - 1) {
+            setCurrentIndex(0);
+        } else {
+            setCurrentIndex(currentIndex + 1);
+        }
+    };
+
+    const goToPrevSlide = () => {
+        if (currentIndex === 0) return;
+        setCurrentIndex(currentIndex - 1);
+    };
+
     return (
         <div className="bg-cust-blue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex items-center font-poppins justify-center py-28">
             <div className='container w-full min-h-screen space-y-20 relative'>
@@ -200,19 +214,34 @@ const WisataUMKM = () => {
                         </div>
 
 
-                        <div className="flex justify-center mt-4 space-x-2">
-                            {Array.from({ length: totalSlides }).map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => goToSlide(index)}
-                                    className={`h-4 w-4 rounded-full bg-cust-softblue ${index === currentIndex ? 'opacity-100' : 'opacity-20'}`}
-                                ></button>
-                            ))}
+                        <div className="flex justify-center mt-4 items-center space-x-10">
+                            <button
+                                onClick={goToPrevSlide}
+                                className={`h-16 w-16 flex justify-center items-center rounded-full text-3xl bg-cust-softblue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                disabled={currentIndex === 0}
+                            >
+                                <FaChevronLeft />
+                            </button>
+                            <div className='flex justify-center space-x-5'>
+                                {Array.from({ length: totalSlides }).map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => goToSlide(index)}
+                                        className={`h-4 w-4 rounded-full bg-cust-softblue ${index === currentIndex ? 'opacity-100' : 'opacity-20'}`}
+                                    ></button>
+                                ))}
+                            </div>
+                            <button
+                                onClick={goToNextSlide}
+                                className="h-16 w-16 flex justify-center items-center rounded-full text-3xl bg-cust-softblue"
+                            >
+                                <FaChevronRight />
+                            </button>
                         </div>
                     </div>
                 </div>
                 <img src="/public/images/Landing/WisataUMKMSection/iconAir.svg" alt="" className='absolute top-10 -left-10' />
-                <img src="/public/images/Landing/WisataUMKMSection/seahorse.svg" alt="" className='absolute bottom-24 -right-10' />
+                <img src="/public/images/Landing/WisataUMKMSection/seahorse.svg" alt="" className='absolute bottom-40 -right-10' />
 
             </div>
         </div>
