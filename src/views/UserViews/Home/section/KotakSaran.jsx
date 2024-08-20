@@ -10,11 +10,17 @@ const KotakSaran = () => {
         attachment: null,
     });
 
+    const [errors, setErrors] = useState({});
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
             [name]: value,
+        });
+        setErrors({
+            ...errors,
+            [name]: '',
         });
     };
 
@@ -25,15 +31,34 @@ const KotakSaran = () => {
         });
     };
 
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formData.name) {
+            newErrors.name = 'Nama harus diisi';
+        }
+        if (!formData.complaint) {
+            newErrors.complaint = 'Pengaduan harus diisi';
+        }
+        return newErrors;
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        const validationErrors = validateForm();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+
         console.log('Form submitted:', formData);
         setFormData({
             name: '',
             complaint: '',
             attachment: null,
         });
+        setErrors({});
     };
+
     return (
         <div className='bg-cust-softblue w-full flex items-center font-poppins justify-center py-28'>
             <div className='flex justify-center container w-full min-h-screen'>
@@ -95,6 +120,7 @@ const KotakSaran = () => {
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-cust-blue border-opacity-35 focus:border-opacity-100  focus:outline-none"
                                 />
+                                {errors.name && <p className="text-red-500 mt-1">{errors.name}</p>}
                             </div>
 
                             <div>
@@ -110,6 +136,7 @@ const KotakSaran = () => {
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-cust-blue border-opacity-35 focus:border-opacity-100 focus:outline-none"
                                 />
+                                {errors.complaint && <p className="text-red-500 mt-1">{errors.complaint}</p>}
                             </div>
 
                             <div>
