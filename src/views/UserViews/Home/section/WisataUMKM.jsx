@@ -217,7 +217,7 @@ const WisataUMKM = () => {
                         <div className="flex justify-center mt-4 items-center space-x-10">
                             <button
                                 onClick={goToPrevSlide}
-                                className={`h-16 w-16 flex justify-center items-center rounded-full text-3xl bg-cust-softblue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                className={`h-16 w-16 text-cust-blue flex justify-center items-center rounded-full text-3xl bg-cust-softblue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                                 disabled={currentIndex === 0}
                             >
                                 <FaChevronLeft />
@@ -233,7 +233,7 @@ const WisataUMKM = () => {
                             </div>
                             <button
                                 onClick={goToNextSlide}
-                                className="h-16 w-16 flex justify-center items-center rounded-full text-3xl bg-cust-softblue"
+                                className="h-16 w-16 text-cust-blue flex justify-center items-center rounded-full text-3xl bg-cust-softblue"
                             >
                                 <FaChevronRight />
                             </button>

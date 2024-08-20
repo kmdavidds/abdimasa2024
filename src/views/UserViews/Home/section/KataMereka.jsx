@@ -119,7 +119,7 @@ const KataMereka = () => {
                     <div className="flex justify-center items-center mt-4 space-x-10">
                         <button
                             onClick={goToPrevSlide}
-                            className={`h-16 w-16 flex justify-center items-center rounded-full text-3xl bg-cust-blue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`h-16 w-16 text-white flex justify-center items-center rounded-full text-3xl bg-cust-blue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                             disabled={currentIndex === 0}
                         >
                             <FaChevronLeft />
@@ -135,7 +135,7 @@ const KataMereka = () => {
                         </div>
                         <button
                             onClick={goToNextSlide}
-                            className="h-16 w-16 flex justify-center items-center rounded-full text-3xl bg-cust-blue"
+                            className="h-16 w-16 text-white flex justify-center items-center rounded-full text-3xl bg-cust-blue"
                         >
                             <FaChevronRight />
                         </button>
