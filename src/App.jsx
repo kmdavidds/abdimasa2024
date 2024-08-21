@@ -12,7 +12,6 @@ import PageLayout from './components/UserComp/PageLayout.jsx';
 
 // Admin
 import LoginAdmin from './views/AdminViews/Login/LoginAdmin.jsx';
-import Navbar from './components/UserComp/Nav.jsx';
 
 const App = createBrowserRouter([
   {
