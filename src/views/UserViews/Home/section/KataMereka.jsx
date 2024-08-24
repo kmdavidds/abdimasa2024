@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TestiCard from '../../../../components/UserComp/Home/TestiCard';
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 
@@ -60,9 +60,25 @@ const KataMereka = () => {
         },
     ];
 
-    const cardsPerSlide = 3;
-    const totalSlides = Math.ceil(cards.length / cardsPerSlide);
+    const [cardsPerSlide, setCardsPerSlide] = useState(3);
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const updateCardsPerSlide = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth < 1024) {
+            setCardsPerSlide(2);
+        } else {
+            setCardsPerSlide(3);
+        }
+    };
+
+    useEffect(() => {
+        updateCardsPerSlide();
+        window.addEventListener('resize', updateCardsPerSlide);
+        return () => window.removeEventListener('resize', updateCardsPerSlide);
+    }, []);
+
+    const totalSlides = Math.ceil(cards.length / cardsPerSlide);
 
     const goToSlide = (index) => {
         if (index < 0 || index >= totalSlides) return;
@@ -83,14 +99,14 @@ const KataMereka = () => {
     };
 
     return (
-        <div className="bg-cust-softblue w-full flex items-center font-poppins justify-center py-32">
-            <div className="flex flex-col items-center gap-16 container w-full min-h-screen">
+        <div className="bg-cust-softblue w-full flex items-center font-poppins justify-center py-20 sm:py-32">
+            <div className="flex flex-col items-center gap-16 container w-full min-h-full 2xl:min-h-screen sm:px-0 px-8">
                 {/* title */}
                 <div className="font-bold text-cust-blue">
                     <img src="/images/Landing/KataMerekaSection/title.svg" alt="title" className="select-none" />
                 </div>
                 {/* carousel */}
-                <div className="w-full flex flex-col gap-16 mx-auto relative overflow-hidden">
+                <div className="w-full flex flex-col gap-8 sm:gap-16 mx-auto relative overflow-hidden">
                     <div
                         className="flex transition-transform duration-500"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -98,7 +114,7 @@ const KataMereka = () => {
                         {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                             <div
                                 key={slideIndex}
-                                className="w-full flex justify-center space-x-16"
+                                className="w-full flex justify-center space-x-5 sm:space-x-16"
                                 style={{ minWidth: '100%' }}
                             >
                                 {cards
@@ -116,26 +132,26 @@ const KataMereka = () => {
                         ))}
                     </div>
 
-                    <div className="flex justify-center items-center mt-4 space-x-10">
+                    <div className="flex justify-center items-center sm:mt-4 space-x-4 sm:space-x-10">
                         <button
                             onClick={goToPrevSlide}
-                            className={`h-16 w-16 text-white flex justify-center items-center rounded-full text-3xl bg-cust-blue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`h-8 sm:h-16 w-8 sm:w-16 text-white flex justify-center items-center rounded-full text-sm sm:text-3xl bg-cust-blue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                             disabled={currentIndex === 0}
                         >
                             <FaChevronLeft />
                         </button>
-                        <div className='flex justify-center space-x-5'>
+                        <div className='flex justify-center space-x-2 sm:space-x-5'>
                             {Array.from({ length: totalSlides }).map((_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => goToSlide(index)}
-                                    className={`h-4 w-4 rounded-full bg-cust-blue ${index === currentIndex ? 'opacity-100' : 'opacity-30'}`}
+                                    className={`h-2 sm:h-4 w-2 sm:w-4 rounded-full bg-cust-blue ${index === currentIndex ? 'opacity-100' : 'opacity-30'}`}
                                 ></button>
                             ))}
                         </div>
                         <button
                             onClick={goToNextSlide}
-                            className="h-16 w-16 text-white flex justify-center items-center rounded-full text-3xl bg-cust-blue"
+                            className="h-8 sm:h-16 w-8 sm:w-16 text-white flex justify-center items-center rounded-full text-sm sm:text-3xl bg-cust-blue"
                         >
                             <FaChevronRight />
                         </button>

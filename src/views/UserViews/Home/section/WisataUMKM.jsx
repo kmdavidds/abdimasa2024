@@ -240,8 +240,8 @@ const WisataUMKM = () => {
                         </div>
                     </div>
                 </div>
-                <img src="/public/images/Landing/WisataUMKMSection/iconAir.svg" alt="" className='absolute top-10 -left-10' />
-                <img src="/public/images/Landing/WisataUMKMSection/seahorse.svg" alt="" className='absolute bottom-40 -right-10' />
+                <img src="/public/images/Landing/WisataUMKMSection/iconAir.svg" alt="" className='absolute top-10 -left-10 hidden md:block' />
+                <img src="/public/images/Landing/WisataUMKMSection/seahorse.svg" alt="" className='absolute bottom-40 -right-10 hidden md:block' />
 
             </div>
         </div>
