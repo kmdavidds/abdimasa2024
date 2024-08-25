@@ -100,7 +100,7 @@ const KataMereka = () => {
 
     return (
         <div className="bg-cust-softblue w-full flex items-center font-poppins justify-center py-20 sm:py-32">
-            <div className="flex flex-col items-center gap-16 container w-full min-h-full 2xl:min-h-screen sm:px-0 px-8">
+            <div className="flex flex-col items-center gap-16 container w-full min-h-full sm:px-0 px-8">
                 {/* title */}
                 <div className="font-bold text-cust-blue">
                     <img src="/images/Landing/KataMerekaSection/title.svg" alt="title" className="select-none" />
