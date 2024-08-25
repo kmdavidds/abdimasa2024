@@ -14,7 +14,7 @@ export default {
         "cust-blue": "#3E9ADD",
         "cust-softblue": "#ECF5FF",
         "cust-gray" : "#929292",
-        "black" : "#text-[#252525]",
+        "black" : "#252525",
       },
     },
   },
