@@ -16,14 +16,14 @@ const Lainnya = () => {
                         <div className='text-[36px] font-bold'>
                             Bukit Kuneer
                         </div>
-                        <div className='text-[26px] text-cust-gray text-justify'>
+                        <div className='text-[26px] text-cust-gray text-justify mt-2'>
                         Dengan ketinggian mencapai 1250 MDPL, pengunjung dapat menikmati pemandangan hamparan kebun teh yang luas dengan biaya tiket masuk hanya sebesar 10 ribu rupiah. Tidak hanya itu, spot-spot selfie yang tersebar di sepanjang bukit menambah daya tariknya. Bukit Kuneer menawarkan kesempatan untuk bersantai sambil menikmati 
                         </div>
                         <div className='flex flex-row mt-4'>
                             <div className='text-[26px] mt-2'>
                                 ⭐⭐⭐⭐⭐
                             </div>
-                            <div className='text-[20px] ml-auto text-white bg-cust-blue rounded-full px-8 py-2'>
+                            <div className='text-[20px] ml-auto text-white bg-cust-blue rounded-full px-[30px] py-2'>
                                 <button>Selengkapnya</button>
                             </div>
                         </div>
@@ -38,14 +38,14 @@ const Lainnya = () => {
                         <div className='text-[36px] font-bold'>
                             Bukit Kuneer
                         </div>
-                        <div className='text-[26px] text-cust-gray text-justify'>
+                        <div className='text-[26px] text-cust-gray text-justify mt-2'>
                         Dengan ketinggian mencapai 1250 MDPL, pengunjung dapat menikmati pemandangan hamparan kebun teh yang luas dengan biaya tiket masuk hanya sebesar 10 ribu rupiah. Tidak hanya itu, spot-spot selfie yang tersebar di sepanjang bukit menambah daya tariknya. Bukit Kuneer menawarkan kesempatan untuk bersantai sambil menikmati 
                         </div>
                         <div className='flex flex-row mt-4'>
                             <div className='text-[26px] mt-2'>
                                 ⭐⭐⭐⭐⭐
                             </div>
-                            <div className='text-[20px] ml-auto text-white bg-cust-blue rounded-full px-8 py-2'>
+                            <div className='text-[20px] ml-auto text-white bg-cust-blue rounded-full px-[30p] py-[9px]'>
                                 <button>Selengkapnya</button>
                             </div>
                         </div>
@@ -60,14 +60,14 @@ const Lainnya = () => {
                         <div className='text-[36px] font-bold'>
                             Bukit Kuneer
                         </div>
-                        <div className='text-[26px] text-cust-gray text-justify'>
+                        <div className='text-[26px] text-cust-gray text-justify mt-2'>
                         Dengan ketinggian mencapai 1250 MDPL, pengunjung dapat menikmati pemandangan hamparan kebun teh yang luas dengan biaya tiket masuk hanya sebesar 10 ribu rupiah. Tidak hanya itu, spot-spot selfie yang tersebar di sepanjang bukit menambah daya tariknya. Bukit Kuneer menawarkan kesempatan untuk bersantai sambil menikmati 
                         </div>
                         <div className='flex flex-row mt-4'>
                             <div className='text-[26px] mt-2'>
                                 ⭐⭐⭐⭐⭐
                             </div>
-                            <div className='text-[20px] ml-auto text-white bg-cust-blue rounded-full px-8 py-2'>
+                            <div className='text-[20px] ml-auto text-white bg-cust-blue rounded-full px-[30p] py-[9px]'>
                                 <button>Selengkapnya</button>
                             </div>
                         </div>
@@ -82,14 +82,14 @@ const Lainnya = () => {
                         <div className='text-[36px] font-bold'>
                             Bukit Kuneer
                         </div>
-                        <div className='text-[26px] text-cust-gray text-justify'>
+                        <div className='text-[26px] text-cust-gray text-justify mt-2'>
                         Dengan ketinggian mencapai 1250 MDPL, pengunjung dapat menikmati pemandangan hamparan kebun teh yang luas dengan biaya tiket masuk hanya sebesar 10 ribu rupiah. Tidak hanya itu, spot-spot selfie yang tersebar di sepanjang bukit menambah daya tariknya. Bukit Kuneer menawarkan kesempatan untuk bersantai sambil menikmati 
                         </div>
                         <div className='flex flex-row mt-4'>
                             <div className='text-[26px] mt-2'>
                                 ⭐⭐⭐⭐⭐
                             </div>
-                            <div className='text-[20px] ml-auto text-white bg-cust-blue rounded-full px-8 py-2'>
+                            <div className='text-[20px] ml-auto text-white bg-cust-blue rounded-full px-[30p] py-[9px]'>
                                 <button>Selengkapnya</button>
                             </div>
                         </div>
