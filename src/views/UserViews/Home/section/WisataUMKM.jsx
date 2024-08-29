@@ -7,16 +7,7 @@ import seahorse from '/public/images/Landing/WisataUMKMSection/seahorse.svg';
 const WisataUMKM = () => {
     const [activeTab, setActiveTab] = useState('wisata');
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    const [currentIndex, setCurrentIndex] = useState(0)
 
     useEffect(() => {
         setCurrentIndex(0);

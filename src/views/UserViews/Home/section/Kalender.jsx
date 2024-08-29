@@ -62,14 +62,14 @@ const Kalender = () => {
                     <h2 className="w-full text-sm sm:text-lg font-bold text-white text-center bg-cust-blue py-2 rounded-lg">{event.title}</h2>
                     <img src={event.image} alt={event.title} className="w-full h-28 sm:h-40 object-cover rounded-lg mb-4" />
                     <div className='flex justify-between text-cust-blue font-bold py-2 text-[10px] lg:text-base'>
-                        <div className='flex items-center gap-0.5 sm:gap-2'>
-                            <span className='lg:text-3xl text-xl  mb-1'><FaCalendar /></span>:  {event.date}
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl  mb-1'><FaCalendar /></span>:  <span className='text-[8px]'>{event.date}</span>
                         </div>
-                        <div className='flex items-center gap-0.5 sm:gap-2'>
-                            <span className='lg:text-3xl text-xl '><FaClock /></span>:  {event.time}
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl '><FaClock /></span>:  <span className='text-[8px]'>{event.time}</span>
                         </div>
-                        <div className='flex items-center gap-0.5 sm:gap-2'>
-                            <span className='lg:text-3xl text-xl '><FaLocationDot /></span>:  {event.location}
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl '><FaLocationDot /></span>:  <span className='text-[8px]'>{event.location}</span>
                         </div>
                     </div>
                 </div>
