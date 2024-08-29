@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
-import events from '../../../../api/userApi/events.json'
+import React, { useState, useEffect } from 'react'
+import { getKalender } from '../../../../api/userApi/Kalender/index'
 import { FaChevronLeft, FaChevronRight, FaCalendar, FaClock, FaLocationDot } from "react-icons/fa6";
 
 const Kalender = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
     const [selectedDate, setSelectedDate] = useState(null);
+    const [events, setEvents] = useState({});
+
+    useEffect(() => {
+        const getEvents = async () => {
+            const fetchedEvents = await getKalender();
+            setEvents(fetchedEvents);
+        };
+        getEvents();
+    }, []);
 
     const monthNames = [
         "Januari", "Februari", "Maret", "April", "Mei", "Juni",
