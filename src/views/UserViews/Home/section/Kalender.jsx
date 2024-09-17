@@ -121,7 +121,7 @@ const Kalender = () => {
 
     return (
         <div className="bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex items-center font-poppins justify-center py-28 bg-cust-blue">
-            <div className='container flex flex-col items-center justify-beetween w-full min-h-full gap-16'>
+            <div className='container sm:max-w-[85%] max-w-[95%] flex flex-col items-center justify-beetween w-full min-h-full gap-16'>
                 <div className='w-full flex justify-center md:justify-between md:px-0 px-8'>
                     <img src="/images/Landing/KalenderSection/kalenderTitle.svg" alt="" className='w-max' />
                     <img src="/images/Landing/KalenderSection/icon.svg" alt="" className='w-max hidden md:block' />

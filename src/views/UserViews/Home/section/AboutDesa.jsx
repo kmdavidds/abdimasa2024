@@ -4,7 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const AboutDesa = () => {
     return (
         <div className="bg-cust-softblue w-full flex items-center font-poppins justify-center sm:pb-40 pb-20">
-            <div className="flex flex-col items-center justify-center sm:flex-row container w-full px-10 sm:px-10 lg:px-0 gap-10 sm:gap-0">
+            <div className="flex flex-col items-center justify-center sm:flex-row container gap-10 sm:gap-0 max-w-[80%]">
                 <div className="sm:w-6/12 w-[80%] justify-center sm:justify-start items-center flex">
                     <img src="/images/Landing/AboutSection/imageAbout.png" alt="foto about desa" className="w-[80%]" />
                 </div>

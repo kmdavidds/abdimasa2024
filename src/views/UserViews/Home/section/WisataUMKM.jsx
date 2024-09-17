@@ -165,7 +165,7 @@ const WisataUMKM = () => {
 
     return (
         <div className="bg-cust-blue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex items-center font-poppins justify-center py-16 md:py-28">
-            <div className='container w-full min-h-full space-y-9 md:space-y-20 relative px-6 md:px-0'>
+            <div className='container flex flex-col items-center w-full min-h-full space-y-9 md:space-y-20 relative max-w-[85%]'>
                 <div className='w-full flex justify-end'>
                     {/* Tabs */}
                     <div className="select-none flex w-max h-max rounded-e-full bg-cust-softblue rounded-full bg-opacity-25">
@@ -190,62 +190,60 @@ const WisataUMKM = () => {
                     </div>
                 </div>
                 {/* Content */}
-                <div className="w-full h-full rounded-lg overflow-hidden py-10">
-                    <div className='w-full h-full flex flex-col gap-16 mx-auto'>
-                        {/* carousel */}
-                        <div
-                            className="flex transition-transform duration-500 relative"
-                            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                <div className='w-full h-full flex flex-col gap-16 mx-auto relative overflow-hidden'>
+                    {/* carousel */}
+                    <div
+                        className="flex transition-transform duration-500"
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    >
+                        {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                            <div
+                                key={slideIndex}
+                                className={`w-full ${isMobile ? 'grid grid-cols-2 gap-4 place-items-center' : 'flex justify-between space-x-16'}`}
+                                style={{ minWidth: '100%' }}
+                            >
+                                {data
+                                    .slice(slideIndex * cardsPerSlide, slideIndex * cardsPerSlide + cardsPerSlide)
+                                    .map((card, index) => (
+                                        <WisataUMKMCard
+                                            key={index}
+                                            type={card.type}
+                                            image={card.image}
+                                            title={card.title}
+                                            location={card.location}
+                                            name={card.name}
+                                            priceRange={card.priceRange}
+                                            waLink={card.waLink}
+                                        />
+                                    ))}
+                            </div>
+                        ))}
+                    </div>
+
+
+                    <div className="flex justify-center mt-4 items-center sm:mt-4 space-x-4 sm:space-x-10">
+                        <button
+                            onClick={goToPrevSlide}
+                            className={`h-8 sm:h-16 w-8 sm:w-16 text-cust-blue flex justify-center items-center rounded-full text-sm sm:text-3xl bg-cust-softblue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            disabled={currentIndex === 0}
                         >
-                            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                                <div
-                                    key={slideIndex}
-                                    className={`w-full ${isMobile ? 'grid grid-cols-2 gap-4 place-items-center' : 'flex justify-between space-x-16'}`}
-                                    style={{ minWidth: '100%' }}
-                                >
-                                    {data
-                                        .slice(slideIndex * cardsPerSlide, slideIndex * cardsPerSlide + cardsPerSlide)
-                                        .map((card, index) => (
-                                            <WisataUMKMCard
-                                                key={index}
-                                                type={card.type}
-                                                image={card.image}
-                                                title={card.title}
-                                                location={card.location}
-                                                name={card.name}
-                                                priceRange={card.priceRange}
-                                                waLink={card.waLink}
-                                            />
-                                        ))}
-                                </div>
+                            <FaChevronLeft />
+                        </button>
+                        <div className='flex justify-center space-x-5'>
+                            {Array.from({ length: totalSlides }).map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => goToSlide(index)}
+                                    className={`h-2 sm:h-4 w-2 sm:w-4 rounded-full bg-cust-softblue ${index === currentIndex ? 'opacity-100' : 'opacity-20'}`}
+                                ></button>
                             ))}
                         </div>
-
-
-                        <div className="flex justify-center mt-4 items-center sm:mt-4 space-x-4 sm:space-x-10">
-                            <button
-                                onClick={goToPrevSlide}
-                                className={`h-8 sm:h-16 w-8 sm:w-16 text-cust-blue flex justify-center items-center rounded-full text-sm sm:text-3xl bg-cust-softblue ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                disabled={currentIndex === 0}
-                            >
-                                <FaChevronLeft />
-                            </button>
-                            <div className='flex justify-center space-x-5'>
-                                {Array.from({ length: totalSlides }).map((_, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => goToSlide(index)}
-                                        className={`h-2 sm:h-4 w-2 sm:w-4 rounded-full bg-cust-softblue ${index === currentIndex ? 'opacity-100' : 'opacity-20'}`}
-                                    ></button>
-                                ))}
-                            </div>
-                            <button
-                                onClick={goToNextSlide}
-                                className="h-8 sm:h-16 w-8 sm:w-16 text-cust-blue flex justify-center items-center rounded-full text-sm sm:text-3xl bg-cust-softblue"
-                            >
-                                <FaChevronRight />
-                            </button>
-                        </div>
+                        <button
+                            onClick={goToNextSlide}
+                            className="h-8 sm:h-16 w-8 sm:w-16 text-cust-blue flex justify-center items-center rounded-full text-sm sm:text-3xl bg-cust-softblue"
+                        >
+                            <FaChevronRight />
+                        </button>
                     </div>
                 </div>
                 <img src={iconAir} alt="" className='absolute top-10 -left-10 hidden md:block' />
