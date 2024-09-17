@@ -57,7 +57,7 @@ const Navbar = () => {
                         className={`${isActive(['/profil'])
                             ? 'font-semibold'
                             : isActive (["/", "/galeri"])
-                            } ${colorChange ? 'text-white' : 'text-white'}`}
+                            } ${colorChange ? 'text-white' : 'text-cust-blue'}`}
                     >
                         Profil
                     </Link>
