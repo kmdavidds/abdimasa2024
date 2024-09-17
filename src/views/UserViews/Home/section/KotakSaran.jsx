@@ -61,9 +61,9 @@ const KotakSaran = () => {
 
     return (
         <div className='bg-cust-softblue w-full flex items-center font-poppins justify-center sm:py-28 py-20'>
-            <div className='flex md:flex-row flex-col justify-center container w-full min-h-full xl:min-h-screen'>
-                <div className='md:w-1/2 w-full px-8 md:px-0 flex flex-col sm:flex-row items-center justify-end relative text-cust-blue gap-5'>
-                    <div className='select-none sm:hidden'>
+            <div className='flex md:flex-row flex-col justify-center container w-full min-h-full xl:min-h-screen max-w-full sm:max-w-[80%]'>
+                <div className='md:w-1/2 w-full px-8 md:px-0 flex flex-col md:flex-row items-center justify-end relative text-cust-blue gap-5'>
+                    <div className='select-none md:hidden'>
                         <img src="/images/Landing/KotakSaranSection/judulSaran.svg" alt="" />
                     </div>
                     <div className='relative w-full'>
@@ -73,7 +73,7 @@ const KotakSaran = () => {
                             shadowOffset={50}
                             highlight={true}
                             duration={100}
-                            className='absolute group md:top-[22%] md:right-[20%] sm:top-[25%] sm:right-[30%]  top-[25%] right-[30%]'
+                            className='absolute group md:top-[22%] sm:top-[25%] sm:right-[30%] top-[25%] right-[30%]'
 
                         >
                             <div data-atropos-offset="15" className='max-w-[130px] sm:max-w-[240px] md:max-w-[200px] xl:max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-3 sm:px-5 py-2 sm:py-3 text-center border-2 border-gray-300 text-[8px] sm:text-base md:text-xs xl:text-base'>
@@ -106,9 +106,9 @@ const KotakSaran = () => {
                         </Atropos>
                     </div>
                 </div>
-                <div className='md:w-1/2 w-full px-8 md:px-0 flex items-center justify-center text-sm sm:text-base'>
-                    <div className='w-full sm:w-max flex flex-col items-center justify-center gap-7 '>
-                        <div className='select-none sm:block hidden'>
+                <div className='md:w-1/2 w-full flex items-center justify-center text-sm sm:text-base'>
+                    <div className='w-full max-w-[80%]  xl:max-w-[100%] xl:w-max flex flex-col items-center justify-center gap-7 '>
+                        <div className='select-none md:block hidden'>
                             <img src="/images/Landing/KotakSaranSection/judulSaran.svg" alt="" />
                         </div>
                         <form onSubmit={handleSubmit} enctype="multipart/form-data" className="space-y-7 w-full">

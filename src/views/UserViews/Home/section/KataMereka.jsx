@@ -6,7 +6,7 @@ const KataMereka = () => {
     const cards = [
         {
             image: 'https://via.placeholder.com/150',
-            quote: 'Website ini sangat membantu saya dalam merencanakan liburan, terutama ke daerah Desa Toyomarto. Infonya lengkap sehingga saya bisa mempersiapkan rute dan budget untuk liburan saya dan keluarga, good jobb👍🏼👍🏼',
+            quote: 'Website ini sangat membantu saya dalam merencanakan liburan, terutama ke daerah Desa Toyomarto, good jobb👍🏼👍🏼',
             name: 'Sandy Kristian W.',
             occupation: 'Wisatawan',
         },
@@ -65,7 +65,7 @@ const KataMereka = () => {
 
     const updateCardsPerSlide = () => {
         const screenWidth = window.innerWidth;
-        if (screenWidth < 1024) {
+        if (screenWidth < 1280) {
             setCardsPerSlide(2);
         } else {
             setCardsPerSlide(3);
@@ -100,13 +100,13 @@ const KataMereka = () => {
 
     return (
         <div className="bg-cust-softblue w-full flex items-center font-poppins justify-center py-20 sm:py-32">
-            <div className="flex flex-col items-center gap-16 container w-full min-h-full sm:px-0 px-8">
+            <div className="flex flex-col items-center gap-16 container w-full min-h-full sm:px-0 px-8 sm:max-w-[80%] max-w-[95%]">
                 {/* title */}
                 <div className="font-bold text-cust-blue">
                     <img src="/images/Landing/KataMerekaSection/title.svg" alt="title" className="select-none" />
                 </div>
                 {/* carousel */}
-                <div className="w-full flex flex-col gap-8 sm:gap-16 mx-auto relative overflow-hidden">
+                <div className="w-full flex flex-col gap-8 xl:gap-16 mx-auto relative overflow-hidden">
                     <div
                         className="flex transition-transform duration-500"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -114,7 +114,7 @@ const KataMereka = () => {
                         {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                             <div
                                 key={slideIndex}
-                                className="w-full flex justify-center space-x-5 sm:space-x-16"
+                                className="w-full flex justify-center sm:justify-around xl:justify-between  space-x-5 sm:space-x-8 xl:space-x-16"
                                 style={{ minWidth: '100%' }}
                             >
                                 {cards
