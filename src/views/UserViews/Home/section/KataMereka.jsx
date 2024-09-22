@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TestiCard from '../../../../components/UserComp/Home/TestiCard';
+import TestiCard from '../../../../components/UserComp/Home/Testimoni/TestiCard';
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import { getRemarks } from '../../../../api/userApi/Ulasan';
 
