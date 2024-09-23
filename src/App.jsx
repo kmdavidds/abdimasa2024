@@ -12,6 +12,15 @@ import PageLayout from './components/UserComp/PageLayout.jsx';
 
 // Admin
 import LoginAdmin from './views/AdminViews/Login/LoginAdmin.jsx';
+import DashboardAdmin from './views/AdminViews/Dashboard/Main.jsx';
+import ProtectedRoute from './components/AdminComp/ProtectedRoute.jsx';
+import PageLayoutAdmin from './components/AdminComp/PageLayout.jsx';
+import BeritaAdmin from './views/AdminViews/Dashboard/Berita.jsx';
+import KalenderAdmin from './views/AdminViews/Dashboard/Kalender.jsx';
+import KotakSaranAdmin from './views/AdminViews/Dashboard/KotakSaran.jsx';
+import UMKMAdmin from './views/AdminViews/Dashboard/UMKM.jsx';
+import WisataAdmin from './views/AdminViews/Dashboard/Wisata.jsx';
+
 
 const App = createBrowserRouter([
   {
@@ -64,6 +73,66 @@ const App = createBrowserRouter([
     path: "/admin/login",
     element: (
       <LoginAdmin />
+    ),
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <DashboardAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/berita",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <BeritaAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/kalender",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <KalenderAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/saran",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <KotakSaranAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/umkm",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <UMKMAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/wisata",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <WisataAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
     ),
   },
 ]);
