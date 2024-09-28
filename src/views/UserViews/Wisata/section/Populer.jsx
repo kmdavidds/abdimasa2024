@@ -1,5 +1,5 @@
 import React from 'react';
-import WisataUMKMCard from '../../../../components/UserComp/Home/WisataUMKMCard';
+import WisataUMKMCard from '../../../../components/UserComp/Home/WisataUMKM';
 
 const wisataData = [
     {
