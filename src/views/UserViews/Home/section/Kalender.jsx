@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
-import events from '../../../../api/userApi/events.json'
+import React, { useState, useEffect } from 'react'
+import { getKalender } from '../../../../api/userApi/Kalender/index'
 import { FaChevronLeft, FaChevronRight, FaCalendar, FaClock, FaLocationDot } from "react-icons/fa6";
 
 const Kalender = () => {
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
     const [selectedDate, setSelectedDate] = useState(null);
+    const [events, setEvents] = useState({});
+
+    useEffect(() => {
+        const getEvents = async () => {
+            const fetchedEvents = await getKalender();
+            setEvents(fetchedEvents);
+        };
+        getEvents();
+    }, []);
 
     const monthNames = [
         "Januari", "Februari", "Maret", "April", "Mei", "Juni",
@@ -53,14 +62,14 @@ const Kalender = () => {
                     <h2 className="w-full text-sm sm:text-lg font-bold text-white text-center bg-cust-blue py-2 rounded-lg">{event.title}</h2>
                     <img src={event.image} alt={event.title} className="w-full h-28 sm:h-40 object-cover rounded-lg mb-4" />
                     <div className='flex justify-between text-cust-blue font-bold py-2 text-[10px] lg:text-base'>
-                        <div className='flex items-center gap-0.5 sm:gap-2'>
-                            <span className='lg:text-3xl text-xl  mb-1'><FaCalendar /></span>:  {event.date}
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl  mb-1'><FaCalendar /></span>:  <span className='text-[8px] lg:text-xl'>{event.date}</span>
                         </div>
-                        <div className='flex items-center gap-0.5 sm:gap-2'>
-                            <span className='lg:text-3xl text-xl '><FaClock /></span>:  {event.time}
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl '><FaClock /></span>:  <span className='text-[8px] lg:text-xl'>{event.time}</span>
                         </div>
-                        <div className='flex items-center gap-0.5 sm:gap-2'>
-                            <span className='lg:text-3xl text-xl '><FaLocationDot /></span>:  {event.location}
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl '><FaLocationDot /></span>:  <span className='text-[8px] lg:text-xl'>{event.location}</span>
                         </div>
                     </div>
                 </div>
@@ -112,7 +121,7 @@ const Kalender = () => {
 
     return (
         <div className="bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex items-center font-poppins justify-center py-28 bg-cust-blue">
-            <div className='container flex flex-col items-center justify-beetween w-full min-h-full gap-16'>
+            <div className='container sm:max-w-[85%] max-w-[95%] flex flex-col items-center justify-beetween w-full min-h-full gap-16'>
                 <div className='w-full flex justify-center md:justify-between md:px-0 px-8'>
                     <img src="/images/Landing/KalenderSection/kalenderTitle.svg" alt="" className='w-max' />
                     <img src="/images/Landing/KalenderSection/icon.svg" alt="" className='w-max hidden md:block' />
@@ -120,10 +129,10 @@ const Kalender = () => {
                 <div className='w-full flex flex-col md:flex-row gap-9 sm:gap-24 lg:min-h-[410px] px-10 md:px-0'>
                     <div className='lg:w-2/5 md:1/2 w-full bg-gradient-to-b from-[#E2F0FF] via-[#F0F7FF] to-[#F2F8FF] rounded-xl p-5'>
                         <div className="flex justify-between items-center mb-4">
-                            <h3 className="text-xs sm:text-lg px-4 py-2 font-bold bg-cust-blue rounded-full text-white">{monthNames[currentMonth]} {currentYear}</h3>
+                            <h3 className="text-xs sm:text-lg md:text-sm lg:text-lg px-4 py-2 font-bold bg-cust-blue rounded-full text-white">{monthNames[currentMonth]} {currentYear}</h3>
                             <div className='flex gap-5'>
-                                <button onClick={handlePreviousMonth} className="text-xs sm:text-xl font-bold text-white bg-cust-blue rounded-full p-2 sm:p-3"><FaChevronLeft /></button>
-                                <button onClick={handleNextMonth} className="text-xs sm:text-xl font-bold text-white bg-cust-blue rounded-full p-2 sm:p-3"><FaChevronRight /></button>
+                                <button onClick={handlePreviousMonth} className="text-xs sm:text-xl md:text-sm lg:text-lg font-bold text-white bg-cust-blue rounded-full p-2 sm:p-3"><FaChevronLeft /></button>
+                                <button onClick={handleNextMonth} className="text-xs sm:text-xl md:text-sm lg:text-lg font-bold text-white bg-cust-blue rounded-full p-2 sm:p-3"><FaChevronRight /></button>
                             </div>
                         </div>
                         <div className="grid grid-cols-7 gap-2 text-center text-sm sm:text-base font-bold">
