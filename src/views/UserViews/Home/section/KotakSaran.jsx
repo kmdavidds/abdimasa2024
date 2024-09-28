@@ -1,62 +1,36 @@
 import React, { useState } from 'react'
 import { CiFileOn } from "react-icons/ci";
+import { useForm, Controller } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 // hover atropos
 import Atropos from "atropos/react";
 
+const schema = z.object({
+    name: z.string().min(1, { message: 'Nama harus diisi' }),
+    complaint: z.string().min(1, { message: 'Pengaduan harus diisi' }),
+    attachment: z.instanceof(File).optional(),
+});
+
 const KotakSaran = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        complaint: '',
-        attachment: null,
+    const [fileName, setFileName] = useState('');
+
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: zodResolver(schema),
     });
 
-    const [errors, setErrors] = useState({});
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-        setErrors({
-            ...errors,
-            [name]: '',
-        });
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setFileName(file ? file.name : '');
     };
 
-    const handleFileChange = (e) => {
-        setFormData({
-            ...formData,
-            attachment: e.target.files[0],
-        });
-    };
-
-    const validateForm = () => {
-        const newErrors = {};
-        if (!formData.name) {
-            newErrors.name = 'Nama harus diisi';
-        }
-        if (!formData.complaint) {
-            newErrors.complaint = 'Pengaduan harus diisi';
-        }
-        return newErrors;
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const validationErrors = validateForm();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            return;
-        }
-
-        console.log('Form submitted:', formData);
-        setFormData({
-            name: '',
-            complaint: '',
-            attachment: null,
-        });
-        setErrors({});
+    const onSubmit = (data) => {
+        console.log('Form submitted:', data);
+        setFileName('');
     };
 
     return (
@@ -111,49 +85,62 @@ const KotakSaran = () => {
                         <div className='select-none md:block hidden'>
                             <img src="/images/Landing/KotakSaranSection/judulSaran.svg" alt="" />
                         </div>
-                        <form onSubmit={handleSubmit} enctype="multipart/form-data" className="space-y-7 w-full">
+                        <form onSubmit={handleSubmit(onSubmit)} enctype="multipart/form-data" className="space-y-7 w-full">
                             <div>
                                 <label htmlFor="name" className="block font-medium">
                                     Nama <span className="text-red-500">*</span>
                                 </label>
-                                <input
-                                    type="text"
-                                    id="name"
+                                <Controller
                                     name="name"
-                                    placeholder="Masukkan nama Anda"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-2 mt-3 border-2 rounded-full border-cust-blue border-opacity-35 focus:border-opacity-100  focus:outline-none"
+                                    control={control}
+                                    render={({ field }) => (
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            placeholder="Masukkan nama Anda"
+                                            {...field}
+                                            className="w-full px-4 py-2 mt-3 border-2 rounded-full border-cust-blue border-opacity-35 focus:border-opacity-100 focus:outline-none"
+                                        />
+                                    )}
                                 />
-                                {errors.name && <p className="text-red-500 mt-1">{errors.name}</p>}
+                                {errors.name && <p className="text-red-500 mt-1">{errors.name.message}</p>}
                             </div>
 
                             <div>
                                 <label htmlFor="complaint" className="block font-medium">
                                     Pengaduan <span className="text-red-500">*</span>
                                 </label>
-                                <input
-                                    type="text"
-                                    id="complaint"
+                                <Controller
                                     name="complaint"
-                                    placeholder="Masukkan pengaduan disini..."
-                                    value={formData.complaint}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-2 mt-3 border-2 rounded-full border-cust-blue border-opacity-35 focus:border-opacity-100 focus:outline-none"
+                                    control={control}
+                                    render={({ field }) => (
+                                        <input
+                                            type="text"
+                                            id="complaint"
+                                            placeholder="Masukkan pengaduan disini..."
+                                            {...field}
+                                            className="w-full px-4 py-2 mt-3 border-2 rounded-full border-cust-blue border-opacity-35 focus:border-opacity-100 focus:outline-none"
+                                        />
+                                    )}
                                 />
-                                {errors.complaint && <p className="text-red-500 mt-1">{errors.complaint}</p>}
+                                {errors.complaint && <p className="text-red-500 mt-1">{errors.complaint.message}</p>}
                             </div>
 
                             <div>
                                 <label htmlFor="attachment" className="block font-medium">
                                     Lampiran (Optional)
                                 </label>
-                                <label className='w-full flex flex-col items-start px-4 py-2 mt-3 bg-white rounded-full border-2 border-cust-blue border-opacity-35 focus:border-opacity-100 cursor-pointer focus:outline-none hover:text-white'>
+                                <label className='w-full flex flex-col items-start px-4 py-2 mt-3 bg-white rounded-full border-2 border-cust-blue border-opacity-35 cursor-pointer'>
                                     <span className="text-gray-500 items-center">
                                         <CiFileOn className='text-xl inline' />
-                                        {formData.attachment ? formData.attachment.name : " Unggah foto/PDF jika ada"}
+                                        {fileName || " Unggah foto/PDF jika ada"}
                                     </span>
-                                    <input type="file" id="attachment" name="attachment" onChange={handleFileChange} className="hidden" />
+                                    <input
+                                        type="file"
+                                        id="attachment"
+                                        onChange={handleFileChange}
+                                        className="hidden"
+                                    />
                                 </label>
                             </div>
 

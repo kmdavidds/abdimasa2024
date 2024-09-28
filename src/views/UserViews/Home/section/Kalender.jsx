@@ -7,11 +7,14 @@ const Kalender = () => {
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
     const [selectedDate, setSelectedDate] = useState(null);
     const [events, setEvents] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const getEvents = async () => {
+            setIsLoading(true)
             const fetchedEvents = await getKalender();
             setEvents(fetchedEvents);
+            setIsLoading(false)
         };
         getEvents();
     }, []);
@@ -76,7 +79,7 @@ const Kalender = () => {
             );
         } else {
             return (
-                <div className="bg-white p-4 rounded-lg shadow-md">
+                <div className="bg-white p-4 rounded-lg shadow-md h-full flex justify-center items-center">
                     <h2 className="text-sm sm:text-xl font-semibold mb-2">Tidak Ada Kegiatan</h2>
                 </div>
             );
@@ -88,12 +91,10 @@ const Kalender = () => {
         const firstDayIndex = firstDayOfMonth(currentMonth, currentYear);
         const calendarDays = [];
 
-        // Add empty cells for days before the first day of the month
         for (let i = 0; i < firstDayIndex; i++) {
             calendarDays.push(<div key={`empty-${i}`} className="p-2"></div>);
         }
 
-        // Add the actual days of the month
         for (let day = 1; day <= daysInCurrentMonth; day++) {
             const dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             const hasEvent = events[dateKey] !== undefined;
@@ -135,14 +136,20 @@ const Kalender = () => {
                                 <button onClick={handleNextMonth} className="text-xs sm:text-xl md:text-sm lg:text-lg font-bold text-white bg-cust-blue rounded-full p-2 sm:p-3"><FaChevronRight /></button>
                             </div>
                         </div>
-                        <div className="grid grid-cols-7 gap-2 text-center text-sm sm:text-base font-bold">
-                            {daysOfWeek.map((day) => (
-                                <div key={day}>{day}</div>
-                            ))}
-                        </div>
-                        <div className="grid grid-cols-7 gap-2 mt-2">
-                            {renderCalendarDays()}
-                        </div>
+                        {isLoading ? (
+                            <h1>test</h1>
+                        ) : (
+                            <>
+                                <div className="grid grid-cols-7 gap-2 text-center text-sm sm:text-base font-bold">
+                                    {daysOfWeek.map((day) => (
+                                        <div key={day}>{day}</div>
+                                    ))}
+                                </div>
+                                <div className="grid grid-cols-7 gap-2 mt-2">
+                                    {renderCalendarDays()}
+                                </div>
+                            </>
+                        )}
                     </div>
                     <div className='lg:w-3/5 md:1/2 w-full bg-gradient-to-b from-[#E2F0FF] via-[#F0F7FF] to-[#F2F8FF] rounded-xl py-5 px-4 sm:px-10'>
                         {renderEventDetails()}

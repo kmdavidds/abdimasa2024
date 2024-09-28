@@ -1,140 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import WisataUMKMCard from '../../../../components/UserComp/Home/WisataUMKMCard'
+import WisataUMKMCard from '../../../../components/UserComp/Home/WisataUMKM/WisataUMKMCard'
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import iconAir from '/public/images/Landing/WisataUMKMSection/iconAir.svg';
 import seahorse from '/public/images/Landing/WisataUMKMSection/seahorse.svg';
+import { getWisata } from '../../../../api/userApi/Wisata';
+import { getUmkm } from '../../../../api/userApi/Umkm';
 
 const WisataUMKM = () => {
     const [activeTab, setActiveTab] = useState('wisata');
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [wisataData, setWisataData] = useState([]);
+    const [umkmData, setUmkmData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setCurrentIndex(0);
     }, [activeTab]);
 
-    const wisataData = [
-        {
-            type: 'wisata',
-            image: 'https://picsum.photos/360/415',
-            title: 'Bukit Kuneer',
-            location: 'Kebun Teh Wonosari, Toyomarto',
-        },
-        {
-            type: 'wisata',
-            image: 'https://picsum.photos/360/415',
-            title: 'Stupa Sumberawan',
-            location: 'Dusun Sumberawan, Toyomarto',
-        },
-        {
-            type: 'wisata',
-            image: 'https://picsum.photos/360/415',
-            title: 'Pentungansari',
-            location: 'Bodean Krajan, Toyomarto',
-        },
-        {
-            type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
-            title: 'Bukit Kuneer',
-            location: 'Kebun Teh Wonosari, Toyomarto',
-        },
-        {
-            type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
-            title: 'Stupa Sumberawan',
-            location: 'Dusun Sumberawan, Toyomarto',
-        },
-        {
-            type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
-            title: 'Pentungansari',
-            location: 'Bodean Krajan, Toyomarto',
-        },
-        {
-            type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
-            title: 'Bukit Kuneer',
-            location: 'Kebun Teh Wonosari, Toyomarto',
-        },
-        {
-            type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
-            title: 'Stupa Sumberawan',
-            location: 'Dusun Sumberawan, Toyomarto',
-        },
-        {
-            type: 'wisata',
-            image: 'https://via.placeholder.com/360x415',
-            title: 'Pentungansari',
-            location: 'Bodean Krajan, Toyomarto',
-        },
-    ];
+    useEffect(() => {
+        const fetchData = async () => {
+            setIsLoading(true);
+            if (activeTab === 'wisata') {
+                const data = await getWisata();
+                setWisataData(data);
+            } else if (activeTab === 'umkm') {
+                const data = await getUmkm();
+                setUmkmData(data);
+            }
+            setIsLoading(false);
+        };
 
-    const umkmData = [
-        {
-            type: 'umkm',
-            image: 'https://picsum.photos/360/415',
-            name: 'UMKM Product 1',
-            priceRange: 'Rp 50.000 - Rp 150.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-        {
-            type: 'umkm',
-            image: 'https://picsum.photos/360/415',
-            name: 'UMKM Product 2',
-            priceRange: 'Rp 100.000 - Rp 200.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-        {
-            type: 'umkm',
-            image: 'https://picsum.photos/360/415',
-            name: 'UMKM Product 3',
-            priceRange: 'Rp 75.000 - Rp 175.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-        {
-            type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
-            name: 'UMKM Product 1',
-            priceRange: 'Rp 50.000 - Rp 150.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-        {
-            type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
-            name: 'UMKM Product 2',
-            priceRange: 'Rp 100.000 - Rp 200.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-        {
-            type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
-            name: 'UMKM Product 3',
-            priceRange: 'Rp 75.000 - Rp 175.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-        {
-            type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
-            name: 'UMKM Product 1',
-            priceRange: 'Rp 50.000 - Rp 150.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-        {
-            type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
-            name: 'UMKM Product 2',
-            priceRange: 'Rp 100.000 - Rp 200.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-        {
-            type: 'umkm',
-            image: 'https://via.placeholder.com/360x415',
-            name: 'UMKM Product 3',
-            priceRange: 'Rp 75.000 - Rp 175.000',
-            waLink: 'https://wa.me/1234567890',
-        },
-    ];
+        fetchData();
+    }, [activeTab]);
 
     const cardsPerSlide = isMobile ? 4 : 3;
     const data = activeTab === 'wisata' ? wisataData : umkmData;
@@ -189,37 +87,49 @@ const WisataUMKM = () => {
                         </button>
                     </div>
                 </div>
-                {/* Content */}
-                <div className='w-full h-full flex flex-col gap-16 mx-auto relative overflow-hidden'>
-                    {/* carousel */}
-                    <div
-                        className="flex transition-transform duration-500"
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    >
-                        {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                            <div
-                                key={slideIndex}
-                                className={`w-full ${isMobile ? 'grid grid-cols-2 gap-4 place-items-center' : 'flex justify-between space-x-16'}`}
-                                style={{ minWidth: '100%' }}
-                            >
-                                {data
-                                    .slice(slideIndex * cardsPerSlide, slideIndex * cardsPerSlide + cardsPerSlide)
-                                    .map((card, index) => (
-                                        <WisataUMKMCard
-                                            key={index}
-                                            type={card.type}
-                                            image={card.image}
-                                            title={card.title}
-                                            location={card.location}
-                                            name={card.name}
-                                            priceRange={card.priceRange}
-                                            waLink={card.waLink}
-                                        />
-                                    ))}
-                            </div>
-                        ))}
-                    </div>
 
+                {/* Content */}
+                <div div className='w-full h-full flex flex-col gap-16 mx-auto relative overflow-hidden'>
+                    {/* carousel */}
+                    {isLoading ? (
+                        <div className='h-[415px] w-full'>
+                            <div className='flex h-full flex-col items-center justify-center'>
+                                <h3 className='text-3xl'>Loading...</h3>
+                            </div>
+                        </div>
+                    ) : (
+                        <>
+                            <div
+                                className="flex transition-transform duration-500"
+                                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                            >
+                                {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                                    <div
+                                        key={slideIndex}
+                                        className={`w-full ${isMobile ? 'grid grid-cols-2 gap-4 place-items-center' : 'flex justify-between space-x-16'}`}
+                                        style={{ minWidth: '100%' }}
+                                    >
+                                        {data
+                                            .slice(slideIndex * cardsPerSlide, slideIndex * cardsPerSlide + cardsPerSlide)
+                                            .map((card, index) => (
+                                                    <WisataUMKMCard
+                                                        key={index}
+                                                        type={activeTab}
+                                                        image={card.images[0]}
+                                                        title={card.name}
+                                                        location={card.location}
+                                                        name={card.name}
+                                                        priceRange={card.priceRange}
+                                                        waLink={card.waLink}
+                                                        className="sm:h-[416px] h-[175px]"
+                                                    />
+                                            ))}
+                                    </div>
+                                ))}
+                            </div>
+
+                        </>
+                    )}
 
                     <div className="flex justify-center mt-4 items-center sm:mt-4 space-x-4 sm:space-x-10">
                         <button
@@ -251,7 +161,7 @@ const WisataUMKM = () => {
 
 
             </div>
-        </div>
+        </div >
     )
 }
 

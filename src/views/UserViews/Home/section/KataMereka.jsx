@@ -1,67 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import TestiCard from '../../../../components/UserComp/Home/TestiCard';
+import TestiCard from '../../../../components/UserComp/Home/Testimoni/TestiCard';
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
+import { getRemarks } from '../../../../api/userApi/Ulasan';
 
 const KataMereka = () => {
-    const cards = [
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Website ini sangat membantu saya dalam merencanakan liburan, terutama ke daerah Desa Toyomarto, good jobb👍🏼👍🏼',
-            name: 'Sandy Kristian W.',
-            occupation: 'Wisatawan',
-        },
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Untuk saya sebagai penikmat seni, sangat takjub dengan budaya lokal yang masih terjaga kental di desa ini. Di website ini juga ada info mengenai kalender kegiatan desa. Dengan begitu saya dapat merencanakan perjalanan saya.',
-            name: 'Firza Aurellia',
-            occupation: 'Wisatawan',
-        },
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Website Desa Wisata Toyomarto memudahkan saya menemukan informasi tentang wisata yang ada disana. Mulai dari rekomendasi wisata populer, alamat, jam buka, jam tutup dan review pengunjung.👍🏼👍🏼',
-            name: 'Maxwell Salvador',
-            occupation: 'Wisatawan',
-        },
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Website ini sangat membantu saya dalam merencanakan liburan, terutama ke daerah Desa Toyomarto. Infonya lengkap sehingga saya bisa mempersiapkan rute dan budget untuk liburan saya dan keluarga, good jobb👍🏼👍🏼',
-            name: 'Sandy Kristian W.',
-            occupation: 'Wisatawan',
-        },
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Untuk saya sebagai penikmat seni, sangat takjub dengan budaya lokal yang masih terjaga kental di desa ini. Di website ini juga ada info mengenai kalender kegiatan desa. Dengan begitu saya dapat merencanakan perjalanan saya.',
-            name: 'Firza Aurellia',
-            occupation: 'Wisatawan',
-        },
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Website Desa Wisata Toyomarto memudahkan saya menemukan informasi tentang wisata yang ada disana. Mulai dari rekomendasi wisata populer, alamat, jam buka, jam tutup dan review pengunjung.👍🏼👍🏼',
-            name: 'Maxwell Salvador',
-            occupation: 'Wisatawan',
-        },
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Website ini sangat membantu saya dalam merencanakan liburan, terutama ke daerah Desa Toyomarto. Infonya lengkap sehingga saya bisa mempersiapkan rute dan budget untuk liburan saya dan keluarga, good jobb👍🏼👍🏼',
-            name: 'Sandy Kristian W.',
-            occupation: 'Wisatawan',
-        },
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Untuk saya sebagai penikmat seni, sangat takjub dengan budaya lokal yang masih terjaga kental di desa ini. Di website ini juga ada info mengenai kalender kegiatan desa. Dengan begitu saya dapat merencanakan perjalanan saya.',
-            name: 'Firza Aurellia',
-            occupation: 'Wisatawan',
-        },
-        {
-            image: 'https://via.placeholder.com/150',
-            quote: 'Website Desa Wisata Toyomarto memudahkan saya menemukan informasi tentang wisata yang ada disana. Mulai dari rekomendasi wisata populer, alamat, jam buka, jam tutup dan review pengunjung.👍🏼👍🏼',
-            name: 'Maxwell Salvador',
-            occupation: 'Wisatawan',
-        },
-    ];
-
+    const [cards, setCards] = useState([]);
     const [cardsPerSlide, setCardsPerSlide] = useState(3);
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const fetchRemarks = async () => {
+            const remarksData = await getRemarks();
+            setCards(remarksData);
+        };
+
+        fetchRemarks();
+    }, []);
 
     const updateCardsPerSlide = () => {
         const screenWidth = window.innerWidth;
@@ -123,7 +77,7 @@ const KataMereka = () => {
                                         <TestiCard
                                             key={index}
                                             image={card.image}
-                                            quote={card.quote}
+                                            quote={card.description}
                                             name={card.name}
                                             occupation={card.occupation}
                                         />
