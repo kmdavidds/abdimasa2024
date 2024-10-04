@@ -5,7 +5,6 @@ const Profil = () => {
 
     return(
         <>
-        
         <div className="bg-blue">
             ini profil
         </div>

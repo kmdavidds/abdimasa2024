@@ -1,141 +1,226 @@
-import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { CiMenuFries } from "react-icons/ci";
+import { TfiClose } from "react-icons/tfi";
 import Logo from "../../../public/logo.png";
 
-const Navbar = () => {
-    const [nav, setNav] = useState(false);
-    const [colorChange, setColorChange] = useState(false);
-    const location = useLocation();
-
-    const handleClick = () => setNav(!nav);
-
-    const changeNavbarColor = () => {
-        if (window.scrollY >= 80) {
-            setColorChange(true);
-        }
-        if (isActive(["/wisata", "/profil"])) {
-            return "cust-blue";
-        }
-        else {
-            setColorChange(false);
-        }
-    };
+export default function Navbar({ variant }) {
+    const [click, setClick] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const { pathname } = useLocation();
 
     useEffect(() => {
-        window.addEventListener('scroll', changeNavbarColor);
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY >= 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
         return () => {
-            window.removeEventListener('scroll', changeNavbarColor);
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
-    const isActive = (paths) => {
-        return paths.includes(location.pathname);
+    const isActive = (paths) => paths.includes(pathname);
+
+    const getIconColor = () => {
+        if (isActive(["/"])) return "white";
+        if (isScrolled) return "white";
+        return "#3E9ADD";
     };
 
     return (
-        <section className={`fixed lg:px-20 px-5 py-5 items-center flex w-full justify-between font-poppins z-10 ${colorChange ? 'bg-cust-blue shadow-lg shadow-cust-dark' : 'bg-transparent'} text-white transition-colors duration-300`}>
-            <div className='w-16'>
-                <img src={Logo} alt="logo" />
+        <nav
+            className={`font-medium xl:text-xl lg:text-base fixed font-poppins w-full lg:px-36 px-10 py-3 top-0 z-50 flex items-center justify-between transition-colors duration-200 ${
+                isScrolled
+                    ? "bg-cust-blue text-white shadow-lg"
+                    : "bg-transparent"
+            }`}
+        >
+            <div className="flex items-center lg:w-fit">
+                <Link to="/">
+                    <img
+                        src={Logo}
+                        alt="Logo"
+                        className="w-16"
+                    />
+                </Link>
             </div>
 
-            <ul className="hidden md:flex gap-11 text-xl">
-                <li>
-                    <Link
-                        to="/"
-                        className={`${isActive(['/'])
-                            ? 'font-semibold'
-                            : isActive
-                            } ${colorChange ? 'text-white' : 'text-white'}`}
-                    >
-                        Beranda
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to="/profil"
-                        className={`${isActive(['/profil'])
-                            ? 'font-semibold'
-                            : isActive (["/", "/galeri"])
-                            } ${colorChange ? 'text-white' : 'text-cust-blue'}`}
-                    >
-                        Profil
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to="/wisata"
-                        className={`${isActive(['/wisata'])
-                            ? 'font-semibold'
-                            : isActive
-                            } ${colorChange ? 'text-white' : 'text-white'}`}
-                    >
-                        Wisata
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to="/UMKM"
-                        className={`${isActive(['/UMKM'])
-                            ? 'font-semibold'
-                            : isActive
-                            } ${colorChange ? 'text-white' : 'text-white'}`}
-                    >
-                        UMKM
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to="/berita"
-                        className={`${isActive(['/berita'])
-                            ? 'font-semibold'
-                            : isActive
-                            } ${colorChange ? 'text-white' : 'text-white'}`}
-                    >
-                        Berita
-                    </Link>
-                </li>
-            </ul>
+            <div className="items-center hidden gap-16 lg:flex xl:gap-20 2xl:gap-24">
+                <Link
+                    to="/"
+                    className={`${
+                        isActive(["/"])
+                            ? "font-semibold text-white"
+                            : isActive(["/profil", "/wisata", "/berita", "/UMKM"])
+                            ? "text-cust-blue"
+                            : "text-white"
+                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                >
+                    Beranda
+                </Link>
+                <Link
+                    to="/profil"
+                    className={`${
+                        isActive(["/profil"])
+                            ? "text-cust-blue font-semibold"
+                            : isActive(["/"])
+                            ? "text-white"
+                            : "text-cust-blue"
+                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                >
+                    Profil
+                </Link>
 
-            <div className="md:hidden z-10" onClick={handleClick}>
-                {!nav ? <FaBars /> : <FaTimes />}
+                <Link
+                    to="/wisata"
+                    className={`${
+                        isActive(["/wisata"])
+                            ? "text-cust-blue font-semibold"
+                            : isActive(["/"])
+                            ? "text-white"
+                            : "text-cust-blue"
+                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                >
+                    Wisata
+                </Link>
+
+                <Link
+                    to="/UMKM"
+                    className={`${
+                        isActive(["/UMKM"])
+                            ? "text-cust-blue font-semibold"
+                            : isActive(["/"])
+                            ? "text-white"
+                            : "text-cust-blue"
+                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                >
+                    UMKM
+                </Link>
+
+                <Link
+                    to="/berita"
+                    className={`${
+                        isActive(["/berita"])
+                            ? "text-cust-blue font-semibold"
+                            : isActive(["/"])
+                            ? "text-white"
+                            : "text-cust-blue"
+                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                >
+                    Berita
+                </Link>
             </div>
 
-            <ul
-                className={
-                    !nav
-                        ? 'hidden '
-                        : 'absolute top-0 right-0 w-3/4 h-screen bg-cust-blue flex flex-col justify-start px-5 pt-36 items-start gap-10'
-                }
+            <button
+                type="button"
+                className="transition-transform duration-300 lg:hidden"
+                onClick={() => setClick(!click)}
             >
-                <li className="text-xl">
-                    <Link onClick={handleClick} to="/" smooth={true} duration={500}>
-                        Beranda
-                    </Link>
-                </li>
-                <li className="text-xl">
-                    <Link onClick={handleClick} to="/profil" smooth={true} duration={500}>
-                        Profil
-                    </Link>
-                </li>
-                <li className="text-xl">
-                    <Link onClick={handleClick} to="/wisata" smooth={true} duration={500}>
-                        Wisata
-                    </Link>
-                </li>
-                <li className="text-xl">
-                    <Link onClick={handleClick} to="/UMKM" smooth={true} duration={500}>
-                        UMKM
-                    </Link>
-                </li>
-                <li className="text-xl">
-                    <Link onClick={handleClick} to="/berita" smooth={true} duration={500}>
-                        Berita
-                    </Link>
-                </li>
-            </ul>
-        </section>
-    );
-};
+                {click ? (
+                    <TfiClose
+                        size={24}
+                        color={getIconColor()}
+                        className="transition-transform duration-300"
+                    />
+                ) : (
+                    <CiMenuFries
+                        size={24}
+                        color={getIconColor()}
+                        className="transition-transform duration-300"
+                    />
+                )}
+            </button>
 
-export default Navbar;
+            {click && (
+                <div
+                    className="fixed inset-0 bg-opacity-50 bg-cust-blue lg:hidden"
+                    onClick={() => setClick(false)}
+                ></div>
+            )}
+            <div
+                className={`fixed top-0 right-0 h-full w-3/4 bg-cust-blue shadow-lg transition-transform ${
+                    click ? "translate-x-0" : "translate-x-full"
+                } duration-300`}
+            >
+                <div className="flex items-center justify-between px-10 py-4">
+                    <img src={Logo} alt="Logo" className="w-16" />
+                    <button onClick={() => setClick(false)}>
+                        <TfiClose
+                            size={24}
+                            color="white"
+                            className="transition-transform duration-300"
+                        />
+                    </button>
+                </div>
+                <ul className="flex flex-col items-center gap-5 py-4 text-base">
+                    <li>
+                        <Link
+                            className={`${
+                                isActive(["/"])
+                                    ? "font-semibold border-b-2 text-white"
+                                    : "text-white"
+                            } hover:border-b-2`}
+                            to="/"
+                            onClick={() => setClick(false)}
+                        >
+                            Beranda
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className={`${
+                                isActive(["/profil"])
+                                    ? "font-semibold border-b-2 text-white"
+                                    : "text-white"
+                            } hover:border-b-2`}
+                            to="/profil"
+                            onClick={() => setClick(false)}
+                        >
+                            Profil
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className={`${
+                                isActive(["/wisata"])
+                                    ? "font-semibold border-b-2 text-white"
+                                    : "text-white"
+                            } hover:border-b-2`}
+                            to="/wisata"
+                            onClick={() => setClick(false)}
+                        >
+                            Wisata
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className={`${
+                                isActive(["/UMKM"])
+                                    ? "font-semibold border-b-2 text-white"
+                                    : "text-white"
+                            } hover:border-b-2`}
+                            to="/UMKM"
+                            onClick={() => setClick(false)}
+                        >
+                            UMKM
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className={`${
+                                isActive(["/berita"])
+                                    ? "font-semibold border-b-2 text-white"
+                                    : "text-white"
+                            } hover:border-b-2`}
+                            to="/berita"
+                            onClick={() => setClick(false)}
+                        >
+                            Berita
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    );
+}
