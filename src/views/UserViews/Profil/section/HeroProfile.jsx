@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const HeroProfile = () => {
 
     const scrollToAboutDesa = () => {
-        const element = document.getElementById('about-desa');
+        const element = document.getElementById('sambutan');
         if (element) {
             const offset = 150;
             const elementPosition = element.getBoundingClientRect().top + window.scrollY;
@@ -29,8 +29,8 @@ const HeroProfile = () => {
                     <img src="/images/Landing/LandingSection/landingImg.png" alt="foto landing" className='w-full duration-500' />
                 </div>
             </div>
-            {/* <img src="/images/Profile/HeroSection/awanProfile.svg" alt="awan transisi" className='sm:block hidden relative w-full' />
-            <img src="/images/Profile/HeroSection/awanProfileHP.svg" alt="" className='block sm:hidden absolute bottom-0 w-full' /> */}
+            <img src="/images/Profile/HeroSection/awanProfile.svg" alt="awan transisi" className='sm:block hidden relative -bottom-10 lg:-bottom-20 xl:-bottom-40 w-full' />
+            <img src="/images/Profile/HeroSection/awanProfileHP.svg" alt="" className='block sm:hidden absolute bottom-0 w-full' />
         </div>
     )
 }
