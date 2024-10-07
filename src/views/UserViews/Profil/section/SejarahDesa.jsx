@@ -1,6 +1,4 @@
 import React from 'react'
-import profileDesa from "../../../../../public/images/Profile/SambutanSection/profileDesa.webp"
-import titleSambutan from "../../../../../public/images/Profile/SambutanSection/titleSambutan.webp"
 
 const SejarahDesa = () => {
     return (

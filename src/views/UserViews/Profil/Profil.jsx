@@ -4,6 +4,8 @@ import React from 'react';
 import HeroProfile from './section/HeroProfile';
 import Sambutan from './section/Sambutan';
 import SejarahDesa from './section/SejarahDesa';
+import VisiMisi from './section/VisiMisi';
+import JumlahPenduduk from './section/JumlahPenduduk';
 
 const Profil = () => {
 
@@ -12,7 +14,9 @@ const Profil = () => {
             <div>
                 <HeroProfile/>
                 <Sambutan />
+                <VisiMisi />
                 <SejarahDesa />
+                <JumlahPenduduk />
             </div>
         </>
     );
