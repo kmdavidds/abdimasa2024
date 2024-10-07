@@ -30,10 +30,10 @@ export default function Navbar({ variant }) {
 
     return (
         <nav
-            className={`font-medium xl:text-xl lg:text-base fixed font-poppins w-full lg:px-36 px-10 py-3 top-0 z-50 flex items-center justify-between transition-colors duration-200 ${
+            className={`font-medium xl:text-xl lg:text-base fixed font-poppins w-full lg:px-32 px-10 py-3 top-0 z-50 flex items-center justify-between transition-colors duration-200 ${
                 isScrolled
                     ? "bg-cust-blue text-white shadow-lg"
-                    : "bg-transparent"
+                    : "bg-transparent shadow-lg lg:shadow-none"
             }`}
         >
             <div className="flex items-center lg:w-fit">
