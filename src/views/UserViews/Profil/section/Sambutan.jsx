@@ -1,45 +1,31 @@
 import React from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import profileDesa from "../../../../../public/images/Profile/SambutanSection/profileDesa.webp"
+import titleSambutan from "../../../../../public/images/Profile/SambutanSection/titleSambutan.webp"
 
 const Sambutan = () => {
     return (
-        <section>
-            <div className="bg-cust-blue bg-[url('images/Profile/SambutanSection/bgPattern.png')] w-full">
-                <div>
-                    <div>
-                        <img src="" alt="" />
+        <section id='sambutan' className='font-poppins'>
+            <div className="bg-cust-blue bg-[url('images/Profile/SambutanSection/bgPattern.png')] w-full lg:px-32 px-10 pb-44">
+                <div className='flex lg:flex-row flex-col justify-between lg:gap-20 lg:items-end items-center'>
+                    <img src={titleSambutan} alt="title" className='w-[243px] lg:hidden' />
+                    <div className='flex'>
+                        <img src={profileDesa} alt="profile" className='lg:w-auto w-[377px]' />
                     </div>
-                    <ul>
-                        <li></li>
-                        <li></li>
+                    <ul className='lg:gap-12 gap-8 flex flex-col items-center'>
+                        <li>
+                            <img src={titleSambutan} alt="title" className='w-[430px] hidden lg:flex' />
+                        </li>
+                        <li className='xl:text-lg text-xs border-cust-softblue border bg-cust-softblue px-8 py-8 rounded-2xl space-y-4 '>
+                            <p> Assalamu’alaikum Wr. Wb.</p>
+                            <p> Puji syukur alhamdulillah kami panjatkan ke hadirat Allah SWT atas limpahan rahmat, bimbingan serta karunia-Nya sehingga Website Desa Lalang Sembawa dapat hadir dihadapan masyarakat luas, khususnya warga Desa x Kecamatan x Kabupaten x.</p>
+                            <p> Ucapan terima kasih tak lupa kami sampaikan kepada semua pihak yang telah berusaha membangun dan mengembangkan Website Desa Lalang Sembawa ini, semoga jerih payahnya tidak sia-sia demi membangun dan memajukan Desa... <span className='text-cust-darkblue'> Lihat Selengkapnya</span> </p>
+                        </li>
                     </ul>
                 </div>
             </div>
         </section>
-
-
-
-        // <section className=''>
-        //     <div id="sambutan-desa" className="bg-cust-blue bg-[url('images/Profile/SambutanSection/bgPattern.png')] w-full flex items-center font-poppins justify-center sm:pb-40 pb-20">
-        //         <div className="flex flex-col items-center justify-center sm:flex-row container gap-10 sm:gap-0 max-w-[80%]">
-        //             <div className="sm:w-6/12 w-[80%] justify-center sm:justify-start items-center flex">
-        //                 <img src="/images/Landing/AboutSection/imageAbout.png" alt="foto about desa" className="w-[80%]" />
-        //             </div>
-        //             <div className="sm:w-7/12 flex-col flex sm:gap-10 gap-5">
-        //                 <h1 className="text-[#252525] font-bold text-lg lg:text-[40px]">Desa Wisata Toyomarto</h1>
-        //                 <p className="text-[#252525] font-normal text-sm lg:text-2xl lg:leading-10 leading-6 text-justify">
-        //                     Sebuah desa dengan pesona alam tersembunyi di Kabupaten Malang. Desa Wisata Toyomarto dikelilingi keindahan Gunung Arjuna dan pemandangan hijau yang memukau. Terkenal dengan kerajinan cobek batu, klompen batik, dan batik tulis yang luar biasa. desa ini adalah surga bagi pecinta kerajinan untuk mengagumi kearifan budaya setempat.
-        //                 </p>
-        //                 <button className="px-8 group py-[10px] font-semibold rounded-full text-xs lg:text-xl border-cust-darkblue border-[3px] text-cust-darkblue flex items-center justify-center gap-3 hover:bg-cust-darkblue hover:text-white duration-500 w-max select-none">
-        //                     <a href="https://www.instagram.com/filkom_abdimasa" target='_blank' className='flex items-center justify-center gap-3'>
-        //                         Selengkapnya <FaArrowRightLong className='group-hover:translate-x-2 duration-300 md:mt-1' />
-        //                     </a>
-        //                 </button>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </section>
     )
 }
 
