@@ -9,6 +9,8 @@ const JumlahPenduduk = () => {
                 </div>
 
                 <div>
+                   <div>
+                    </div> 
                     
                 </div>
             </div>
