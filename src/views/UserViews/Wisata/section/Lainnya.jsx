@@ -6,7 +6,7 @@ const Lainnya = () => {
         <div  className="bg-cust-blue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex items-center font-poppins justify-center py-4">
             <div className='relative container w-full container mx-auto'>
                 <div className='flex justify-center items-center w-full my-8'>
-                  <img src="https://res.cloudinary.com/dkncrhkfo/image/upload/v1724618241/wisata_lain_yxwq9z.png" alt="" className='w-1/3'/>
+                  <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728371038/wisata_lain_oayyb0.png" alt="" className='w-1/3'/>
                 </div>
                 <div className='flex flex-row bg-white rounded-3xl my-12'>
                     <div className='basis-1/4 rounded-lg px-8 py-10'>
