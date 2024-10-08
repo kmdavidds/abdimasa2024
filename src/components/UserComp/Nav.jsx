@@ -51,11 +51,11 @@ export default function Navbar({ variant }) {
                     to="/"
                     className={`${
                         isActive(["/"])
-                            ? "font-semibold text-white"
+                            ? "font-semibold text-white hover:border-white"
                             : isActive(["/profil", "/wisata", "/berita", "/UMKM"])
                             ? "text-cust-blue"
                             : "text-white"
-                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                    } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                 >
                     Beranda
                 </Link>
@@ -63,11 +63,11 @@ export default function Navbar({ variant }) {
                     to="/profil"
                     className={`${
                         isActive(["/profil"])
-                            ? "text-cust-blue font-semibold"
+                            ? "text-cust-blue font-semibold "
                             : isActive(["/"])
-                            ? "text-white"
+                            ? "text-white hover:border-white"
                             : "text-cust-blue"
-                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                    } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                 >
                     Profil
                 </Link>
@@ -78,9 +78,9 @@ export default function Navbar({ variant }) {
                         isActive(["/wisata"])
                             ? "text-cust-blue font-semibold"
                             : isActive(["/"])
-                            ? "text-white"
+                            ? "text-white hover:border-white"
                             : "text-cust-blue"
-                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                    } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                 >
                     Wisata
                 </Link>
@@ -91,9 +91,9 @@ export default function Navbar({ variant }) {
                         isActive(["/UMKM"])
                             ? "text-cust-blue font-semibold"
                             : isActive(["/"])
-                            ? "text-white"
+                            ? "text-white hover:border-white"
                             : "text-cust-blue"
-                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                    } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                 >
                     UMKM
                 </Link>
@@ -104,9 +104,9 @@ export default function Navbar({ variant }) {
                         isActive(["/berita"])
                             ? "text-cust-blue font-semibold"
                             : isActive(["/"])
-                            ? "text-white"
+                            ? "text-white hover:border-white"
                             : "text-cust-blue"
-                    } ${isScrolled ? "text-white" : ""} hover:border-b-2`}
+                    } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                 >
                     Berita
                 </Link>

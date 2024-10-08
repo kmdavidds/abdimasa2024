@@ -8,7 +8,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className='w-full flex justify-center items-center py-5 border-navbar bg-cust-blue  shadow-[0_4px_6px_-1px_rgba(0,0,0,0.5)] z-10'>
+        <div className='w-full px-10 flex justify-center items-center py-5 border-navbar bg-cust-blue  shadow-[0_4px_6px_-1px_rgba(0,0,0,0.5)] z-10'>
             <div className='flex justify-between container items-center'>
                 <div className='flex gap-5 items-center justify-center cursor-pointer'>
                     <img src="/logo.png" alt="Logo Abdimasa" className='max-h-10' />
