@@ -1,7 +1,7 @@
 import axios from 'axios';
 import API_ENDPOINTS from '../../apiConfig';
 
-export const getUmkm = async () => {
+const getUmkm = async () => {
   try {
     const response = await axios.get(API_ENDPOINTS.BUSINESSES);
     const businesses = response.data.businesses;
@@ -30,3 +30,5 @@ export const getUmkm = async () => {
     return [];
   }
 };
+
+export default getUmkm;
