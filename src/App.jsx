@@ -15,12 +15,14 @@ import LoginAdmin from './views/AdminViews/Login/LoginAdmin.jsx';
 import DashboardAdmin from './views/AdminViews/Dashboard/Main.jsx';
 import ProtectedRoute from './components/AdminComp/ProtectedRoute.jsx';
 import PageLayoutAdmin from './components/AdminComp/PageLayout.jsx';
-import BeritaAdmin from './views/AdminViews/Dashboard/Berita.jsx';
+import BeritaAdmin from './views/AdminViews/Dashboard/Berita/Berita.jsx';
+import CreateBerita from './views/AdminViews/Dashboard/Berita/CreateBerita.jsx';
+import EditBerita from './views/AdminViews/Dashboard/Berita/EditBerita.jsx';
 import KalenderAdmin from './views/AdminViews/Dashboard/Kalender.jsx';
 import KotakSaranAdmin from './views/AdminViews/Dashboard/KotakSaran.jsx';
 import UMKMAdmin from './views/AdminViews/Dashboard/UMKM.jsx';
 import WisataAdmin from './views/AdminViews/Dashboard/Wisata.jsx';
-
+import PendudukAdmin from './views/AdminViews/Dashboard/Penduduk.jsx';
 
 const App = createBrowserRouter([
   {
@@ -96,6 +98,26 @@ const App = createBrowserRouter([
     ),
   },
   {
+    path: "/admin/berita/create",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <CreateBerita />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/berita/edit/:id",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <EditBerita />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
     path: "/admin/kalender",
     element: (
       <ProtectedRoute>
@@ -131,6 +153,16 @@ const App = createBrowserRouter([
       <ProtectedRoute>
         <PageLayoutAdmin>
           <WisataAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/penduduk",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <PendudukAdmin />
         </PageLayoutAdmin>
       </ProtectedRoute>
     ),

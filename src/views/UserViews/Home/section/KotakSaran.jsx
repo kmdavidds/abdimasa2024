@@ -14,6 +14,8 @@ const schema = z.object({
 
 const KotakSaran = () => {
     const [fileName, setFileName] = useState('');
+    const [dateValue, setDateValue] = useState('');
+    const [placeholder, setPlaceholder] = useState('YYYY-MM-DD');
 
     const {
         control,
@@ -26,6 +28,26 @@ const KotakSaran = () => {
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         setFileName(file ? file.name : '');
+    };
+
+    const handleDateChange = (e) => {
+        let value = e.target.value;
+
+        if (value.length === 4 || value.length === 7) {
+            value += '-';
+        }
+
+        setDateValue(value);
+    };
+
+    const handleFocus = () => {
+        setPlaceholder(''); // Kosongkan placeholder ketika input berfokus
+    };
+
+    const handleBlur = () => {
+        if (!dateValue) {
+            setPlaceholder('YYYY-MM-DD'); // Kembalikan placeholder jika kosong
+        }
     };
 
     const onSubmit = (data) => {
@@ -142,6 +164,22 @@ const KotakSaran = () => {
                                         className="hidden"
                                     />
                                 </label>
+                            </div>
+
+                            <div>
+                                <label htmlFor="custom-date" className="block font-medium">
+                                    Tanggal (Custom Placeholder)
+                                </label>
+                                <input
+                                    type="date"
+                                    id="custom-date"
+                                    value={dateValue}
+                                    onChange={handleDateChange}
+                                    onFocus={handleFocus}
+                                    onBlur={handleBlur}
+                                    placeholder={placeholder}
+                                    className="w-full px-4 py-2 mt-3 border-2 rounded-full border-cust-blue border-opacity-35 focus:border-opacity-100 focus:outline-none"
+                                />
                             </div>
 
                             <div>
