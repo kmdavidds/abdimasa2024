@@ -9,7 +9,7 @@ const LoginAdmin = () => {
         return <Navigate to="/admin" />;
     }
     return (
-        <div className="bg-cust-blue bg-[url('/images/Admin/bgLogin.svg')] bg-cover  w-full flex items-center justify-center">
+        <div className="bg-cust-softblue bg-[url('/images/Admin/bgLogin.svg')] bg-cover  w-full flex items-center justify-center">
             <div className='container max-w-[80%] h-screen flex items-center justify-center'>
                 <div className='w-1/2 flex flex-col items-center justify-center gap-14'>
                     <img src="/images/Admin/titleLogin.svg" alt="Halo Admin" />

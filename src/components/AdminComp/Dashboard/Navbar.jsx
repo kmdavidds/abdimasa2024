@@ -3,7 +3,7 @@ import React from 'react'
 const Navbar = () => {
 
     const handleLogout = () => {
-        sessionStorage.removeItem('isLoggedIn');
+        sessionStorage.removeItem('token');
         window.location.href = '/admin/login';
     };
 

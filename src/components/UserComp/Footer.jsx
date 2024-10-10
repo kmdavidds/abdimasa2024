@@ -16,10 +16,10 @@ const Footer = () => {
                         <li className='font-bold text-xl lg:text-3xl mb-4'>Desa Wisata Toyomarto</li>
                         <li className='text-sm lg:text-xl mb-7'>Jl. Bodean Krajan RT. 07 RW. 01 Desa <br/> Toyomarto Kecamatan Singosari <br/> Kabupaten Malang, Jawa Timur</li>
                         <ul className='flex gap-6 justify-center md:justify-start'>
-                            <li><img src={igIcon} alt="Icon" /></li>
-                            <li><img src={ytIcon} alt="Icon" /></li>
-                            <li><img src={fbIcon} alt="Icon" /></li>
-                            <li><img src={callIcon} alt="Icon" /></li>
+                            <a href='https://www.instagram.com/dewi.amerta_toyomarto' target='_blank'><img src={igIcon} alt="Icon" /></a>
+                            <a href='https://www.youtube.com/@desawisatatoyomarto9745' target='_blank'><img src={ytIcon} alt="Icon" /></a>
+                            <a href='https://www.facebook.com/DWToyomarto?locale=id_ID' target='_blank'><img src={fbIcon} alt="Icon" /></a>
+                            <a href='https://wa.me/6281232555513' target='_blank'><img src={callIcon} alt="Icon" /></a>
                         </ul>
                     </ul>
                     <div className='md:flex hidden xl:w-auto w-2/4'>
