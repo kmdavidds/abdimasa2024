@@ -2,40 +2,28 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Swal from 'sweetalert2';
+import useLogin from "../../../api/adminApi/Auth"
 
 // Skema validasi menggunakan Zod
-const schema = z.object({
-    identifier: z.string().min(1, 'Email tidak boleh kosong'),
-    password: z.string().min(8, 'Password harus minimal 8 karakter'),
+const loginSchema = z.object({
+    id: z.string().min(1, 'ID is required'),
+    password: z.string().min(1, 'Password is required'),
 });
 
 const FormLogin = () => {
-
-    const validAdmin = {
-        email : 'admin@gmail.com',
-        password : 'admin123'
-    }
-    
+    const { login, loading, error } = useLogin();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(loginSchema),
     });
 
 
-    const onSubmit = (data) => {
-        const isValidEmail = data.identifier === validAdmin.email;
-        const isValidPassword = data.password === validAdmin.password;
-
-        if (isValidEmail && isValidPassword) {
-            sessionStorage.setItem('isLoggedIn', 'true');
-            alert('Login berhasil! Selamat datang admin.');
-            window.location.href = '/admin';
-        } else {
-            alert('Login gagal. Email atau Password salah.');
-        }
+    const onSubmit = async (data) => {
+        await login(data.id, data.password);
     };
 
     const handleForgotPassword = () => {
@@ -49,21 +37,21 @@ const FormLogin = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
                     {/* Input Email */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">Email</label>
+                        <label htmlFor='id' className="block text-gray-700 font-bold mb-2">Username</label>
                         <input
                             type="text"
-                            {...register('identifier')}
-                            placeholder="Masukkan Email"
+                            {...register('id')}
+                            placeholder="Masukkan username"
                             className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        {errors.identifier && (
-                            <p className="text-red-500 text-sm mt-1">{errors.identifier.message}</p>
+                        {errors.id && (
+                            <p className="text-red-500 text-sm mt-1">{errors.id.message}</p>
                         )}
                     </div>
 
                     {/* Input Password */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-bold mb-2">Password</label>
+                        <label htmlFor='password' className="block text-gray-700 font-bold mb-2">Password</label>
                         <input
                             type="password"
                             {...register('password')}
@@ -89,9 +77,10 @@ const FormLogin = () => {
                     {/* Tombol Masuk */}
                     <button
                         type="submit"
+                        disabled={loading}
                         className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
                     >
-                        Masuk
+                        {loading ? 'Logging in...' : 'Login'}
                     </button>
                 </form>
             </div>
