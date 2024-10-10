@@ -1,7 +1,13 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom';
 import FormLogin from '../../../components/AdminComp/Login/FormLogin'
 
 const LoginAdmin = () => {
+    const token = sessionStorage.getItem('token');
+
+    if (token) {
+        return <Navigate to="/admin" />;
+    }
     return (
         <div className="bg-cust-softblue bg-[url('/images/Admin/bgLogin.svg')] bg-cover  w-full flex items-center justify-center">
             <div className='container max-w-[80%] h-screen flex items-center justify-center'>
@@ -17,7 +23,7 @@ const LoginAdmin = () => {
                     </div>
                     {/* form */}
                     <FormLogin />
-                    
+
                 </div>
             </div>
         </div>
