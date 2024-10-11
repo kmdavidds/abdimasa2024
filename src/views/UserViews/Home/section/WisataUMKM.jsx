@@ -4,7 +4,7 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 import iconAir from '/public/images/Landing/WisataUMKMSection/iconAir.svg';
 import seahorse from '/public/images/Landing/WisataUMKMSection/seahorse.svg';
 import { getWisata } from '../../../../api/userApi/Wisata';
-import { getUmkm } from '../../../../api/userApi/Umkm';
+import getUmkm  from '../../../../api/userApi/Umkm';
 
 const WisataUMKM = () => {
     const [activeTab, setActiveTab] = useState('wisata');
