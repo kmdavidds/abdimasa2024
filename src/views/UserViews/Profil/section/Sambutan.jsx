@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
-import profileDesa from "../../../../../public/images/Profile/SambutanSection/profileDesa.webp"
+import profileDesa from "../../../../../public/images/Profile/SambutanSection/profile.webp"
 import titleSambutan from "../../../../../public/images/Profile/SambutanSection/titleSambutan.webp"
 
 const Sambutan = () => {
@@ -10,8 +10,8 @@ const Sambutan = () => {
             <div className="bg-cust-blue bg-[url('images/Profile/SambutanSection/bgPattern.png')] w-full lg:px-32 px-10 pb-44">
                 <div className='flex lg:flex-row flex-col justify-between lg:gap-20 lg:items-end items-center'>
                     <img src={titleSambutan} alt="title" className='w-[243px] lg:hidden' />
-                    <div className='flex'>
-                        <img src={profileDesa} alt="profile" className='lg:w-auto w-[377px]' />
+                    <div className='flex pt-10'>
+                        <img src={profileDesa} alt="profile" className='lg:w-auto w-[357px]' />
                     </div>
                     <ul className='lg:gap-12 gap-8 flex flex-col items-center'>
                         <li>

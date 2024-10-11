@@ -31,3 +31,13 @@ export const getWisata = async () => {
     return [];
   }
 };
+
+export const wisataDetail = async (id)=>{
+  try {
+    const response = await axios.get(`${API_ENDPOINTS.PLACES}/${id}`)
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching places:", error);
+    return {};
+  }
+}

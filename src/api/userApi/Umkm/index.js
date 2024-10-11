@@ -32,3 +32,4 @@ const getUmkm = async () => {
 };
 
 export default getUmkm;
+
