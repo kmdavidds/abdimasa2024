@@ -29,7 +29,7 @@
         return (
             <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-col items-center justify-center py-28">
                 <div className='flex justify-center items-center w-full mb-10'>
-                    <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728422598/Berita_Desa_znxkqy.png" alt="" className='w-1/4' />
+                    <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728422598/Berita_Desa_znxkqy.png" alt="" className='lg:w-1/4 md:w-1/2 sm:w-1/3 w-1/3' />
                 </div>
 
         
