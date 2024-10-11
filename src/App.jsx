@@ -20,7 +20,6 @@ import CreateBerita from './views/AdminViews/Dashboard/Berita/CreateBerita.jsx';
 import EditBerita from './views/AdminViews/Dashboard/Berita/EditBerita.jsx';
 import KalenderAdmin from './views/AdminViews/Dashboard/Kalender/Kalender.jsx';
 import CreateKalender from './views/AdminViews/Dashboard/Kalender/CreateKalender.jsx';
-import EditKalender from './views/AdminViews/Dashboard/Kalender/EditKalender.jsx';
 import KotakSaranAdmin from './views/AdminViews/Dashboard/KotakSaran.jsx';
 import UMKMAdmin from './views/AdminViews/Dashboard/UMKM.jsx';
 import WisataAdmin from './views/AdminViews/Dashboard/Wisata.jsx';
