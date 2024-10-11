@@ -1,4 +1,3 @@
-    import { Link } from "react-router-dom";
 
     import React, { useState, useEffect } from 'react'
     import BeritaCard from "../../../components/UserComp/Berita/BeritaCard.jsx";
@@ -44,9 +43,8 @@
                         date={new Date(card.createdAt).toLocaleDateString()} 
                     />
                 ))}
-                
-                    
                 </div>
+
             </div>
         );
     };
