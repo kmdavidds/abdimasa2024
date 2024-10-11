@@ -30,3 +30,15 @@ export const getUmkm = async () => {
     return [];
   }
 };
+
+export const detailUMKM = async (id )=>{
+  try {
+    const response = await axios.get(`${API_ENDPOINTS.BUSINESSES}/${id}`)
+    return response.data
+  } catch (error) {
+    console.error("Error fetching businesses:", error);
+    return [];
+    
+  }
+}
+

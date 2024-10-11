@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 
 const VisiMisi = () => {
-    const [isVisiOpen, setIsVisiOpen] = useState(false);
-    const [isMisiOpen, setIsMisiOpen] = useState(true);
+    const [isVisiOpen, setIsVisiOpen] = useState(true);
+    const [isMisiOpen, setIsMisiOpen] = useState(false);
 
     const toggleVisi = () => {
         setIsVisiOpen(!isVisiOpen);
@@ -15,7 +15,7 @@ const VisiMisi = () => {
 
     return (
         <section className='font-poppins'>
-            <div className="bg-cust-softblue pt-10 lg:px-32 px-10 pb-36 justify-center">
+            <div className="bg-cust-softblue pt-24 lg:px-32 px-10 pb-36 justify-center">
                 <div className='flex justify-center mb-16'>
                     <img src="/images/Profile/VisiMisiSection/visimisiTitle.webp" alt="title" className='lg:w-[430px] lg:h-[97px] w-[243px] h-[55px]' />
                 </div>
@@ -32,7 +32,7 @@ const VisiMisi = () => {
                                 {isVisiOpen ? <FiChevronUp /> : <FiChevronDown />}
                             </button>
                             <div
-                                className={`transition-max-height duration-300 ease-in-out bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] px-6 py-6 rounded-b-2xl rounded-tr-2xl lg:text-lg text-xs mt-2 border-cust-blue border border-opacity-30`}
+                                className={`transition-max-height duration-300 ease-in-out bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] px-6 py-7 rounded-b-2xl rounded-tr-2xl lg:text-lg text-xs mt-2 border-cust-blue border border-opacity-30`}
                             >
                                 {isVisiOpen && (
                                     <p>Terwujudnya Masyarakat Toyomarto yang Sehat, Cerdas, dan Sejahtera</p>
@@ -49,7 +49,7 @@ const VisiMisi = () => {
                                 {isMisiOpen ? <FiChevronUp /> : <FiChevronDown />}
                             </button>
                             <div
-                                className={`transition-max-height duration-300 ease-in-out bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] px-6 py-6 rounded-b-2xl rounded-tr-2xl lg:text-lg text-xs mt-2 border-cust-blue border border-opacity-30`}
+                                className={`transition-max-height duration-300 ease-in-out bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] px-6 py-7 rounded-b-2xl rounded-tr-2xl lg:text-lg text-xs mt-2 border-cust-blue border border-opacity-30`}
                             >
                                 {isMisiOpen && (
                                     <ul className="list-decimal pl-5 text-justify space-y-4">
