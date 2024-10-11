@@ -6,23 +6,30 @@ import { CiCalendar, CiClock2 } from "react-icons/ci";
 import { FiCamera } from "react-icons/fi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import Swal from 'sweetalert2';
+import { createKalenderData } from "../../../../api/adminApi/Kalender";
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
-    namaKegiatan: z.string().min(1, { message: 'Nama kegiatan harus diisi' }),
-    tempat: z.string().min(1, { message: 'Tempat harus diisi' }),
+    title: z.string().min(1, { message: 'Nama kegiatan harus diisi' }),
+    location: z.string().min(1, { message: 'Lokasi harus diisi' }),
     foto: z.instanceof(File, { message: 'Foto harus diunggah' }),
-    tanggal: z.date({ required_error: 'Tanggal harus diisi' }),
-    jam: z.string().min(1, { message: 'Jam harus diisi' }),
+    date: z.date({ required_error: 'Tanggal harus diisi' }),
+    time: z.date({ required_error: 'Jam harus diisi' }),
 });
 
-const KalenderAdmin = () => {
+const CreateKalender = () => {
     const [fileName, setFileName] = useState('');
     const [startDate, setStartDate] = useState(new Date());
     const [startTime, setStartTime] = useState(null);
     const today = new Date();
     const datePickerRef = useRef(null);
     const timePickerRef = useRef(null);
+    const token = sessionStorage.getItem('token');
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
+
 
     const openDatePicker = () => {
         datePickerRef.current.setFocus();
@@ -37,6 +44,7 @@ const KalenderAdmin = () => {
         handleSubmit,
         setValue,
         formState: { errors },
+        reset,
     } = useForm({
         resolver: zodResolver(schema),
     });
@@ -55,12 +63,44 @@ const KalenderAdmin = () => {
             : '';
     };
 
-    const onSubmit = (data) => {
-        console.log('Form submitted:', data);
-        setFileName('');
-        setSelectedDate('');
-    };
+    const onSubmit = async (data) => {
+        setLoading(true);
+        const formData = new FormData();
+        formData.append('title', data.title);
+        const date = new Date(data.date);
+        date.setHours(0, 0, 0, 0);
+        const formattedDate = date.toISOString().split('T')[0];
+        formData.append('date', formattedDate);
+        const time = new Date(data.time);
+        time.setSeconds(0);
+        const options = { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Jakarta' };
+        const formattedTime = time.toLocaleTimeString('id-ID', options) + ' WIB';
+        formData.append('time', formattedTime);
+        formData.append('location', data.location);
+        formData.append('image1', data.foto);
 
+
+        try {
+            await createKalenderData(formData, token);
+            Swal.fire('Success!', 'Data successfully uploaded.', 'success');
+            reset({
+                title: '',
+                location: '',
+                foto: null,
+                date: null,
+                time: null
+            });
+            setFileName('');
+            setStartDate(new Date());
+            setStartTime(null);
+            navigate('/admin/kalender');
+        } catch (error) {
+            console.error("Error uploading data:", error);
+            Swal.fire('Error!', 'Failed to upload data.', 'error');
+        } finally {
+            setLoading(false);
+        }
+    };
     return (
         <div className='flex flex-col items-center gap-10'>
             <div>
@@ -73,19 +113,19 @@ const KalenderAdmin = () => {
                             Nama Kegiatan <span className="text-red-500">*</span>
                         </label>
                         <Controller
-                            name="namaKegiatan"
+                            name="title"
                             control={control}
                             render={({ field }) => (
                                 <input
                                     type="text"
-                                    id="namaKegiatan"
+                                    id="title"
                                     placeholder="Masukkan nama kegiatan"
                                     {...field}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                                 />
                             )}
                         />
-                        {errors.namaKegiatan && <p className="text-red-500 mt-1">{errors.namaKegiatan.message}</p>}
+                        {errors.title && <p className="text-red-500 mt-1">{errors.title.message}</p>}
                     </div>
 
                     <div>
@@ -93,19 +133,19 @@ const KalenderAdmin = () => {
                             Tempat <span className="text-red-500">*</span>
                         </label>
                         <Controller
-                            name="tempat"
+                            name="location"
                             control={control}
                             render={({ field }) => (
                                 <input
                                     type="text"
-                                    id="tempat"
+                                    id="location"
                                     placeholder="Masukkan tempat kegiatan (Maksimal 10 Karakter)"
                                     {...field}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                                 />
                             )}
                         />
-                        {errors.tempat && <p className="text-red-500 mt-1">{errors.tempat.message}</p>}
+                        {errors.location && <p className="text-red-500 mt-1">{errors.location.message}</p>}
                     </div>
 
                     <div>
@@ -130,49 +170,62 @@ const KalenderAdmin = () => {
                             <label className="block font-medium">
                                 Tanggal <span className="text-red-500">*</span>
                             </label>
-                            <div
-                                onClick={openDatePicker}
-                                className='flex items-center cursor-pointer mt-3 w-full px-4 py-2 bg-white border-2 font-semibold border-gray-300 rounded-full'
-                            >
-                                <CiCalendar className='text-xl mr-2' />
 
-                                <DatePicker
-                                    selected={startDate}
-                                    onChange={(date) => setStartDate(date)}
-                                    dateFormat="dd MMMM yyyy"
-                                    placeholderText="Pilih tanggal"
-                                    className='opacity-50'
-                                    dayClassName={getDayClassName}
-                                    ref={datePickerRef}
-                                />
+                            <Controller
+                                name="date"
+                                control={control}
+                                defaultValue={null}
+                                render={({ field }) => (
+                                    <DatePicker
+                                        selected={field.value}
+                                        onChange={(date) => {
+                                            setStartDate(date);
+                                            field.onChange(date);
+                                        }}
+                                        dateFormat="dd MMMM yyyy"
+                                        placeholderText="Pilih tanggal"
+                                        className='opacity-50'
+                                        dayClassName={getDayClassName}
+                                        ref={datePickerRef}
+                                    />
+                                )}
+                            />
 
-                            </div>
-                            {errors.tanggal && <p className="text-red-500 mt-1">{errors.tanggal.message}</p>}
+                            {errors.date && <p className="text-red-500 mt-1">{errors.date.message}</p>}
                         </div>
                         <div className='w-[50%]'>
                             <label className="block font-medium">
                                 Waktu <span className="text-red-500">*</span>
                             </label>
-                            <div
-                                onClick={openTimePicker}
-                                className='flex items-center cursor-pointer mt-3 w-full px-4 py-2 bg-white border-2 font-semibold border-gray-300 rounded-full'
-                            >
-                                <CiClock2 className='text-xl mr-2' />
-                                <DatePicker
-                                    selected={startTime}
-                                    onChange={(time) => setStartTime(time)}
-                                    showTimeSelect
-                                    showTimeSelectOnly
-                                    timeIntervals={15}
-                                    timeFormat="HH:mm"
-                                    timeCaption="Jam"
-                                    dateFormat="HH:mm"
-                                    placeholderText="Pilih waktu"
-                                    className='opacity-50 w-full'
-                                    ref={timePickerRef}
-                                />
-                            </div>
-                            {errors.jam && <p className="text-red-500 mt-1">{errors.jam.message}</p>}
+                            <Controller
+                                name="time"
+                                control={control}
+                                defaultValue={null}
+                                render={({ field }) => (
+                                    <DatePicker
+                                        selected={field.value}
+                                        onChange={(time) => {
+                                            if (time) {
+                                                setStartTime(time);
+                                                field.onChange(time);
+                                            } else {
+                                                setStartTime(new Date());
+                                                field.onChange(new Date());
+                                            }
+                                        }}
+                                        showTimeSelect
+                                        showTimeSelectOnly
+                                        timeIntervals={15}
+                                        timeFormat="HH:mm"
+                                        timeCaption="Jam"
+                                        dateFormat="HH:mm"
+                                        placeholderText="Pilih waktu"
+                                        className='opacity-50 w-full'
+                                        ref={timePickerRef}
+                                    />
+                                )}
+                            />
+                            {errors.time && <p className="text-red-500 mt-1">{errors.time.message}</p>}
                         </div>
                     </div>
 
@@ -180,8 +233,9 @@ const KalenderAdmin = () => {
                         <button
                             type="submit"
                             className="py-3 px-24 text-white font-bold text-lg bg-blue-500 rounded-full hover:bg-blue-600 mt-5"
+                            disabled={loading}
                         >
-                            Kirim
+                            {loading ? 'Mengirim...' : 'Kirim'}
                         </button>
                     </div>
                 </form>
@@ -190,4 +244,4 @@ const KalenderAdmin = () => {
     )
 }
 
-export default KalenderAdmin
+export default CreateKalender
