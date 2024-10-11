@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { getDetail } from '../../../../api/userApi/JumlahPenduduk/index.js';
 
 const JumlahPenduduk = () => {
@@ -6,13 +6,15 @@ const JumlahPenduduk = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [counts, setCounts] = useState([]);
+    const countSectionRef = useRef(null);
+    const intervalRefs = useRef([]);
 
     useEffect(() => {
         const fetchPopulationData = async () => {
             try {
                 const data = await getDetail();
                 setPopulationData(data);
-                setCounts(data.map(item => 0));
+                setCounts(data.map(() => 0));
             } catch (err) {
                 setError("Error fetching population data");
                 console.error(err);
@@ -24,27 +26,52 @@ const JumlahPenduduk = () => {
         fetchPopulationData();
     }, []);
 
-    useEffect(() => {
-        if (populationData.length > 0) {
-            const intervals = populationData.map((item, index) => {
-                const increment = Math.ceil(item.value / 100);
-                return setInterval(() => {
-                    setCounts(prevCounts => {
-                        const newCounts = [...prevCounts];
-                        if (newCounts[index] < item.value) {
-                            newCounts[index] = Math.min(newCounts[index] + increment, item.value);
-                        }
-                        return newCounts;
-                    });
-                }, 20);
-            });
+    const startCounting = () => {
+        intervalRefs.current.forEach(interval => clearInterval(interval));
+        intervalRefs.current = [];
 
-            return () => intervals.forEach(interval => clearInterval(interval));
+        const newIntervals = populationData.map((item, index) => {
+            const increment = Math.ceil(item.value / 100);
+            return setInterval(() => {
+                setCounts(prevCounts => {
+                    const newCounts = [...prevCounts];
+                    if (newCounts[index] < item.value) {
+                        newCounts[index] = Math.min(newCounts[index] + increment, item.value);
+                    }
+                    return newCounts;
+                });
+            }, 20);
+        });
+
+        intervalRefs.current = newIntervals;
+    };
+
+    const resetCounts = () => {
+        setCounts(populationData.map(() => 0));
+    };
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                resetCounts();
+                startCounting();
+            }
+        }, { threshold: 0.1 });
+
+        if (countSectionRef.current) {
+            observer.observe(countSectionRef.current);
         }
+
+        return () => {
+            if (countSectionRef.current) {
+                observer.unobserve(countSectionRef.current);
+            }
+            intervalRefs.current.forEach(interval => clearInterval(interval));
+        };
     }, [populationData]);
 
     return (
-        <section className='font-poppins'>
+        <section className='font-poppins' ref={countSectionRef}>
             <div className="bg-cust-softblue pt-24 lg:px-32 px-10 pb-36">
                 <div className='flex justify-center mb-16'>
                     <img src="/images/Profile/JumlahPendudukSection/pendudukTitle.webp" alt="title" className='lg:w-[575px] lg:h-[97px] w-[280px] h-[48px]' />
