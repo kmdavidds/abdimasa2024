@@ -114,9 +114,9 @@ const PendudukAdmin = () => {
 
 
     return (
-        <div className='flex flex-col items-center gap-10'>
+        <div className='flex flex-col items-center gap-10 font-poppins'>
             <div>
-                <img src="/images/Admin/penduduk/titlePenduduk.svg" alt="" />
+                <img src="/images/Admin/penduduk/titlePenduduk.svg" alt="" className='lg:w-[430px] lg:h-[97px] w-[243px] h-[55px]'/>
             </div>
             <div className='w-full'>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -160,7 +160,7 @@ const PendudukAdmin = () => {
                         {errors.perempuan && <p className="text-red-500 mt-1">{errors.perempuan.message}</p>}
                     </div>
 
-                    <div className='w-full flex justify-end'>
+                    <div className='w-full flex lg:justify-end justify-center'>
                         <button
                             type="submit"
                             className="py-3 px-24 text-white font-bold text-lg bg-blue-500 rounded-full hover:bg-blue-600 mt-5"

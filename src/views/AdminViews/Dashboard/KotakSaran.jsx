@@ -23,9 +23,9 @@ const KotakSaranAdmin = () => {
         },
     ]
     return (
-        <div className='flex flex-col items-center gap-10'>
+        <div className='flex flex-col items-center gap-10 font-poppins'>
             <div>
-                <img src="/images/Admin/saran/titleSaran.svg" alt="" />
+                <img src="/images/Admin/saran/titleSaran.svg" alt="" className='lg:w-[430px] lg:h-[97px] w-[243px] h-[55px]'/>
             </div>
             <div className='w-full space-y-10'>
                 {saranData.map(saran => (
