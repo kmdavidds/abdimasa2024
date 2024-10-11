@@ -55,7 +55,7 @@ const JumlahPenduduk = () => {
                     {error && <div>{error}</div>}
                     {!loading && !error && (
                         <div className='flex justify-center lg:gap-16 gap-7'>
-                            <div className='lg:order-1 gap-7 px-7 py-4 xl:px-16 xl:py-9 flex flex-col items-center bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] border-cust-blue border border-opacity-30 rounded-2xl'>
+                            <div className='gap-7 px-7 py-4 xl:px-16 xl:py-9 flex flex-col items-center bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] border-cust-blue border border-opacity-30 rounded-2xl'>
                                 <img src="/images/Profile/JumlahPendudukSection/laki-laki.webp" alt="people" />
                                 <div className='flex flex-col items-center'>
                                     <div className="text-cust-blue font-bold lg:text-3xl text-sm">{counts[0]}</div>
@@ -63,19 +63,19 @@ const JumlahPenduduk = () => {
                                 </div>
                             </div>
 
-                            <div className='lg:order-3 gap-7 px-7 py-4 xl:px-16 xl:py-9 flex flex-col items-center bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] border-cust-blue border border-opacity-30 rounded-2xl'>
-                                <img src="/images/Profile/JumlahPendudukSection/perempuan.webp" alt="people" />
+                            <div className='gap-7 px-7 py-4 xl:px-16 xl:py-9 flex flex-col items-center bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] border-cust-blue border border-opacity-30 rounded-2xl'>
+                                <img src="/images/Profile/JumlahPendudukSection/total.webp" alt="people" />
                                 <div className='flex flex-col items-center'>
                                     <div className="text-cust-blue font-bold lg:text-3xl text-sm">{counts[2]}</div>
-                                    <div className="text-cust-gray lg:text-lg text-[7px] text-center">Jiwa Perempuan</div>
+                                    <div className="text-cust-gray lg:text-lg text-[7px] text-center">Jiwa Total Penduduk</div>
                                 </div>
                             </div>
 
-                            <div className='lg:order-2 gap-7 px-7 py-4 xl:px-16 xl:py-9 flex flex-col items-center bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] border-cust-blue border border-opacity-30 rounded-2xl'>
-                                <img src="/images/Profile/JumlahPendudukSection/total.webp" alt="people" />
+                            <div className='gap-7 px-7 py-4 xl:px-16 xl:py-9 flex flex-col items-center bg-gradient-to-t from-[#F2F8FF] via-[#E2EDF9] to-[#E2EDF9] border-cust-blue border border-opacity-30 rounded-2xl'>
+                                <img src="/images/Profile/JumlahPendudukSection/perempuan.webp" alt="people" />
                                 <div className='flex flex-col items-center'>
                                     <div className="text-cust-blue font-bold lg:text-3xl text-sm">{counts[1]}</div>
-                                    <div className="text-cust-gray lg:text-lg text-[7px] text-center">Jiwa Total Penduduk</div>
+                                    <div className="text-cust-gray lg:text-lg text-[7px] text-center">Jiwa Perempuan</div>
                                 </div>
                             </div>
                         </div>
