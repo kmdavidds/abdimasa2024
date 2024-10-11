@@ -17,12 +17,11 @@ const SideBar = () => {
         { name: 'Kotak Saran', path: '/admin/saran', icon: <FaRegComments /> },
         { name: 'UMKM', path: '/admin/umkm', icon: <GiShop /> },
         { name: 'Wisata', path: '/admin/wisata', icon: <MdOutlinePlace /> },
-        { name: 'Penduduk', path: '/admin/penduduk', icon: <FaPeopleGroup/>  }
+        { name: 'Penduduk', path: '/admin/penduduk', icon: <FaPeopleGroup /> }
     ];
 
     return (
         <div className='w-full h-full bg-cust-blue flex justify-center items-center'>
-            {/* berisi routing an ke tiap page admin */}
             <div className='w-[80%] h-[90%]'>
                 <ul className="space-y-4">
                     {adminRoutes.map((route, index) => (
@@ -30,13 +29,14 @@ const SideBar = () => {
                             <NavLink
                                 to={route.path}
                                 className={({ isActive }) =>
-                                    `flex gap-5 items-center text-2xl duration-500 px-4 py-3 rounded-lg ${isActive ? "bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] text-cust-blue font-bold pl-8" : " text-white"
+                                    `flex gap-5 items-center text-2xl duration-500 px-4 py-3 rounded-lg ${isActive ? "bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] text-cust-blue font-bold pl-5" : " text-white"
                                     }`
                                 }
                                 end={route.exact}
                             >
                                 <div className='flex gap-3 items-center text-2xl'>
-                                    {route.icon}{route.name}
+                                    {route.icon}
+                                    <span className="lg:flex hidden xl:text-2xl text-base">{route.name}</span>
                                 </div>
                             </NavLink>
                         </li>
@@ -44,8 +44,7 @@ const SideBar = () => {
                 </ul>
             </div>
         </div>
-    )
+    );
 }
 
-export default SideBar
-
+export default SideBar;

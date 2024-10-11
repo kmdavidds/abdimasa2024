@@ -46,9 +46,9 @@ const BeritaAdmin = () => {
     };
 
     return (
-        <div className='flex flex-col items-center gap-10'>
+        <div className='flex flex-col items-center gap-10 font-poppins'>
             <div>
-                <img src="/images/Admin/berita/titleBerita.svg" alt="" />
+                <img src="/images/Admin/berita/titleBerita.svg" alt="" className='lg:w-[430px] lg:h-[97px] w-[243px] h-[55px]'/>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-[95%]'>
                 {news.map(item => (

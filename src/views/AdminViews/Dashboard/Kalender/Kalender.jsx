@@ -68,9 +68,9 @@ const KalenderAdmin = () => {
     };
 
     return (
-        <div className='flex flex-col items-center gap-10'>
+        <div className='flex flex-col items-center gap-10 font-poppins'>
             <div>
-                <img src="/images/Admin/Kalender/titleKalender.svg" alt="" />
+                <img src="/images/Admin/kalender/titleKalender.svg" alt="" className='lg:w-[430px] lg:h-[97px] w-[243px] h-[55px]'/>
             </div>
             {loading ? (
                 <p>Loading...</p>
