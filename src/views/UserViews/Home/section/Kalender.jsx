@@ -11,10 +11,20 @@ const Kalender = () => {
 
     useEffect(() => {
         const getEvents = async () => {
-            setIsLoading(true)
+            setIsLoading(true);
             const fetchedEvents = await getKalender();
-            setEvents(fetchedEvents);
-            setIsLoading(false)
+
+
+            const updatedEvents = Object.entries(fetchedEvents).reduce((acc, [key, value]) => {
+                const date = new Date(key);
+                date.setDate(date.getDate() + 1);
+                const newKey = date.toISOString().split('T')[0];
+                acc[newKey] = { ...value, date: date.toLocaleDateString() };
+                return acc;
+            }, {});
+
+            setEvents(updatedEvents);
+            setIsLoading(false);
         };
         getEvents();
     }, []);
@@ -66,7 +76,9 @@ const Kalender = () => {
                     <img src={event.image} alt={event.title} className="w-full h-28 sm:h-40 object-cover rounded-lg mb-4" />
                     <div className='flex justify-between text-cust-blue font-bold py-2 text-[10px] lg:text-base'>
                         <div className='flex items-center gap-1 sm:gap-2'>
-                            <span className='lg:text-3xl text-xl  mb-1'><FaCalendar /></span>:  <span className='text-[8px] lg:text-xl'>{event.date}</span>
+                            <span className='lg:text-3xl text-xl  mb-1'><FaCalendar /></span>:  <span className='text-[8px] lg:text-xl'>
+                                {new Date(event.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'numeric', year: 'numeric' })}
+                            </span>
                         </div>
                         <div className='flex items-center gap-1 sm:gap-2'>
                             <span className='lg:text-3xl text-xl '><FaClock /></span>:  <span className='text-[8px] lg:text-xl'>{event.time}</span>
@@ -137,7 +149,7 @@ const Kalender = () => {
                             </div>
                         </div>
                         {isLoading ? (
-                            <h1>test</h1>
+                            <h1>Loading...</h1>
                         ) : (
                             <>
                                 <div className="grid grid-cols-7 gap-2 text-center text-sm sm:text-base font-bold">
