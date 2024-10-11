@@ -52,4 +52,4 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
     }
 }
 
-export default WisataUMKMCard
+export default WisataUMKMCard;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import API_ENDPOINTS from '../../apiConfig';
 
-export const getUmkm = async () => {
+const getUmkm = async () => {
   try {
     const response = await axios.get(API_ENDPOINTS.BUSINESSES);
     const businesses = response.data.businesses;
@@ -31,14 +31,5 @@ export const getUmkm = async () => {
   }
 };
 
-export const detailUMKM = async (id )=>{
-  try {
-    const response = await axios.get(`${API_ENDPOINTS.BUSINESSES}/${id}`)
-    return response.data
-  } catch (error) {
-    console.error("Error fetching businesses:", error);
-    return [];
-    
-  }
-}
+export default getUmkm;
 
