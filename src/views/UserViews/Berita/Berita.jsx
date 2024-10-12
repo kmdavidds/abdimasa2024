@@ -28,13 +28,13 @@
          if (error) return <div>Error: {error}</div>; 
 
         return (
-            <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-col items-center justify-center py-28">
+            <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-col flex items-center justify-center py-28">
                 <div className='flex justify-center items-center w-full mb-10'>
                     <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728422598/Berita_Desa_znxkqy.png" alt="" className='lg:w-1/4 md:w-1/2 sm:w-1/3 w-1/3' />
                 </div>
 
-        
-                <div className="flex justify-center flex-wrap gap-10">
+
+                <div className="justify-center gap-10 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
                 {data.map((card) => (
                     <BeritaCard
                         key={card.id} 
@@ -45,6 +45,8 @@
                         date={new Date(card.createdAt).toLocaleDateString()} 
                     />
                 ))}
+
+                    
                 </div>
 
             </div>
