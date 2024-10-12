@@ -1,7 +1,7 @@
 
     import React, { useState, useEffect } from 'react'
     import BeritaCard from "../../../components/UserComp/Berita/BeritaCard.jsx";
-    import fetchNews  from "../../../api/userApi/Berita";
+    import { fetchNews }  from "../../../api/userApi/Berita/";
 
     const berita = () => {
         const [data, setData] = useState([]); 
@@ -12,6 +12,7 @@
          const getData = async () => {
             try {
                 const news = await fetchNews(); 
+                console.log("Data yang diambil dari API:", news);
                 setData(news); 
                 setLoading(false); 
             } catch (err) {
@@ -37,6 +38,7 @@
                 {data.map((card) => (
                     <BeritaCard
                         key={card.id} 
+                        id={card.id}
                         image={card.imageURL} 
                         title={card.title}
                         desc={card.description}

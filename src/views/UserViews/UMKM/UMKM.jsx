@@ -35,11 +35,11 @@ const umkm = () => {
                 {data.map((business) => (
                     <UMKMCard
                         key={business.id}
-                        image={business.images[0]} // Mengambil gambar pertama
+                        image={business.images[0]} 
                         title={business.name}
                         desc={business.description}
                         priceRange={business.priceRange}
-                        nomorWA={business.contact} // Pastikan nomor WA sudah terformat
+                        nomorWA={business.contact} 
                     />
                 ))}
             </div>
