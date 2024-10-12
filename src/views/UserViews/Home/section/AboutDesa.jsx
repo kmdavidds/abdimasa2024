@@ -15,9 +15,9 @@ const AboutDesa = () => {
                         Sebuah desa dengan pesona alam tersembunyi di Kabupaten Malang. Desa Wisata Toyomarto dikelilingi keindahan Gunung Arjuna dan pemandangan hijau yang memukau. Terkenal dengan kerajinan cobek batu, klompen batik, dan batik tulis yang luar biasa. desa ini adalah surga bagi pecinta kerajinan untuk mengagumi kearifan budaya setempat.
                     </p>
                     <button className="px-8 group py-[10px] font-semibold rounded-full text-xs lg:text-xl border-cust-darkblue border-[3px] text-cust-darkblue flex items-center justify-center gap-3 hover:bg-cust-darkblue hover:text-white duration-500 w-max select-none">
-                        <a href="https://www.instagram.com/filkom_abdimasa" target='_blank' className='flex items-center justify-center gap-3'>
+                        <Link to="/profil" className='flex items-center justify-center gap-3'>
                             Selengkapnya <FaArrowRightLong className='group-hover:translate-x-2 duration-300 md:mt-1' />
-                        </a>
+                        </Link>
                     </button>
                 </div>
             </div>
