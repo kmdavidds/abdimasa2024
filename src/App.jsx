@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from './views/UserViews/Home/Home.jsx';
 import Profil from './views/UserViews/Profil/Profil.jsx';
 import Berita from './views/UserViews/Berita/Berita.jsx';
+import DetailBerita from './views/UserViews/Berita/DetailBerita.jsx';
 import Wisata from './views/UserViews/Wisata/Wisata.jsx';
 import UMKM from './views/UserViews/UMKM/UMKM.jsx';
 import NotFound from './views/NotFound.jsx';
@@ -22,8 +23,10 @@ import EditBerita from './views/AdminViews/Dashboard/Berita/EditBerita.jsx';
 import KalenderAdmin from './views/AdminViews/Dashboard/Kalender/Kalender.jsx';
 import CreateKalender from './views/AdminViews/Dashboard/Kalender/CreateKalender.jsx';
 import KotakSaranAdmin from './views/AdminViews/Dashboard/KotakSaran.jsx';
-import UMKMAdmin from './views/AdminViews/Dashboard/UMKM.jsx';
-import WisataAdmin from './views/AdminViews/Dashboard/Wisata.jsx';
+import UMKMAdmin from './views/AdminViews/Dashboard/UMKM/UMKM.jsx';
+import CreateUMKM from './views/AdminViews/Dashboard/UMKM/CreateUMKM.jsx';
+import WisataAdmin from './views/AdminViews/Dashboard/Wisata/Wisata.jsx';
+import CreateWisata from './views/AdminViews/Dashboard/Wisata/CreateWisata.jsx';
 import PendudukAdmin from './views/AdminViews/Dashboard/Penduduk.jsx';
 import WisataDetail from './views/UserViews/Wisata/WisataDetail.jsx';
 
@@ -49,6 +52,14 @@ const App = createBrowserRouter([
     element: (
       <PageLayout>
         <Berita />
+      </PageLayout>
+    ),
+  },
+  {
+    path: "/berita/:id",
+    element: (
+      <PageLayout>
+        <DetailBerita />
       </PageLayout>
     ),
   },
@@ -177,11 +188,31 @@ const App = createBrowserRouter([
     ),
   },
   {
+    path: "/admin/umkm/create",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <CreateUMKM />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
     path: "/admin/wisata",
     element: (
       <ProtectedRoute>
         <PageLayoutAdmin>
           <WisataAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/wisata/create",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <CreateWisata />
         </PageLayoutAdmin>
       </ProtectedRoute>
     ),
