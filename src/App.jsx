@@ -21,8 +21,10 @@ import EditBerita from './views/AdminViews/Dashboard/Berita/EditBerita.jsx';
 import KalenderAdmin from './views/AdminViews/Dashboard/Kalender/Kalender.jsx';
 import CreateKalender from './views/AdminViews/Dashboard/Kalender/CreateKalender.jsx';
 import KotakSaranAdmin from './views/AdminViews/Dashboard/KotakSaran.jsx';
-import UMKMAdmin from './views/AdminViews/Dashboard/UMKM.jsx';
-import WisataAdmin from './views/AdminViews/Dashboard/Wisata.jsx';
+import UMKMAdmin from './views/AdminViews/Dashboard/UMKM/UMKM.jsx';
+import CreateUMKM from './views/AdminViews/Dashboard/UMKM/CreateUMKM.jsx';
+import WisataAdmin from './views/AdminViews/Dashboard/Wisata/Wisata.jsx';
+import CreateWisata from './views/AdminViews/Dashboard/Wisata/CreateWisata.jsx';
 import PendudukAdmin from './views/AdminViews/Dashboard/Penduduk.jsx';
 
 const App = createBrowserRouter([
@@ -159,11 +161,31 @@ const App = createBrowserRouter([
     ),
   },
   {
+    path: "/admin/umkm/create",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <CreateUMKM />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
     path: "/admin/wisata",
     element: (
       <ProtectedRoute>
         <PageLayoutAdmin>
           <WisataAdmin />
+        </PageLayoutAdmin>
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/admin/wisata/create",
+    element: (
+      <ProtectedRoute>
+        <PageLayoutAdmin>
+          <CreateWisata />
         </PageLayoutAdmin>
       </ProtectedRoute>
     ),

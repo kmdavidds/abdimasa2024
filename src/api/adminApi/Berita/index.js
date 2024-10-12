@@ -35,7 +35,10 @@ export const getNewsById = async (id) => {
   export const createNews = async (data) => {
     try {
         const response = await axios.post(API_ENDPOINTS.NEWS, data, {
-            headers: getAuthHeaders(),
+            headers: {
+                ...getAuthHeaders(),
+                'Content-Type': 'multipart/form-data',
+            },
         });
         if (response.status === 204) {
           return undefined;

@@ -9,7 +9,9 @@ import { useNavigate } from 'react-router-dom';
 const schema = z.object({
     title: z.string().min(1, { message: 'Judul harus diisi' }),
     description: z.string().min(1, { message: 'Deskripsi harus diisi' }),
-    imageURL: z.string().url({ message: 'URL gambar tidak valid' })
+    image1: z.instanceof(File).refine(file => file.size > 0, {
+        message: 'Gambar harus diunggah'
+    })
 });
 
 const CreateBerita = () => {
@@ -25,8 +27,12 @@ const CreateBerita = () => {
 
     const onSubmit = async (data) => {
         setLoading(true);
+        const formData = new FormData();
+        formData.append('title', data.title);
+        formData.append('description', data.description);
+        formData.append('image1', data.image1);
         try {
-            const result = await createNews(data);
+            const result = await createNews(formData);
 
             if (result === undefined) {
                 Swal.fire('Berhasil!', 'Berita telah ditambahkan.', 'success');
@@ -38,6 +44,8 @@ const CreateBerita = () => {
             console.error('Error creating news:', error);
             const errorMessage = error.response?.data?.message || 'Terjadi kesalahan saat menambahkan berita.';
             Swal.fire('Gagal!', errorMessage, 'error');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -88,22 +96,21 @@ const CreateBerita = () => {
 
                 <div>
                     <label className='block font-medium'>
-                        URL Gambar <span className='text-red-500'>*</span>
+                        Unggah Gambar <span className='text-red-500'>*</span>
                     </label>
                     <Controller
-                        name="imageURL"
+                        name="image1"
                         control={control}
-                        render={({ field }) => (
+                        render={({ field: { onChange } }) => (
                             <input
-                                type='text'
-                                id='imageURL'
-                                placeholder='Masukkan URL gambar'
-                                {...field}
+                                type='file' 
+                                accept="image/*"
+                                onChange={e => onChange(e.target.files[0])}
                                 className='w-full px-4 py-2 mt-3 border-2 rounded-2xl border-gray-300 focus:border-blue-500 focus:outline-none'
                             />
                         )}
                     />
-                    {errors.imageURL && <p className="text-red-500 mt-1">{errors.imageURL.message}</p>}
+                    {errors.image1 && <p className="text-red-500 mt-1">{errors.image1.message}</p>}
                 </div>
                 <div className=' w-full justify-end flex gap-4'>
                     <button
