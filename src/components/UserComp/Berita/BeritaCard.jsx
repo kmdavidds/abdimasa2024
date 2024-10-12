@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 
-const BeritaCard = ({ image, title, desc, date}) => {
+
+
+const BeritaCard = ({ id, image, title, desc, date}) => {
+    console.log("ID yang dikirim ke Link:", id); 
     return (
+        <Link to={`/berita/${id}`}>
+            
         <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray rounded-lg overflow-hidden font-poppins w-full max-w-[350px] shadow-lg">
         <img
             src={image}
             alt=""
-            className="w-full h-[200px] object-cover"
+            className="w-full h-[190px] object-cover"
         />
         <div className="p-4 rounded-t-lg">
             <h3 className="text-lg font-bold mb-2 text-justify">
@@ -21,6 +27,7 @@ const BeritaCard = ({ image, title, desc, date}) => {
             </div>
         </div>
     </div>
+            </Link>
     )
 }
 

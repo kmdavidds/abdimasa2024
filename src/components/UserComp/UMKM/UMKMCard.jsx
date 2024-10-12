@@ -9,25 +9,25 @@ const waClick = () => {
     window.location.href = `https://wa.me/${nomorHP}`
 }
     return (
-        <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray flex rounded-xl border-2 border-cust-sofblue w-full">
+        <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray flex rounded-xl border-2 border-cust-sofblue lg:w-full w-1/2">
                     <div className="w-1/5 my-6 mx-6">
                         <img 
                         src={image} 
                         alt="" 
                         className="rounded-2xl" />
                     </div>
-                    <div className="grid w-full pr-6">
-                        <div className='text-[30px] font-bold mt-6'>
+                    <div className="lg:grid grid-rows-3 w-full pr-6">
+                        <div className='lg:text-[30px] text-[14px] lg:text-start lg:justify-start text-center font-bold mt-6'>
                             {title}
                         </div>
-                        <div className='text-[20px] text-cust-gray text-justify mt-2'>
+                        <div className='lg:text-[20px] text-[14px] lg:text-start lg:justify-start text-cust-gray text-justify mt-2 line-clamp-4 lg:line-clamp-7'>
                             {desc}
                         </div>
-                        <div className='text-[20px] font-bold text-cust-blue text-justify mt-2'>
+                        <div className='text-[20px] text-[14px] font-bold text-cust-blue text-justify mt-2'>
                             {priceRange}
                         </div>
-                        <div className="flex items-center mt-4">
-                            <div className="flex text-yellow-400 text-[26px]">
+                        <div className="flex items-center mt-4 lg:mt-0">
+                            <div className="flex text-yellow-400 lg:text-[26px] text-[14px]">
                                 ⭐⭐⭐⭐⭐
                             </div>
                             <div className="ml-auto flex items-center space-x-4 my-4">

@@ -29,17 +29,17 @@ const umkm = () => {
     return (
         <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-col items-center font-poppins justify-center py-28">
             <div className='flex justify-center items-center w-full'>
-                <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728373204/judul_umkm_uxrqpj.png" alt="" className='w-1/4' />
+                <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728373204/judul_umkm_uxrqpj.png" alt="" className='lg:w-1/4 md:w-1/2 sm:w-1/2' />
             </div>
             <div className="items-center w-4/5 flex flex-wrap justify-center mt-14 mx-auto gap-6">
                 {data.map((business) => (
                     <UMKMCard
                         key={business.id}
-                        image={business.images[0]} // Mengambil gambar pertama
+                        image={business.images[0]} 
                         title={business.name}
                         desc={business.description}
                         priceRange={business.priceRange}
-                        nomorWA={business.contact} // Pastikan nomor WA sudah terformat
+                        nomorWA={business.contact} 
                     />
                 ))}
             </div>

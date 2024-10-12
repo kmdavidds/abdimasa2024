@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from './views/UserViews/Home/Home.jsx';
 import Profil from './views/UserViews/Profil/Profil.jsx';
 import Berita from './views/UserViews/Berita/Berita.jsx';
+import DetailBerita from './views/UserViews/Berita/DetailBerita.jsx';
 import Wisata from './views/UserViews/Wisata/Wisata.jsx';
 import UMKM from './views/UserViews/UMKM/UMKM.jsx';
 import NotFound from './views/NotFound.jsx';
@@ -49,6 +50,14 @@ const App = createBrowserRouter([
     element: (
       <PageLayout>
         <Berita />
+      </PageLayout>
+    ),
+  },
+  {
+    path: "/berita/:id",
+    element: (
+      <PageLayout>
+        <DetailBerita />
       </PageLayout>
     ),
   },
