@@ -42,8 +42,8 @@ const wisataData = [
 
 const Populer = () => {
     return (
-        <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-row items-center font-poppins justify-center lg:py-28 pt-36">
-            <div className='lg:space-y-20 relative container w-full container mx-auto'>
+        <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-row items-center font-poppins justify-center py-28">
+            <div className='space-y-20 relative w-full container mx-auto'>
             <div className='flex justify-center items-center w-full'>
                 <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728371039/Group_238040_lihsi5.png" alt="" className='lg:w-1/3 w-3/4'/>
             </div>
