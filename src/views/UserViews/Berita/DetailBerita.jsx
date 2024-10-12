@@ -30,7 +30,9 @@ const { id } = useParams();
 
     return (
         <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-col items-center justify-center py-28">
-            <div className="text-cust-blue font-bold flex items-center text-xl mt-10 ml-10">
+            <div className="text-cust-blue font-bold flex items-center text-xl mt-10 ml-10"
+            onClick={() => window.history.back()}
+            >
                 <svg
                     className="w-6 h-6 mr-2"
                     fill="none"
