@@ -69,17 +69,17 @@ const KotakSaran = () => {
                         <img src="/images/Landing/KotakSaranSection/saranImg.svg" alt="" className='select-none ' />
                         <Atropos shadow={true} shadowOffset={50} highlight={true} duration={100} className='absolute group md:top-[22%] sm:top-[25%] sm:right-[30%] top-[25%] right-[30%]'>
                             <div data-atropos-offset="15" className='max-w-[130px] sm:max-w-[240px] md:max-w-[200px] xl:max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-3 sm:px-5 py-2 sm:py-3 text-center border-2 border-gray-300 text-[8px] sm:text-base md:text-xs xl:text-base'>
-                                Lorem ipsum dolor sit amet  adipisicing elit. 1
+                                “Kemarin air PDAM mati ya pakk harap dicek”
                             </div>
                         </Atropos>
                         <Atropos shadow={true} shadowOffset={50} highlight={true} duration={100} className='absolute group sm:bottom-[40%] md:bottom-[15%] md:left-[7%] sm:left-[0%] left-[10%] bottom-[20%]'>
                             <div data-atropos-offset="15" className='max-w-[130px] sm:max-w-[240px] md:max-w-[200px] xl:max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-3 sm:px-5 py-2 sm:py-3 text-center border-2 border-gray-300 text-[8px] sm:text-base md:text-xs xl:text-base'>
-                                Lorem ipsum dolor sit amet  adipisicing elit. 2
-                            </div>
+                                “Taman skg bagus bgt warnanya jadi seger!”
+                            </div> 
                         </Atropos>
                         <Atropos shadow={true} shadowOffset={50} highlight={true} duration={100} className='absolute group md:top-[45%] md:left-[-5%] md:bottom-[50%] sm:left-[10%] sm:bottom-[20%] left-[0%] bottom-[40%]'>
                             <div data-atropos-offset="15" className='max-w-[130px] sm:max-w-[240px] md:max-w-[200px] xl:max-w-[240px] rounded-lg bg-gradient-to-b from-[#CBE0F8] via-[#E2EDF9] to-[#F2F8FF] flex items-center justify-center px-3 sm:px-5 py-2 sm:py-3 text-center border-2 border-gray-300 text-[8px] sm:text-base md:text-xs xl:text-base'>
-                                Lorem ipsum dolor sit amet  adipisicing elit. 3
+                                “Pak tolong mulai tindaklanjuti pungli yaa”
                             </div>
                         </Atropos>
                     </div>
