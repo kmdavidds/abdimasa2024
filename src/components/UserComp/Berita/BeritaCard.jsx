@@ -13,7 +13,7 @@ const BeritaCard = ({ id, image, title, desc, date}) => {
         <img
             src={image}
             alt=""
-            className="w-full h-[180px] object-cover"
+            className="w-full h-[190px] object-cover"
         />
         <div className="p-4 rounded-t-lg">
             <h3 className="text-lg font-bold mb-2 text-justify">
