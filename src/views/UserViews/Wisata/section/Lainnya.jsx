@@ -30,7 +30,7 @@ const Lainnya = () => {
         <div  className="bg-cust-blue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex items-center font-poppins justify-center py-4">
             <div className='relative container w-full container mx-auto'>
                 <div className='flex justify-center items-center w-full my-8'>
-                  <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728371038/wisata_lain_oayyb0.png" alt="" className='w-1/3'/>
+                  <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728371038/wisata_lain_oayyb0.png" alt="" className='lg:w-1/3 w-3/4'/>
                 </div>
                 {data.map((place) => (
                     <WisataLainnya
