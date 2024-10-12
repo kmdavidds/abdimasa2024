@@ -9,6 +9,7 @@ import Wisata from './views/UserViews/Wisata/Wisata.jsx';
 import UMKM from './views/UserViews/UMKM/UMKM.jsx';
 import NotFound from './views/NotFound.jsx';
 import PageLayout from './components/UserComp/PageLayout.jsx';
+import UmkmDetail from './views/UserViews/UMKM/UMKMDetail.jsx';
 
 // Admin
 import LoginAdmin from './views/AdminViews/Login/LoginAdmin.jsx';
@@ -24,6 +25,7 @@ import KotakSaranAdmin from './views/AdminViews/Dashboard/KotakSaran.jsx';
 import UMKMAdmin from './views/AdminViews/Dashboard/UMKM.jsx';
 import WisataAdmin from './views/AdminViews/Dashboard/Wisata.jsx';
 import PendudukAdmin from './views/AdminViews/Dashboard/Penduduk.jsx';
+import WisataDetail from './views/UserViews/Wisata/WisataDetail.jsx';
 
 const App = createBrowserRouter([
   {
@@ -59,10 +61,26 @@ const App = createBrowserRouter([
     ),
   },
   {
+    path: "/wisata/:id", 
+    element: (
+      <PageLayout>
+        <WisataDetail />
+      </PageLayout>
+    ),
+  },
+  {
     path: "/UMKM",
     element: (
       <PageLayout>
         <UMKM />
+      </PageLayout>
+    ),
+  },
+  {
+    path: "/UMKM/:id", 
+    element: (
+      <PageLayout>
+        <UmkmDetail />
       </PageLayout>
     ),
   },
