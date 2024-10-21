@@ -30,7 +30,7 @@ export default function Navbar({ variant }) {
 
     return (
         <nav
-            className={`font-medium xl:text-xl lg:text-base fixed font-poppins w-full lg:px-32 px-10 py-3 top-0 z-50 flex items-center justify-between transition-colors duration-200 ${isScrolled
+            className={`font-medium xl:text-xl lg:text-base fixed font-poppins w-full lg:px-29 px-10 py-3 top-0 z-50 flex items-center justify-between transition-colors duration-200 ${isScrolled
                 ? "bg-cust-blue text-white shadow-lg"
                 : "bg-transparent shadow-lg lg:shadow-none"
                 }`}
@@ -57,7 +57,7 @@ export default function Navbar({ variant }) {
                     to="/"
                     className={`${isActive(["/"])
                         ? "font-semibold text-white hover:border-white"
-                        : isActive(["/profil", "/wisata", "/berita", "/UMKM"])
+                        : isActive(["/profil", "/wisata", "/berita", "/UMKM", "/UMKM/:id"])
                             ? "text-cust-blue"
                             : "text-white"
                         } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
