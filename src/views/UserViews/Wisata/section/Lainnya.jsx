@@ -35,6 +35,7 @@ const Lainnya = () => {
                 {data.map((place) => (
                     <WisataLainnya
                         key={place.id} 
+                        id={place.id}
                         image={place.images[0]}
                         title={place.name}
                         desc={place.description}
