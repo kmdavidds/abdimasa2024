@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { UmkmDetail } from "../../../api/userApi/Umkm";
 
-const UmkmDetail = () => {
+
+const UMKMDetail = () => {
+    const { id } = useParams();
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const getData = async () => {
+            console.log("ID yang dikirim ke API:", id);
+          try {
+            const umkmDeail = await UmkmDetail(id); 
+            setData(umkmDeail); 
+            setLoading(false);
+          } catch (err) {
+            setError(err.message); 
+            setLoading(false);
+          }
+        };
+    
+        getData();
+      }, [id]);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
+    if (!data) return <div>Data tidak ditemukan</div>;
+
     return (
         <section className="font-poppins">
             <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
@@ -42,7 +70,7 @@ const UmkmDetail = () => {
     )
 }
 
-export default UmkmDetail
+export default UMKMDetail
 
 // import React, { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
