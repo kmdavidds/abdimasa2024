@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
-import getUmkm from "../../../api/userApi/Umkm";
+import { getUmkm } from "../../../api/userApi/Umkm";
 import UMKMCard from "../../../components/UserComp/UMKM/UMKMCard";
 
 const umkm = () => {

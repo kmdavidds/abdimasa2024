@@ -4,39 +4,39 @@ import WisataUMKMCard from '../../../../components/UserComp/Home/WisataUMKM/Wisa
 const wisataData = [
     {
         type: 'wisata',
-        image: 'https://res.cloudinary.com/dkncrhkfo/image/upload/v1724408817/DSC09723_b6ny1r.jpg',
+        image: 'https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728703695/image_1944_hl6ncj.png',
         title: 'Bukit Kuneer',
         location: 'Kebun Teh Wonosari, Toyomarto',
     },
     {
         type: 'wisata',
-        image: 'https://res.cloudinary.com/dkncrhkfo/image/upload/v1724408817/DSC09723_b6ny1r.jpg',
+        image: 'https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728703695/image_1945_xwblq8.png',
         title: 'Stupa Sumberawan',
         location: 'Dusun Sumberawan, Toyomarto',
     },
     {
         type: 'wisata',
-        image: 'https://res.cloudinary.com/dkncrhkfo/image/upload/v1724408817/DSC09723_b6ny1r.jpg',
+        image: 'https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728703695/IMG_2073_1_1_vmji9r.png',
         title: 'Pentungansari',
         location: 'Bodean Krajan, Toyomarto',
     },
     {
         type: 'wisata',
-        image: 'https://res.cloudinary.com/dkncrhkfo/image/upload/v1724408817/DSC09723_b6ny1r.jpg',
+        image: 'https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728703695/image_1945_xwblq8.png',
+        title: 'Stupa Sumberawan',
+        location: 'Dusun Sumberawan, Toyomarto',
+    },
+    {
+        type: 'wisata',
+        image: 'https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728703695/IMG_2073_1_1_vmji9r.png',
+        title: 'Pentungansari',
+        location: 'Bodean Krajan, Toyomarto',
+    },
+    {
+        type: 'wisata',
+        image: 'https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728703695/image_1944_hl6ncj.png',
         title: 'Bukit Kuneer',
         location: 'Kebun Teh Wonosari, Toyomarto',
-    },
-    {
-        type: 'wisata',
-        image: 'https://res.cloudinary.com/dkncrhkfo/image/upload/v1724408817/DSC09723_b6ny1r.jpg',
-        title: 'Stupa Sumberawan',
-        location: 'Dusun Sumberawan, Toyomarto',
-    },
-    {
-        type: 'wisata',
-        image: 'https://res.cloudinary.com/dkncrhkfo/image/upload/v1724408817/DSC09723_b6ny1r.jpg',
-        title: 'Pentungansari',
-        location: 'Bodean Krajan, Toyomarto',
     }
 ];
 
