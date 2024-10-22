@@ -36,6 +36,7 @@ const umkm = () => {
                     <UMKMCard
                         key={business.id}
                         image={business.images[0]} 
+                        id={business.id}
                         title={business.name}
                         desc={business.description}
                         priceRange={business.priceRange}
