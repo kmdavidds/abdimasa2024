@@ -1,5 +1,6 @@
 import React from 'react';
 import WisataUMKMCard from '../../../../components/UserComp/Home/WisataUMKM/WisataUMKMCard';
+import { Link } from 'react-router-dom';
 
 const wisataData = [
     {
@@ -7,6 +8,7 @@ const wisataData = [
         image: 'https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728703695/image_1944_hl6ncj.png',
         title: 'Bukit Kuneer',
         location: 'Kebun Teh Wonosari, Toyomarto',
+        link: '/wisata/01919a59-df65-7d28-8189-588f467a77f8',
     },
     {
         type: 'wisata',
@@ -64,7 +66,8 @@ const Populer = () => {
                     </div>
                 </div>
             </div>
-        </section>
+            </div>
+        </div>
     );
 };
 

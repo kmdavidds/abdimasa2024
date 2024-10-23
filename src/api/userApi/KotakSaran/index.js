@@ -6,20 +6,20 @@ export const createSaran = async (data) => {
   formData.append('name', data.name);
   formData.append('description', data.description);
 
-  if (data.attachment) {
+  if (data.attachment1) {
     formData.append('attachment1', data.attachment1);
-  }
+}
 
-  try {
-    const response = await axios.post(API_ENDPOINTS.SUGGESTIONS, {
-        headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
+try {
+  const response = await axios.post(API_ENDPOINTS.SUGGESTIONS, formData, {
+      headers: {
+          'Content-Type': 'multipart/form-data',
+      },
+  });
 
-        return response.data;
-    } catch (error) {
-      console.error('Error posting suggestion:', error);
-      throw error;
-    }
-  };
+  return response.data;
+} catch (error) {
+  console.error('Error posting suggestion:', error);
+  throw error;
+}
+};

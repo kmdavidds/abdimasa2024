@@ -15,16 +15,24 @@ const schema = z.object({
     priceRange: z.string().min(1, { message: 'Rentang harga harus diisi' }),
     contact: z.string().min(1, { message: 'Kontak harus diisi' }),
     mapURL: z.string().url({ message: 'URL peta harus valid' }),
-    rating: z.number().min(0, { message: 'Rating tidak boleh kurang dari 0' }).max(100, { message: 'Rating tidak boleh lebih dari 100' }),
-    imageURL1: z.string().url({ message: 'URL gambar 1 harus valid' }),
-    imageURL2: z.string().url({ message: 'URL gambar 2 harus valid' }),
-    imageURL3: z.string().url({ message: 'URL gambar 3 harus valid' }),
+    rating: z.number()
+        .min(1, { message: 'Rating minimal 1' })
+        .max(5, { message: 'Rating maksimal 5' }),
+    imageURL1: z.any().refine(file => file instanceof File, {
+        message: "Gambar 1 harus diunggah"
+    }),
+    imageURL2: z.any().refine(file => file instanceof File, {
+        message: "Gambar 2 harus diunggah"
+    }),
+    imageURL3: z.any().refine(file => file instanceof File, {
+        message: "Gambar 3 harus diunggah"
+    }),
 });
 
 const CreateUMKM = () => {
+    const [fileNames, setFileNames] = useState({ imageURL1: '', imageURL2: '', imageURL3: '' });
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const token = sessionStorage.getItem('token');
 
     const {
         control,
@@ -43,11 +51,17 @@ const CreateUMKM = () => {
             contact: '',
             mapURL: '',
             rating: 0,
-            imageURL1: '',
-            imageURL2: '',
-            imageURL3: '',
+            imageURL1: null,
+            imageURL2: null,
+            imageURL3: null,
         },
     });
+
+    const handleFileChange = (event, field) => {
+        const file = event.target.files[0];
+        setFileNames(prev => ({ ...prev, [field]: file ? file.name : '' }));
+        setValue(field, file);
+    };
 
     const handleRatingChange = (event) => {
         const value = parseFloat(event.target.value);
@@ -56,32 +70,44 @@ const CreateUMKM = () => {
 
     const onSubmit = async (data) => {
         setLoading(true);
-        const formData = {
-            name: data.name,
-            location: data.location,
-            description: data.description,
-            address: data.address,
-            priceRange: data.priceRange,
-            contact: data.contact,
-            mapURL: data.mapURL,
-            rating: data.rating,
-            imageURL1: data.imageURL1,
-            imageURL2: data.imageURL2,
-            imageURL3: data.imageURL3,
-        };
+        const formData = new FormData();
+
+
 
         try {
-            await createPlace(formData, token);
+            formData.append('name', data.name.trim());
+            formData.append('location', data.location.trim());
+            formData.append('description', data.description.trim());
+            formData.append('address', data.address.trim());
+            formData.append('priceRange', data.priceRange.trim());
+            formData.append('contact', data.contact.trim());
+            formData.append('mapURL', data.mapURL.trim());
+            formData.append('rating', data.rating || 0);
+
+            // Append image files
+            formData.append('imageURL1', data.imageURL1);
+            formData.append('imageURL2', data.imageURL2);
+            formData.append('imageURL3', data.imageURL3);
+
+            const response = await createUMKM(formData);
+
             Swal.fire('Success!', 'Data UMKM berhasil ditambahkan.', 'success');
             reset();
-            navigate('/admin/umkm'); // Ganti dengan path yang sesuai
+            setFileNames({ imageURL1: '', imageURL2: '', imageURL3: '' });
+            navigate('/admin/umkm');
         } catch (error) {
-            console.error("Error uploading data:", error);
-            Swal.fire('Error!', 'Gagal menambahkan data UMKM. ' + (error.response?.data?.message || ''), 'error');
+            console.error("Error details:", {
+                response: error.response?.data,
+                status: error.response?.status,
+                message: error.message
+            });
+            const errorMessage = error.response?.data?.message || error.message || 'Terjadi Kesalahan pada server';
+            Swal.fire('Error!', errorMessage, 'error');
         } finally {
             setLoading(false);
         }
     };
+
     return (
         <div className='flex flex-col items-center gap-10'>
             <div>
@@ -90,7 +116,7 @@ const CreateUMKM = () => {
             <div className='w-full'>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                     <div>
-                        <label className="block font-medium">Nama Tempat <span className="text-red-500">*</span></label>
+                        <label className="block font-medium">Nama Produk UMKM <span className="text-red-500">*</span></label>
                         <Controller
                             name="name"
                             control={control}
@@ -165,7 +191,7 @@ const CreateUMKM = () => {
                             render={({ field }) => (
                                 <input
                                     type="text"
-                                    placeholder="Masukkan rentang harga"
+                                    placeholder="Masukkan rentang harga, contoh : Rp. 15.000 - Rp. 20.000"
                                     {...field}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                                 />
@@ -209,22 +235,21 @@ const CreateUMKM = () => {
                     </div>
 
                     <div>
-                        <label className="block font-medium">Rating <span className="text-red-500">*</span></label>
+                        <label className="block font-medium">Rating (1 - 5) <span className="text-red-500">*</span></label>
                         <Controller
                             name="rating"
                             control={control}
                             render={({ field }) => (
                                 <input
                                     type="number"
-                                    min="0"
-                                    max="100"
+                                    placeholder="Masukkan rating (bintang 1 - 5)"
+                                    {...field}
                                     value={field.value || 0}
                                     onChange={(e) => {
                                         const value = parseFloat(e.target.value);
-                                        field.onChange(isNaN(value) ? 0 : value);
+                                        field.onChange(isNaN(value) ? 0 : value); // Use 0 as default
+                                        handleRatingChange(e);
                                     }}
-                                    placeholder="Masukkan rating (0-100)"
-                                    {...field}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                                 />
                             )}
@@ -233,52 +258,34 @@ const CreateUMKM = () => {
                     </div>
 
                     <div>
-                        <label className="block font-medium">URL Gambar 1 <span className="text-red-500">*</span></label>
-                        <Controller
-                            name="imageURL1"
-                            control={control}
-                            render={({ field }) => (
-                                <input
-                                    type="text"
-                                    placeholder="Masukkan URL gambar 1"
-                                    {...field}
-                                    className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
-                                />
-                            )}
+                        <label className="block font-medium">Upload Gambar Produk 1 <span className="text-red-500">*</span></label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleFileChange(e, 'imageURL1')}
+                            className="mt-2 px-4 py-2 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                         />
                         {errors.imageURL1 && <p className="text-red-500 mt-1">{errors.imageURL1.message}</p>}
                     </div>
 
                     <div>
-                        <label className="block font-medium">URL Gambar 2 <span className="text-red-500">*</span></label>
-                        <Controller
-                            name="imageURL2"
-                            control={control}
-                            render={({ field }) => (
-                                <input
-                                    type="text"
-                                    placeholder="Masukkan URL gambar 2"
-                                    {...field}
-                                    className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
-                                />
-                            )}
+                        <label className="block font-medium">URL Gambar Produk 2 <span className="text-red-500">*</span></label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleFileChange(e, 'imageURL2')}
+                            className="mt-2 px-4 py-2 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                         />
                         {errors.imageURL2 && <p className="text-red-500 mt-1">{errors.imageURL2.message}</p>}
                     </div>
 
                     <div>
-                        <label className="block font-medium">URL Gambar 3 <span className="text-red-500">*</span></label>
-                        <Controller
-                            name="imageURL3"
-                            control={control}
-                            render={({ field }) => (
-                                <input
-                                    type="text"
-                                    placeholder="Masukkan URL gambar 3"
-                                    {...field}
-                                    className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
-                                />
-                            )}
+                        <label className="block font-medium">URL Gambar Produk 3 <span className="text-red-500">*</span></label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleFileChange(e, 'imageURL3')}
+                            className="mt-2 px-4 py-2 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                         />
                         {errors.imageURL3 && <p className="text-red-500 mt-1">{errors.imageURL3.message}</p>}
                     </div>

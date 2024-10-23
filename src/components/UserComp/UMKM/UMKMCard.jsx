@@ -11,7 +11,7 @@ const UMKMCard = ({ id, image, title, desc, priceRange, nomorWA }) => {
     };
 
     const handleSelengkapnyaClick = () => {
-        navigate(`/UMKM/:id`);
+        navigate(`/UMKM/${id}`); 
     };
 
     return (
@@ -19,7 +19,7 @@ const UMKMCard = ({ id, image, title, desc, priceRange, nomorWA }) => {
             <div className="w-1/5 my-6 mx-6">
                 <img
                     src={image}
-                    alt=""
+                    alt={title}
                     className="rounded-2xl" />
             </div>
             <div className="grid w-full pr-6">

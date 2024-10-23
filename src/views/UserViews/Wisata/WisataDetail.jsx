@@ -11,19 +11,20 @@ const WisataDetail = () => {
     useEffect(() => {
         const getData = async () => {
             console.log("ID yang dikirim ke API:", id);
-          try {
-            const wisatadetail = await wisataDetail(id); 
-            setData(wisatadetail); 
-            setLoading(false);
-          } catch (err) {
-            setError(err.message);
-            console.log(err);
-            setLoading(false);
-          }
+            try {
+                const response = await wisataDetail(id);
+                console.log("Response dari API:", response); 
+                setData(response.place || response); 
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                console.log(err);
+                setLoading(false);
+            }
         };
     
         getData();
-    }, [id]);
+    }, [id]);   
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
@@ -47,7 +48,7 @@ const WisataDetail = () => {
                     <div className="flex gap-36">
                         <div className="gap-4 flex flex-col">
                             <h1 className="font-bold">Harga</h1>
-                            <p className="text-cust-gray">{data.priceRange}</p>
+                            <p className="text-cust-gray">{data.entryPrice}</p>
                         </div>
                     </div>
                     <div className="gap-4 flex flex-col">

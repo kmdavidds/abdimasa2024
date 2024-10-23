@@ -4,14 +4,25 @@ import API_ENDPOINTS from '../../apiConfig';
 const getAuthHeaders = () => {
     const token = sessionStorage.getItem('token');
     if (!token) {
-      console.error('No token found in sessionStorage');
-      return {};
-    }
+      throw new Error('Authentication required');
+  }
+  if (isTokenExpired(token)) {
+    throw new Error('Token has expired');
+}
     return {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'multipart/form-data',
     };
   };
+
+  const isTokenExpired = (token) => {
+    try {
+        const decoded = JSON.parse(atob(token.split('.')[1]));
+        return decoded.exp * 1000 < Date.now();
+    } catch {
+        return true;
+    }
+};
 
 export const getAllPlaces = async () => {
     try {
@@ -23,20 +34,36 @@ export const getAllPlaces = async () => {
     }
 };
 
-export const createPlace = async (placeData) => {
+export const createPlace = async (formData) => {
     try {
-      const response = await axios.post(API_ENDPOINTS.PLACES, placeData, {
-        headers: getAuthHeaders(),
-      });
-      
-      if (response.status === 204) {
-        return undefined; //
+      const token = sessionStorage.getItem('token');
+        if (!token) {
+            throw new Error('No token found');
+        }
+
+        const response = await axios.post(API_ENDPOINTS.PLACES, formData, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data'
+            },
+            validateStatus: function (status) {
+              return status < 500; 
+          }
+        });
+        if (response.status === 422) {
+          console.error('Validation errors:', response.data);
+          throw new Error(response.data.message || 'Validasi gagal');
       }
+
       return response.data;
     } catch (error) {
-      console.error('Error creating place:', error);
-      throw error;
+      if (error.response?.status === 422) {
+        console.error('Validation errors:', error.response.data);
+        // Throw error dengan pesan yang lebih spesifik
+        throw new Error(error.response.data.message || 'Data tidak valid');
     }
+    throw error;
+  }
   };
 
   export const deletePlace = async (id) => {

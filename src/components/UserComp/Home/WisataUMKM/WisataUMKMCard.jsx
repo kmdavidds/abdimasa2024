@@ -5,6 +5,11 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+    const waClick = () => {
+        const nomorHP = waLink;
+        return window.location.href = `https://api.whatsapp.com/send?phone=62${nomorHP}&text=&app_absent=0`;
+    }
+
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -43,7 +48,7 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
                         <h3 className="text-xs md:text-2xl font-bold">{name}</h3>
                         <p className="md:text-base text-[8px] text-opacity-70">{priceRange}</p>
                     </div>
-                    <a href={waLink} target="_blank" rel="noopener noreferrer" className="text-green-500 bg-white p-2 rounded-full">
+                    <a href={""} onClick={waClick} target="_blank" rel="noopener noreferrer" className="text-green-500 bg-white p-2 rounded-full">
                         <IoLogoWhatsapp size={isMobile ? 16 : 36} />
                     </a>
                 </div>
