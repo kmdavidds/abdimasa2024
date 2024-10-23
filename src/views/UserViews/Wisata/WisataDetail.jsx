@@ -48,13 +48,17 @@ const WisataDetail = () => {
                     </div>
                     <div className="flex gap-36">
                         <div className="gap-4 flex flex-col">
-                            <h1 className="font-bold">Harga</h1>
-                            <p className="text-cust-gray">{data.entryPrice}</p>
+                            <h1 className="font-bold">Jam Buka</h1>
+                            <p className="text-cust-gray">{data.openingHours}</p>
+                        </div>
+                        <div className="gap-4 flex flex-col">
+                            <h1 className="font-bold">Jam Tutup</h1>
+                            <p className="text-cust-gray">{data.closingHours}</p>
                         </div>
                     </div>
                     <div className="gap-4 flex flex-col">
-                        <h1 className="font-bold">Contact Person</h1>
-                        <p className="text-cust-gray">{data.contact}</p>
+                        <h1 className="font-bold">Tiket Masuk</h1>
+                        <p className="text-cust-gray">{data.entryPrice}</p>
                     </div>
                 </div>
             </div>
