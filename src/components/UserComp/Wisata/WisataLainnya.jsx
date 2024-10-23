@@ -1,58 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { wisataDetail } from '../../../api/userApi/Wisata'; 
+import { wisataDetail } from '../../../api/userApi/Wisata';
 
-export const WisataLainnya = ({ image, title, desc, id }) => {  
-    const [data, setData] = useState(null); 
-    const [loading, setLoading] = useState(true);  
-    const [error, setError] = useState(null);  
+export const WisataLainnya = ({ image, title, desc, id }) => {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await wisataDetail(id);  
-                setData(response);  
-                setLoading(false);  
+                const response = await wisataDetail(id);
+                setData(response);
+                setLoading(false);
             } catch (err) {
-                setError(err.message); 
+                setError(err.message);
                 setLoading(false);
             }
         };
-        
-        getData(); 
+
+        getData();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;  
-    if (error) return <p>{error}</p>;    
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
     return (
-       
-        <div className='flex flex-col lg:flex-row bg-white rounded-3xl my-12 w-3/4 lg:w-full mx-auto shadow-lg'>
-            <div className='basis-full lg:basis-1/4 flex justify-center items-center p-4 lg:p-10'>
-                <img 
-                    src={image} 
-                    alt="" 
-                    className='rounded-lg w-1/2 lg:w-full object-cover' 
-                />
-            </div>
-            <div className='basis-full lg:basis-3/4 p-4 lg:p-8 flex flex-col'>
-                <div className='text-[24px] lg:text-[36px] font-bold text-center lg:text-left'>
-                    {title}
-                </div>
-                <div className='text-[18px] lg:text-[26px] text-cust-gray text-justify mt-2'>
-                    {desc}
-                </div>
-                <div className='flex flex-col lg:flex-row mt-4 items-center lg:items-start'>
-                    <div className='text-[20px] lg:text-[26px] mt-2'>
-                        ⭐⭐⭐⭐⭐
+        <section className='font-poppins '>
+            <div className='border rounded-2xl bg-cust-softblue mb-11'>
+                <div className='flex flex-col lg:flex-row gap-8 gap lg:p-7 p-4 items-center'>
+                    <div className='flex justify-center items-center lg:w-1/5 w-3/5 md:w-2/5'>
+                        <img src={image} alt="" />
                     </div>
-                    <div className='ml-auto lg:ml-0 lg:mt-0 mt-4 text-white bg-cust-blue rounded-full px-[20px] md:mx-auto lg:mx-0 mx-auto lg:px-[30px] py-2'>
-                    <Link to={`/wisata/${id}`}>
-                        <button>Selengkapnya</button>
-                        </Link> 
+                    <div className='flex flex-col gap-2 lg:w-4/5 md:px-7 px-2'>
+                        <h1 className='font-bold lg:text-3xl text-sm'>{title}</h1>
+                        <p className='text-cust-gray lg:text-xl text-sm text-justify'>{desc}</p>
+                        <div className='flex justify-between mt-2'>
+                            <p className='text-sm lg:text-2xl'>⭐⭐⭐⭐⭐</p>
+                            <button className='rounded-3xl lg:px-7 px-4 text-white bg-cust-darkblue lg:text-lg text-xs py-1 lg:py-2'>Selengkapnya</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </section>
     );
 };
