@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { FiCamera } from "react-icons/fi";
 import Swal from 'sweetalert2';
 import { createPlace } from '../../../../api/adminApi/Wisata';
@@ -12,21 +14,38 @@ const schema = z.object({
     location: z.string().min(1, { message: 'Lokasi harus diisi' }),
     description: z.string().min(1, { message: 'Deskripsi harus diisi' }),
     address: z.string().min(1, { message: 'Alamat harus diisi' }),
-    openingHours: z.string().min(1, { message: 'Jam buka harus diisi' }),
-    closingHours: z.string().min(1, { message: 'Jam tutup harus diisi' }),
+    openingHours: z.string()
+        .min(9, { message: 'Format waktu tidak valid (contoh: 09:00 WIB)' })
+        .max(10, { message: 'Format waktu tidak valid (contoh: 09:00 WIB)' })
+        .regex(/^([0-1][0-9]|2[0-3]):[0-5][0-9] WIB$/, {
+            message: 'Format waktu harus HH:mm WIB (contoh: 09:00 WIB)'
+        }),
+    closingHours: z.string()
+        .min(9, { message: 'Format waktu tidak valid (contoh: 17:00 WIB)' })
+        .max(10, { message: 'Format waktu tidak valid (contoh: 17:00 WIB)' })
+        .regex(/^([0-1][0-9]|2[0-3]):[0-5][0-9] WIB$/, {
+            message: 'Format waktu harus HH:mm WIB (contoh: 17:00 WIB)'
+        }),
     entryPrice: z.string().min(1, { message: 'Harga tiket harus diisi' }),
     mapURL: z.string().url({ message: 'URL peta harus valid' }),
-    rating: z.number().min(0, { message: 'Rating tidak boleh kurang dari 0' }).max(100, { message: 'Rating tidak boleh lebih dari 100' }),
-    image1: z.instanceof(File, { message: 'Gambar 1 harus diunggah' }),
-    image2: z.instanceof(File, { message: 'Gambar 2 harus diunggah' }),
-    image3: z.instanceof(File, { message: 'Gambar 3 harus diunggah' }),
+    rating: z.number()
+        .min(1, { message: 'Rating minimal 1' })
+        .max(5, { message: 'Rating maksimal 5' }),
+    image1: z.any().refine(file => file instanceof File, {
+        message: "Gambar 1 harus diunggah"
+    }),
+    image2: z.any().refine(file => file instanceof File, {
+        message: "Gambar 2 harus diunggah"
+    }),
+    image3: z.any().refine(file => file instanceof File, {
+        message: "Gambar 3 harus diunggah"
+    }),
 });
 
 const CreateWisata = () => {
     const [fileNames, setFileNames] = useState({ image1: '', image2: '', image3: '' });
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const token = sessionStorage.getItem('token');
 
     const {
         control,
@@ -52,6 +71,22 @@ const CreateWisata = () => {
         },
     });
 
+    const handleTimeChange = (value, field) => {
+        if (!value) return;
+
+        let cleanValue = value.replace(/[^\d:]/g, '');
+
+        if (cleanValue.length >= 2 && !cleanValue.includes(':')) {
+            cleanValue = cleanValue.slice(0, 2) + ':' + cleanValue.slice(2);
+        }
+
+        if (/^\d{2}:\d{2}$/.test(cleanValue)) {
+            cleanValue += ' WIB';
+        }
+
+        setValue(field, cleanValue);
+    };
+
     const handleFileChange = (event, field) => {
         const file = event.target.files[0];
         setFileNames(prev => ({ ...prev, [field]: file ? file.name : '' }));
@@ -66,41 +101,38 @@ const CreateWisata = () => {
     const onSubmit = async (data) => {
         setLoading(true);
         const formData = new FormData();
-        formData.append('name', data.name);
-        formData.append('location', data.location);
-        formData.append('description', data.description);
-        formData.append('address', data.address);
-        formData.append('openingHours', data.openingHours);
-        formData.append('closingHours', data.closingHours);
-        formData.append('entryPrice', data.entryPrice);
-        formData.append('mapURL', data.mapURL);
-        formData.append('rating', data.rating);
-        formData.append('image1', data.image1);
-        formData.append('image2', data.image2);
-        formData.append('image3', data.image3);
 
         try {
-            await createPlace(formData, token);
+
+            // Append semua field
+            formData.append('name', data.name.trim()); // Hapus whitespace
+            formData.append('location', data.location.trim());
+            formData.append('description', data.description.trim());
+            formData.append('address', data.address.trim());
+            formData.append('openingHours', data.openingHours);
+            formData.append('closingHours', data.closingHours);
+            formData.append('entryPrice', data.entryPrice.trim());
+            formData.append('mapURL', data.mapURL.trim());
+            formData.append('rating', data.rating || 0);
+
+            formData.append('image1', data.image1);
+            formData.append('image2', data.image2);
+            formData.append('image3', data.image3);
+
+
+            const response = await createPlace(formData);
             Swal.fire('Success!', 'Data wisata berhasil ditambahkan.', 'success');
-            reset({
-                name: '',
-                location: '',
-                description: '',
-                address: '',
-                openingHours: '',
-                closingHours: '',
-                entryPrice: '',
-                mapURL: '',
-                rating: 0,
-                image1: null,
-                image2: null,
-                image3: null,
-            });
+            reset();
             setFileNames({ image1: '', image2: '', image3: '' });
-            navigate('/admin/wisata'); // Ganti dengan path yang sesuai
+            navigate('/admin/wisata');
         } catch (error) {
-            console.error("Error uploading data:", error);
-            Swal.fire('Error!', 'Gagal menambahkan data wisata. ' + (error.response?.data?.message || ''), 'error');
+            console.error("Error details:", {
+                response: error.response?.data,
+                status: error.response?.status,
+                message: error.message
+            });
+            const errorMessage = error.response?.data?.message || error.message || 'Terjadi Kesalahan pada server';
+            Swal.fire('Error!', errorMessage, 'error');
         } finally {
             setLoading(false);
         }
@@ -186,11 +218,13 @@ const CreateWisata = () => {
                         <Controller
                             name="openingHours"
                             control={control}
+                            defaultValue={null}
                             render={({ field }) => (
                                 <input
                                     type="text"
-                                    placeholder="Masukkan jam buka"
+                                    placeholder="Format: 09:00 WIB"
                                     {...field}
+                                    onChange={(e) => handleTimeChange(e.target.value, 'openingHours')}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                                 />
                             )}
@@ -203,11 +237,13 @@ const CreateWisata = () => {
                         <Controller
                             name="closingHours"
                             control={control}
+                            defaultValue={null}
                             render={({ field }) => (
                                 <input
                                     type="text"
-                                    placeholder="Masukkan jam tutup"
+                                    placeholder="Format: 17:00 WIB"
                                     {...field}
+                                    onChange={(e) => handleTimeChange(e.target.value, 'closingHours')}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                                 />
                             )}
@@ -250,14 +286,14 @@ const CreateWisata = () => {
                     </div>
 
                     <div>
-                        <label className="block font-medium">Rating (0-100) <span className="text-red-500">*</span></label>
+                        <label className="block font-medium">Rating (1 - 5) <span className="text-red-500">*</span></label>
                         <Controller
                             name="rating"
                             control={control}
                             render={({ field }) => (
                                 <input
                                     type="number"
-                                    placeholder="Masukkan rating"
+                                    placeholder="Masukkan rating (bintang 1 - 5)"
                                     {...field}
                                     value={field.value || 0}
                                     onChange={(e) => {
@@ -280,7 +316,6 @@ const CreateWisata = () => {
                             onChange={(e) => handleFileChange(e, 'image1')}
                             className="mt-2"
                         />
-                        {fileNames.image1 && <p className="mt-1">{fileNames.image1}</p>}
                         {errors.image1 && <p className="text-red-500 mt-1">{errors.image1.message}</p>}
                     </div>
 
@@ -292,7 +327,6 @@ const CreateWisata = () => {
                             onChange={(e) => handleFileChange(e, 'image2')}
                             className="mt-2"
                         />
-                        {fileNames.image2 && <p className="mt-1">{fileNames.image2}</p>}
                         {errors.image2 && <p className="text-red-500 mt-1">{errors.image2.message}</p>}
                     </div>
 
@@ -304,7 +338,6 @@ const CreateWisata = () => {
                             onChange={(e) => handleFileChange(e, 'image3')}
                             className="mt-2"
                         />
-                        {fileNames.image3 && <p className="mt-1">{fileNames.image3}</p>}
                         {errors.image3 && <p className="text-red-500 mt-1">{errors.image3.message}</p>}
                     </div>
 

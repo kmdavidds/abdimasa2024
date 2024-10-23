@@ -78,8 +78,11 @@ const UMKMAdmin = () => {
                                     name={umkm.name}
                                     priceRange={umkm.priceRange}
                                     rating={umkm.rating}
+                                    contact={umkm.contact}
                                     location={umkm.location}
                                     desc={umkm.description}
+                                    handleDelete={handleDelete}
+                                    id={umkm.id}
                                 />
                             ))
                         ) : (

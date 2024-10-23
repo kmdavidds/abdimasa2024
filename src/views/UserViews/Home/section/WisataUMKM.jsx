@@ -120,7 +120,7 @@ const WisataUMKM = () => {
                                                         location={card.location}
                                                         name={card.name}
                                                         priceRange={card.priceRange}
-                                                        waLink={card.waLink}
+                                                        waLink={card.contact}
                                                         className="sm:h-[416px] h-[175px]"
                                                     />
                                             ))}
