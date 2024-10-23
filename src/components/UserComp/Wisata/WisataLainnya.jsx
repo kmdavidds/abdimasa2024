@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { wisataDetail } from '../../../api/userApi/Wisata';
 
-export const WisataLainnya = ({ image, title, desc }) => {
+export const WisataLainnya = ({ image, title, desc, id }) => {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await wisataDetail(id);
+                setData(response);
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                setLoading(false);
+            }
+        };
+
+        getData();
+    }, [id]);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
     return (
         <section className='font-poppins '>
             <div className='border rounded-2xl bg-cust-softblue mb-11'>

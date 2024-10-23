@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 
 const BeritaCard = ({ id, image, title, desc, date}) => {
-    console.log("ID yang dikirim ke Link:", id); 
     return (
         <Link to={`/berita/${id}`}>
             

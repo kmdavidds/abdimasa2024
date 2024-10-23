@@ -12,18 +12,19 @@ const UMKMDetail = () => {
     useEffect(() => {
         const getData = async () => {
             console.log("ID yang dikirim ke API:", id);
-          try {
-            const umkmDeail = await UmkmDetail(id); 
-            setData(umkmDeail); 
-            setLoading(false);
-          } catch (err) {
-            setError(err.message); 
-            setLoading(false);
-          }
+            try {
+                const response = await UmkmDetail(id);
+                console.log("Response dari API:", response);
+                setData(response.business);
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                setLoading(false);
+            }
         };
-    
+
         getData();
-      }, [id]);
+    }, [id]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
@@ -38,11 +39,11 @@ const UMKMDetail = () => {
                 <div className="flex flex-col gap-8 pb-10">
                     <div className="gap-4 flex flex-col">
                         <h1 className="font-bold">Deskripsi</h1>
-                        <p className="text-justify text-cust-gray">Kerajinan batik dari Desa Wisata Toyomarto merupakan produk handmade ibu-ibu pengrajin lokal yang menggunakan teknik batik tulis. Dengan pewarna alami dan motif khas yang terinspirasi oleh alam, batik ini dapat dijadikan baju, selendang, taplak meja, dan lainnya. Memiliki batik Toyomarto berarti Anda mendukung pelestarian tradisi lokal dan memberdayakan pengrajin setempat. Dengan mengenakan atau memiliki batik Toyomarto, Anda tidak hanya mendapatkan busana yang indah tetapi juga karya seni yang memiliki nilai historis dan budaya.</p>
+                        <p className="text-justify text-cust-gray">{data.description}</p>
                     </div>
                     <div className="gap-4 flex flex-col">
                         <h1 className="font-bold">Alamat</h1>
-                        <p className="text-cust-gray">Dusun Wonosari Desa Toyomarto Kecamatan Singosari Kabupaten Malang, Jawa Timur</p>
+                        <p className="text-cust-gray">{data.address}</p>
                     </div>
                     <div className="flex gap-36">
                         <div className="gap-4 flex flex-col">
@@ -71,75 +72,3 @@ const UMKMDetail = () => {
 }
 
 export default UMKMDetail
-
-// import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import getUmkm from "../../../api/userApi/Umkm";
-
-// const UmkmDetail = () => {
-//     const { id } = useParams();
-//     const [umkm, setUmkm] = useState(null);
-//     const [loading, setLoading] = useState(true);
-//     const [error, setError] = useState(null);
-
-//     useEffect(() => {
-//         const fetchUmkm = async () => {
-//             try {
-//                 const businesses = await getUmkm();
-//                 const selectedUmkm = businesses.find(business => business.id === id);
-//                 if (selectedUmkm) {
-//                     setUmkm(selectedUmkm);
-//                 } else {
-//                     setError("UMKM not found.");
-//                 }
-//             } catch (err) {
-//                 setError("Failed to fetch UMKM details.");
-//             } finally {
-//                 setLoading(false);
-//             }
-//         };
-
-//         fetchUmkm();
-//     }, [id]);
-
-//     if (loading) {
-//         return <div>Loading...</div>;
-//     }
-//     if (error) {
-//         return <div>{error}</div>;
-//     }
-//     if (!umkm) {
-//         return <div>No UMKM details available.</div>;
-//     }
-
-//     return (
-//         <div className="umkm-detail-container">
-//             <h1 className="text-3xl font-semibold">{umkm.name}</h1>
-//             <div className="images-grid">
-//                 {umkm.images.map((image, index) => (
-//                     <img key={index} src={image} alt={`UMKM image ${index + 1}`} className="w-full h-auto" />
-//                 ))}
-//             </div>
-//             <p className="text-lg mt-4">{umkm.description}</p>
-//             <div className="mt-4">
-//                 <strong>Address:</strong> <span>{umkm.address}</span>
-//             </div>
-//             <div className="mt-2">
-//                 <strong>Price Range:</strong> <span>{umkm.priceRange}</span>
-//             </div>
-//             <div className="mt-2">
-//                 <strong>Contact:</strong> <span>{umkm.contact}</span>
-//             </div>
-//             <div className="mt-2">
-//                 <strong>Rating:</strong> <span>{umkm.rating}</span>
-//             </div>
-//             <div className="mt-4">
-//                 <a href={umkm.mapURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-//                     View on Map
-//                 </a>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default UmkmDetail;

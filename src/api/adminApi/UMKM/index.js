@@ -30,7 +30,7 @@ export const createUMKM = async (newUMKM) => {
       });
       
       if (response.status === 204) {
-        return undefined; //
+        return undefined;
       }
       return response.data;
     } catch (error) {

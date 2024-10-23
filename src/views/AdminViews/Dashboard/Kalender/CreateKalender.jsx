@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
     title: z.string().min(1, { message: 'Nama kegiatan harus diisi' }),
-    location: z.string().min(1, { message: 'Lokasi harus diisi' }),
+    location: z.string().min(1, { message: 'Lokasi harus diisi' }).max(25, { message: 'Lokasi tidak boleh lebih dari 25 karakter' }),
     foto: z.instanceof(File, { message: 'Foto harus diunggah' }),
     date: z.date({ required_error: 'Tanggal harus diisi' }),
     time: z.date({ required_error: 'Jam harus diisi' }),
@@ -139,8 +139,9 @@ const CreateKalender = () => {
                                 <input
                                     type="text"
                                     id="location"
-                                    placeholder="Masukkan tempat kegiatan (Maksimal 10 Karakter)"
+                                    placeholder="Masukkan tempat kegiatan (Maksimal 25 Karakter)"
                                     {...field}
+                                    maxLength={25}
                                     className="w-full px-4 py-2 mt-3 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                                 />
                             )}

@@ -11,7 +11,7 @@ const Lainnya = () => {
         const fetchData = async () => {
             try {
                 const places = await getWisata();
-                setData(places); // Simpan data dari API ke state `data`
+                setData(places);
                 setLoading(false);
             } catch (err) {
                 setError(err.message);
