@@ -11,7 +11,7 @@ const Lainnya = () => {
         const fetchData = async () => {
             try {
                 const places = await getWisata();
-                setData(places);
+                setData(places); 
                 setLoading(false);
             } catch (err) {
                 setError(err.message);
@@ -36,6 +36,7 @@ const Lainnya = () => {
                     {data.map((place) => (
                         <WisataLainnya
                             key={place.id}
+                            id={place.id}
                             image={place.images[0]}
                             title={place.name}
                             desc={place.description}

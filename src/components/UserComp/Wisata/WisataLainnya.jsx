@@ -36,7 +36,9 @@ export const WisataLainnya = ({ image, title, desc, id }) => {
                         <p className='text-cust-gray lg:text-xl text-sm text-justify'>{desc}</p>
                         <div className='flex justify-between mt-2'>
                             <p className='text-sm lg:text-2xl'>⭐⭐⭐⭐⭐</p>
+                            <Link to={`/wisata/${id}`}>
                             <button className='rounded-3xl lg:px-7 px-4 text-white bg-cust-darkblue lg:text-lg text-xs py-1 lg:py-2'>Selengkapnya</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
