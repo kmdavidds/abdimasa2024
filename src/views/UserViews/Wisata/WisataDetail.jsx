@@ -39,26 +39,26 @@ const WisataDetail = () => {
                 </div>
                 <div className="flex flex-col gap-8 pb-10">
                     <div className="gap-4 flex flex-col">
-                        <h1 className="font-bold">Deskripsi</h1>
-                        <p className="text-justify text-cust-gray">{data.description}</p>
+                        <h1 className="font-bold lg:text-2xl text-sm">Deskripsi</h1>
+                        <p className="text-justify text-cust-gray text-xs lg:text-xl">{data.description}</p>
                     </div>
                     <div className="gap-4 flex flex-col">
-                        <h1 className="font-bold">Alamat</h1>
-                        <p className="text-cust-gray">{data.address}</p>
+                        <h1 className="font-bold lg:text-2xl text-sm">Alamat</h1>
+                        <p className="text-cust-gray text-xs lg:text-xl">{data.address}</p>
                     </div>
                     <div className="flex gap-36">
                         <div className="gap-4 flex flex-col">
-                            <h1 className="font-bold">Jam Buka</h1>
-                            <p className="text-cust-gray">{data.openingHours}</p>
+                            <h1 className="font-bold lg:text-2xl text-sm">Jam Buka</h1>
+                            <p className="text-cust-gray text-xs lg:text-xl">{data.openingHours}</p>
                         </div>
                         <div className="gap-4 flex flex-col">
-                            <h1 className="font-bold">Jam Tutup</h1>
-                            <p className="text-cust-gray">{data.closingHours}</p>
+                            <h1 className="font-bold lg:text-2xl text-sm">Jam Tutup</h1>
+                            <p className="text-cust-gray text-xs lg:text-xl">{data.closingHours}</p>
                         </div>
                     </div>
                     <div className="gap-4 flex flex-col">
-                        <h1 className="font-bold">Tiket Masuk</h1>
-                        <p className="text-cust-gray">{data.entryPrice}</p>
+                        <h1 className="font-bold lg:text-2xl text-sm">Tiket Masuk</h1>
+                        <p className="text-cust-gray text-xs lg:text-xl">{data.entryPrice}</p>
                     </div>
                 </div>
             </div>

@@ -40,7 +40,7 @@ export default function Navbar({ variant }) {
                     to="/"
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: "smooth" });
-                        setClick(false); 
+                        setClick(false);
                     }}
                 >
                     <img
