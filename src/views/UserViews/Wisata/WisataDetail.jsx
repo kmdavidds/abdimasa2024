@@ -1,45 +1,71 @@
-import React from "react";
+// import necessary hooks
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { wisataDetail } from "../../../api/userApi/Wisata"; 
 
-const WisataDetail = () => {
+const WisataDetail = () => { 
+    const { id } = useParams(); 
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const getData = async () => {
+            console.log("ID yang dikirim ke API:", id);
+            try {
+                const response = await wisataDetail(id);
+                console.log("Response dari API:", response); 
+                setData(response.place || response); 
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                console.log(err);
+                setLoading(false);
+            }
+        };
+    
+        getData();
+    }, [id]);   
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
+    if (!data) return <div>Data tidak ditemukan</div>;
+
     return (
         <section className="font-poppins">
             <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
                 <div>
-                    <img src="/images/Wisata/frameWisata.webp" alt="" className="pb-20" />
+                    <img src={data.imageURL1} alt={data.name} className="pb-20" />
                 </div>
                 <div className="flex flex-col gap-8 pb-10">
                     <div className="gap-4 flex flex-col">
                         <h1 className="font-bold">Deskripsi</h1>
-                        <p className="text-justify text-cust-gray">Dengan ketinggian mencapai 1250 MDPL, pengunjung dapat menikmati pemandangan hamparan kebun teh yang luas dengan biaya tiket masuk hanya sebesar 10 ribu rupiah. Tidak hanya itu, spot-spot selfie yang tersebar di sepanjang bukit menambah daya tariknya. Bukit Kuneer menawarkan kesempatan untuk bersantai sambil menikmati udara segar dan panorama alam yang memukau. Bukit Kuneer siap menyambut para pengunjung yang ingin menciptakan kenangan tak terlupakan.</p>
+                        <p className="text-justify text-cust-gray">{data.description}</p>
                     </div>
                     <div className="gap-4 flex flex-col">
                         <h1 className="font-bold">Alamat</h1>
-                        <p className="text-cust-gray">Dusun Wonosari Desa Toyomarto Kecamatan Singosari Kabupaten Malang, Jawa Timur</p>
+                        <p className="text-cust-gray">{data.address}</p>
                     </div>
                     <div className="flex gap-36">
                         <div className="gap-4 flex flex-col">
-                            <h1 className="font-bold">Jam Buka</h1>
-                            <p className="text-cust-gray">08.00 WIB</p>
-                        </div>
-                        <div className="gap-4 flex flex-col">
-                            <h1 className="font-bold">Jam Tutup</h1>
-                            <p className="text-cust-gray">15.00 WIB</p>
+                            <h1 className="font-bold">Harga</h1>
+                            <p className="text-cust-gray">{data.entryPrice}</p>
                         </div>
                     </div>
                     <div className="gap-4 flex flex-col">
-                        <h1 className="font-bold">Tiket Masuk</h1>
-                        <p className="text-cust-gray">Rp. 10.000</p>
+                        <h1 className="font-bold">Contact Person</h1>
+                        <p className="text-cust-gray">{data.contact}</p>
                     </div>
                 </div>
             </div>
             <div id="ulasan" className='py-20 lg:px-32 px-10 bg-cust-blue bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
-                <img src="/images/UMKM/umkmUlasan.webp" alt="" />
+                <img src={data.imageURL2} alt="" />
             </div>
             <div className="py-20 lg:px-32 px-10 bg-cust-softblue">
-                <img src="/images/Wisata/petaLokasi.webp" alt="" />
+                <img src={data.imageURL3} alt="" />
             </div>
         </section>
     )
 }
 
-export default WisataDetail
+export default WisataDetail;

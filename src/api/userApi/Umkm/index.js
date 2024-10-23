@@ -1,7 +1,7 @@
 import axios from 'axios';
 import API_ENDPOINTS from '../../apiConfig';
 
-const getUmkm = async () => {
+export const getUmkm = async () => {
   try {
     const response = await axios.get(API_ENDPOINTS.BUSINESSES);
     const businesses = response.data.businesses;
@@ -31,5 +31,12 @@ const getUmkm = async () => {
   }
 };
 
-export default getUmkm;
-
+export const UmkmDetail = async (id)=>{
+  try {
+    const response = await axios.get(`${API_ENDPOINTS.BUSINESSES}/${id}`)
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching places:", error);
+    return {};
+  }
+}
