@@ -139,7 +139,7 @@ const UMKMDetail = () => {
                     <h2 className="text-sm lg:text-2xl">Terbaru : </h2>
                     <div>
                         <div id="ulasan card">
-
+                            
                         </div>
                     </div>
                     <h2 className="text-sm lg:text-2xl">Lainnya : </h2>
