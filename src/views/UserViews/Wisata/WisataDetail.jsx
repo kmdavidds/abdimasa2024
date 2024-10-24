@@ -31,9 +31,7 @@ const WisataDetail = () => {
         getData();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
-    if (!data) return <div>Data tidak ditemukan</div>;
 
     const settings = {
         dots: true,
@@ -73,7 +71,16 @@ const WisataDetail = () => {
 
     return (
         <section className="font-poppins">
-            <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+            <div>
+                {loading ? (
+                    <>
+                        <div className="min-h-screen pt-28 flex justify-center items-center bg-cust-softblue bg-[url('images/Landing/LandingSection/bgPattern.png')]">
+                            Loading...
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
                 <div className="relative">
                     <Slider ref={sliderRef} {...settings} className="rounded-xl">
                         <div>
@@ -141,8 +148,10 @@ const WisataDetail = () => {
             <div id="map">
                 
             </div>
+                    </>
+                )}
+            </div >
         </section>
     );
 };
-
 export default WisataDetail;

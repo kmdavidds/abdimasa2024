@@ -15,10 +15,10 @@ const BeritaCard = ({ id, image, title, desc, date}) => {
             className="w-full h-[190px] object-cover"
         />
         <div className="p-4 rounded-t-lg">
-            <h3 className="text-lg font-bold mb-2 text-justify">
+            <h3 className="text-base font-bold mb-2 text-justify line-clamp-1">
                 {title}
             </h3>
-            <p className="text-gray-700 text-sm mb-4 text-justify line-clamp-4">
+            <p className="text-gray-700 text-xs mb-4 text-justify line-clamp-1">
                 {desc}
             </p>
             <div className="flex items-center justify-end text-cust-blue font-semibold text-sm">
