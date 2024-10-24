@@ -230,7 +230,14 @@ const CreateKalender = () => {
                         </div>
                     </div>
 
-                    <div className='w-full flex justify-end'>
+                    <div className='w-full gap-5 flex justify-end'>
+                        <button
+                            type='button'
+                            className='bg-gray-300 text-black font-bold text-lg py-3 px-24 rounded-full mt-5'
+                            onClick={() => navigate(-1)}
+                        >
+                            Kembali
+                        </button>
                         <button
                             type="submit"
                             className="py-3 px-24 text-white font-bold text-lg bg-blue-500 rounded-full hover:bg-blue-600 mt-5"

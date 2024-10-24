@@ -9,12 +9,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 const schema = z.object({
     title: z.string().min(1, { message: 'Judul harus diisi' }).max(70, { message: 'Judul tidak boleh lebih dari 70 karakter' }),
     description: z.string().min(1, { message: 'Deskripsi harus diisi' }),
-    imageURL: z.string().url({ message: 'URL gambar tidak valid' })
+    image1: z.instanceof(File).optional(),
 });
 
 const EditBerita = () => {
     const [loading, setLoading] = useState(true);
     const [news, setNews] = useState(null);
+    const [currentImage, setCurrentImage] = useState(null);
     const navigate = useNavigate();
     const { id } = useParams();
     const {
@@ -31,10 +32,11 @@ const EditBerita = () => {
             try {
                 const news = await getNewsById(id);
                 setNews(news.news);
+                setCurrentImage(news.news.image1);
+                console.log(news.news);
                 reset({
                     title: news.news.title,
                     description: news.news.description,
-                    imageURL: news.news.imageURL,
                 });
             } catch (error) {
                 console.error('Error fetching news:', error);
@@ -49,21 +51,15 @@ const EditBerita = () => {
     const onSubmit = async (data) => {
         setLoading(true);
         try {
-            const currentData = await getNewsById(id);
-            if (
-                data.title === currentData.news.title &&
-                data.description === currentData.news.description &&
-                data.imageURL === currentData.news.imageURL
-            ) {
-                Swal.fire('Tidak ada perubahan', 'Data tidak diubah.', 'info');
-                setLoading(false);
-                return;
+            const formData = new FormData();
+            formData.append('id', id);
+            formData.append('title', data.title);
+            formData.append('description', data.description);
+            if (data.image1) {
+                formData.append('image1', data.image1);
             }
-            const updateResponse = await updateNews(id, {
-                title: data.title,
-                description: data.description,
-                imageURL: data.imageURL,
-            });
+            const updateResponse = await updateNews(id, formData);
+            console.log(updateResponse);
 
             if (updateResponse || updateResponse === true) {
                 Swal.fire('Berhasil!', 'Berita telah diperbarui.', 'success');
@@ -129,22 +125,34 @@ const EditBerita = () => {
 
                 <div>
                     <label className='block font-medium'>
-                        URL Gambar <span className='text-red-500'>*</span>
+                        Gambar Saat Ini
+                    </label>
+                    {currentImage && (
+                        <img
+                            src={currentImage}
+                            alt="Current News"
+                            className='w-full h-64 object-cover mt-2 rounded-xl'
+                        />
+                    )}
+                </div>
+
+                <div>
+                    <label className='block font-medium'>
+                        Unggah Gambar Baru (Opsional)
                     </label>
                     <Controller
-                        name="imageURL"
+                        name="image1"
                         control={control}
-                        render={({ field }) => (
+                        render={({ field: { onChange } }) => (
                             <input
-                                type='text'
-                                id='imageURL'
-                                placeholder='Masukkan URL gambar'
-                                {...field}
+                                type='file'
+                                accept="image/*"
+                                onChange={e => onChange(e.target.files[0])}
                                 className='w-full px-4 py-2 mt-3 border-2 rounded-2xl border-gray-300 focus:border-blue-500 focus:outline-none'
                             />
                         )}
                     />
-                    {errors.imageURL && <p className="text-red-500 mt-1">{errors.imageURL.message}</p>}
+                    {errors.image1 && <p className="text-red-500 mt-1">{errors.image1.message}</p>}
                 </div>
                 <div className=' w-full justify-end flex gap-4'>
                     <button

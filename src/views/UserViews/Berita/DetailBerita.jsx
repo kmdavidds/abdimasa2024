@@ -49,9 +49,9 @@ const DetailBerita = () => {
                 <div>
                     <div className="relative w-full flex justify-center mt-10">
                         <img
-                            src={data.imageURL}
+                            src={data.image1}
                             alt={data.title}
-                            className="rounded-lg w-4/5 h-[60vh]"
+                            className="rounded-lg w-4/5 xl:h-[60vh] md:h-[40vh] h-[30vh]"
                         />
                         <div className="absolute bottom-0 p-3 md:p-4 flex flex-col justify-end h-full bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent w-4/5 text-white rounded-lg">
                             <div className="text-[36px] font-bold w-full text-justify items-center">

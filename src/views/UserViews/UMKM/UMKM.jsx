@@ -23,7 +23,6 @@ const umkm = () => {
         fetchData();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
@@ -32,17 +31,20 @@ const umkm = () => {
                 <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728373204/judul_umkm_uxrqpj.png" alt="" className='lg:w-1/4 md:w-1/2 sm:w-1/2' />
             </div>
             <div className="items-center w-4/5 flex flex-wrap justify-center mt-14 mx-auto gap-6">
-                {data.map((business) => (
-                    <UMKMCard
-                        key={business.id}
-                        image={business.images[0]} 
-                        id={business.id}
-                        title={business.name}
-                        desc={business.description}
-                        priceRange={business.priceRange}
-                        nomorWA={business.contact} 
-                    />
-                ))}
+                {loading ? (<>Loading...</>) : (
+                    data.map((business) => (
+                        <UMKMCard
+                            key={business.id}
+                            image={business.images[0]}
+                            id={business.id}
+                            title={business.name}
+                            rating={business.rating}
+                            desc={business.description}
+                            priceRange={business.priceRange}
+                            nomorWA={business.contact}
+                        />
+                    ))
+                )}
             </div>
         </div>
     );

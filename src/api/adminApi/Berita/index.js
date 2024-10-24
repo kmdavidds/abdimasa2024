@@ -52,11 +52,18 @@ export const getNewsById = async (id) => {
 
 export const updateNews = async (id, newsData) => {
     try {
-        const response = await axios.put(`${API_ENDPOINTS.NEWS}`, {
-            id,
-            ...newsData,
-        }, {
-            headers: getAuthHeaders(),
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('title', newsData.title);
+        formData.append('description', newsData.description);
+        if (newsData.image1) {
+            formData.append('image1', newsData.image1);
+        }
+        const response = await axios.put(`${API_ENDPOINTS.NEWS}/${id}`, formData, {
+            headers: {
+                ...getAuthHeaders(),
+                'Content-Type': 'multipart/form-data',
+            },
         });
         if (response.status === 204) {
             return true;

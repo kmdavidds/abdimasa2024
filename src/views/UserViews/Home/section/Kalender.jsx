@@ -91,8 +91,24 @@ const Kalender = () => {
             );
         } else {
             return (
-                <div className="bg-white p-4 rounded-lg shadow-md h-full flex justify-center items-center">
-                    <h2 className="text-sm sm:text-xl font-semibold mb-2">Tidak Ada Kegiatan</h2>
+                <div className="w-full flex flex-col justify-between space-y-4 sm:space-y-8 h-full">
+                    <h2 className="w-full text-sm sm:text-lg font-bold text-white text-center bg-cust-blue py-2 rounded-lg">-</h2>
+                    <div className="w-full h-28 sm:h-40 object-cover rounded-lg mb-4 flex justify-center items-center text-xl">
+                        Tidak ada kegiatan
+                    </div>
+                    <div className='flex justify-between text-cust-blue font-bold py-2 text-[10px] lg:text-base'>
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl  mb-1'><FaCalendar /></span>:  <span className='text-[8px] lg:text-xl'>
+                                -
+                            </span>
+                        </div>
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl '><FaClock /></span>:  <span className='text-[8px] lg:text-xl'>-</span>
+                        </div>
+                        <div className='flex items-center gap-1 sm:gap-2'>
+                            <span className='lg:text-3xl text-xl '><FaLocationDot /></span>:  <span className='text-[8px] lg:text-xl'>-</span>
+                        </div>
+                    </div>
                 </div>
             );
         }
