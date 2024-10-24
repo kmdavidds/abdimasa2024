@@ -132,6 +132,12 @@ const WisataDetail = () => {
                     </div>
                 </div>
             </div>
+            <div id="ulasan" className='lg:px-32 px-10 bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+                <div>
+                    <h1>Ulasan</h1>
+                    
+                </div>
+            </div>
         </section>
     );
 };
