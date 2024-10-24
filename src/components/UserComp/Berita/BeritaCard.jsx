@@ -8,7 +8,7 @@ const BeritaCard = ({ id, image, title, desc, date}) => {
     return (
         <Link to={`/berita/${id}`}>
             
-        <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray rounded-lg overflow-hidden font-poppins w-full max-w-[350px] shadow-lg">
+        <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray rounded-lg overflow-hidden font-poppins w-full xl:max-w-[350px] shadow-lg">
         <img
             src={image}
             alt=""

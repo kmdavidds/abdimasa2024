@@ -31,7 +31,7 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
 
     if (type === 'wisata') {
         return (
-            <div onClick={handleCardClick} className="cursor-pointer bg-white relative font-poppins  rounded-lg overflow-hidden w-full md:w-1/3 md:max-w-[360px] max-w-[150px] max-h-[175px] md:max-h-[416px]">
+            <div onClick={handleCardClick} className="cursor-pointer bg-white relative font-poppins  rounded-lg overflow-hidden w-full  md:max-w-[360px] max-w-[150px] max-h-[175px] md:max-h-[416px]">
                 <img
                     src={image}
                     alt={title}
