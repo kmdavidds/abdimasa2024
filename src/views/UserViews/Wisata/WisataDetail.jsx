@@ -140,13 +140,29 @@ const WisataDetail = () => {
                 </div>
             </div>
             <div id="ulasan" className='lg:px-32 px-10 bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
-                <div>
-                    <h1>Ulasan</h1>
-                    
+                <div className="text-white">
+                    <h1 className="font-bold text-base lg:text-3xl">Ulasan</h1>
+                    <h2 className="text-sm lg:text-2xl">Terbaru : </h2>
+                    <div>
+                        <div id="ulasan card">
+
+                        </div>
+                    </div>
+                    <h2 className="text-sm lg:text-2xl">Lainnya : </h2>
+                    <div>
+
+                    </div>
                 </div>
             </div>
-            <div id="map">
-                
+            <div id="map" className="lg:px-32 px-10 bg-cust-softblue pt-10 lg:pt-29 pb-10 flex flex-col ">
+                <div className='flex justify-center lg:justify-start'>
+                    <img src="/images/Wisata/MapTitle.webp" alt="image" className="lg:w-[413px] lg:h-[97px] w-[234px] h-[55px] " />
+                </div>
+                <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-end justify-center pt-8 lg:pt-14">
+                    <iframe src={data.mapURL} frameborder="0" className="lg:rounded-2xl rounded-xl xl:w-[640px] lg:w-[500px] w-[332px] h-[250px] lg:h-[400px] xl:h-[492px]"></iframe>
+                    <img src="/images/Wisata/MapHero.webp" alt="image" className="hidden lg:block w-[400px] xl:w-[520px]" />
+                    <img src="/images/Wisata/MapHeroHP.webp" alt="image" className="lg:hidden w-72 pt-16" />
+                </div>
             </div>
                     </>
                 )}
