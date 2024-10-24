@@ -56,6 +56,7 @@ const Umkm = () => {
       </div>
     </div>
   );
+
 };
 
 export default Umkm;
