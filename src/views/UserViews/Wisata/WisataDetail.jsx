@@ -81,73 +81,73 @@ const WisataDetail = () => {
                 ) : (
                     <>
                         <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
-                            <div className="relative">
-                                <Slider ref={sliderRef} {...settings} className="rounded-xl">
-                                    <div>
-                                        <img src={data.imageURL1} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
-                                    </div>
-                                    <div>
-                                        <img src={data.imageURL2} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
-                                    </div>
-                                    <div>
-                                        <img src={data.imageURL3} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
-                                    </div>
-                                </Slider>
-                                <div id="title" className="absolute bottom-4 lg:bottom-9 left-4 lg:left-10 text-white">
-                                    <h1 className="lg:text-4xl text-base font-bold">{data.name}</h1>
-                                    <p className="lg:text-xl text-xs font-light">{data.location}</p>
-                                </div>
-
-                                <div className="absolute bottom-4 lg:bottom-9 right-4 z-10 flex gap-2">
-                                    <button
-                                        className="bg-[#ECF5FF] bg-opacity-40 rounded-full text-white px-2 lg:px-4 lg:py-2 text-lg lg:text-3xl"
-                                        onClick={() => sliderRef.current.slickPrev()}
-                                    >
-                                        &lt;
-                                    </button>
-                                    <button
-                                        className="bg-[#ECF5FF] bg-opacity-40 rounded-full text-white px-2 lg:px-4 lg:py-2 text-lg lg:text-3xl"
-                                        onClick={() => sliderRef.current.slickNext()}
-                                    >
-                                        &gt;
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-8 pb-10 lg:pt-20 pt-7">
-                                <div className="gap-4 flex flex-col">
-                                    <h1 className="font-bold lg:text-2xl text-sm">Deskripsi</h1>
-                                    <p className="text-justify text-cust-gray text-xs lg:text-xl">{data.description}</p>
-                                </div>
-                                <div className="gap-4 flex flex-col">
-                                    <h1 className="font-bold lg:text-2xl text-sm">Alamat</h1>
-                                    <p className="text-cust-gray text-xs lg:text-xl">{data.address}</p>
-                                </div>
-                                <div className="flex gap-36">
-                                    <div className="gap-4 flex flex-col">
-                                        <h1 className="font-bold lg:text-2xl text-sm">Jam Buka</h1>
-                                        <p className="text-cust-gray text-xs lg:text-xl">{data.openingHours}</p>
-                                    </div>
-                                    <div className="gap-4 flex flex-col">
-                                        <h1 className="font-bold lg:text-2xl text-sm">Jam Tutup</h1>
-                                        <p className="text-cust-gray text-xs lg:text-xl">{data.closingHours}</p>
-                                    </div>
-                                </div>
-                                <div className="gap-4 flex flex-col">
-                                    <h1 className="font-bold lg:text-2xl text-sm">Tiket Masuk</h1>
-                                    <p className="text-cust-gray text-xs lg:text-xl">{data.entryPrice}</p>
-                                </div>
-                            </div>
+                <div className="relative">
+                    <Slider ref={sliderRef} {...settings} className="rounded-xl">
+                        <div>
+                            <img src={data.imageURL1} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
                         </div>
-                        <div id="ulasan" className='lg:px-32 px-10 bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
-                            <div>
-                                <h1>Ulasan</h1>
-
-                            </div>
+                        <div>
+                            <img src={data.imageURL2} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
                         </div>
-                        <div id="map">
-
+                        <div>
+                            <img src={data.imageURL3} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
                         </div>
+                    </Slider>
+                    <div id="title" className="absolute bottom-4 lg:bottom-9 left-4 lg:left-10 text-white">
+                        <h1 className="lg:text-4xl text-base font-bold">{data.name}</h1>
+                        <p className="lg:text-xl text-xs font-light">{data.location}</p>
+                    </div>
+
+                    <div className="absolute bottom-4 lg:bottom-9 right-4 z-10 flex gap-2">
+                        <button
+                            className="bg-[#ECF5FF] bg-opacity-40 rounded-full text-white px-2 lg:px-4 lg:py-2 text-lg lg:text-3xl"
+                            onClick={() => sliderRef.current.slickPrev()}
+                        >
+                            &lt;
+                        </button>
+                        <button
+                            className="bg-[#ECF5FF] bg-opacity-40 rounded-full text-white px-2 lg:px-4 lg:py-2 text-lg lg:text-3xl"
+                            onClick={() => sliderRef.current.slickNext()}
+                        >
+                            &gt;
+                        </button>
+                    </div>
+                </div>
+
+                <div className="flex flex-col gap-8 pb-10 lg:pt-20 pt-7">
+                    <div className="gap-4 flex flex-col">
+                        <h1 className="font-bold lg:text-2xl text-sm">Deskripsi</h1>
+                        <p className="text-justify text-cust-gray text-xs lg:text-xl">{data.description}</p>
+                    </div>
+                    <div className="gap-4 flex flex-col">
+                        <h1 className="font-bold lg:text-2xl text-sm">Alamat</h1>
+                        <p className="text-cust-gray text-xs lg:text-xl">{data.address}</p>
+                    </div>
+                    <div className="flex gap-36">
+                        <div className="gap-4 flex flex-col">
+                            <h1 className="font-bold lg:text-2xl text-sm">Jam Buka</h1>
+                            <p className="text-cust-gray text-xs lg:text-xl">{data.openingHours}</p>
+                        </div>
+                        <div className="gap-4 flex flex-col">
+                            <h1 className="font-bold lg:text-2xl text-sm">Jam Tutup</h1>
+                            <p className="text-cust-gray text-xs lg:text-xl">{data.closingHours}</p>
+                        </div>
+                    </div>
+                    <div className="gap-4 flex flex-col">
+                        <h1 className="font-bold lg:text-2xl text-sm">Tiket Masuk</h1>
+                        <p className="text-cust-gray text-xs lg:text-xl">{data.entryPrice}</p>
+                    </div>
+                </div>
+            </div>
+            <div id="ulasan" className='lg:px-32 px-10 bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+                <div>
+                    <h1>Ulasan</h1>
+                    
+                </div>
+            </div>
+            <div id="map">
+                
+            </div>
                     </>
                 )}
             </div >
