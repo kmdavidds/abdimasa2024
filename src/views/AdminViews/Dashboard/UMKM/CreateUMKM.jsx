@@ -290,7 +290,14 @@ const CreateUMKM = () => {
                         {errors.imageURL3 && <p className="text-red-500 mt-1">{errors.imageURL3.message}</p>}
                     </div>
 
-                    <div className='flex w-full justify-end'>
+                    <div className='flex w-full justify-end gap-5'>
+                        <button
+                            type='button'
+                            className='bg-gray-300 text-black text-lg py-3 px-14 rounded-full mt-5'
+                            onClick={() => navigate(-1)}
+                        >
+                            Kembali
+                        </button>
                         <button
                             type="submit"
                             disabled={loading}

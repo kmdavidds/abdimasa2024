@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { IoLogoWhatsapp } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
-const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink }) => {
+const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink, id }) => {
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const navigate = useNavigate();
 
     const waClick = () => {
         const nomorHP = waLink;
         return window.location.href = `https://api.whatsapp.com/send?phone=62${nomorHP}&text=&app_absent=0`;
     }
+
+    const handleCardClick = () => {
+        if (type === 'wisata') {
+            navigate(`/wisata/${id}`);
+        } else if (type === 'umkm') {
+            navigate(`/umkm/${id}`);
+        }
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -21,7 +31,7 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
 
     if (type === 'wisata') {
         return (
-            <div className="bg-white relative font-poppins  rounded-lg overflow-hidden w-full md:w-1/3 md:max-w-[360px] max-w-[150px] max-h-[175px] md:max-h-[416px]">
+            <div onClick={handleCardClick} className="cursor-pointer bg-white relative font-poppins  rounded-lg overflow-hidden w-full md:w-1/3 md:max-w-[360px] max-w-[150px] max-h-[175px] md:max-h-[416px]">
                 <img
                     src={image}
                     alt={title}
@@ -37,7 +47,7 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
 
     if (type === 'umkm') {
         return (
-            <div className="bg-white relative font-poppins rounded-lg overflow-hidden w-full md:w-1/3 md:max-w-[360px] max-w-[150px] max-h-[175px] md:max-h-[416px]">
+            <div onClick={handleCardClick} className="cursor-pointer bg-white relative font-poppins rounded-lg overflow-hidden w-full md:w-1/3 md:max-w-[360px] max-w-[150px] max-h-[175px] md:max-h-[416px]">
                 <img
                     src={image}
                     alt={name}

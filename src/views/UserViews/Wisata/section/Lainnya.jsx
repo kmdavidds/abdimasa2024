@@ -22,7 +22,6 @@ const Lainnya = () => {
         fetchData();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
 
@@ -33,14 +32,18 @@ const Lainnya = () => {
                     <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728371038/wisata_lain_oayyb0.png" alt="" className='lg:w-[473px] lg:h-[97px] w-[234px] h-[48px]' />
                 </div>
                 <div className='lg:px-32 px-10'>
-                    {data.map((place) => (
-                        <WisataLainnya
-                            key={place.id}
-                            image={place.images[0]}
-                            title={place.name}
-                            desc={place.description}
-                        />
-                    ))}
+                    {loading ? (<><div className='min-h-screen'>Loading...</div></>) : (
+                        data.map((place) => (
+                            <WisataLainnya
+                                key={place.id}
+                                rating={place.rating}
+                                image={place.images[0]}
+                                title={place.name}
+                                desc={place.description}
+                            />
+                        ))
+                    )}
+
                 </div>
             </div>
         </section>

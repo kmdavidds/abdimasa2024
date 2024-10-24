@@ -26,42 +26,51 @@ const UMKMDetail = () => {
         getData();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
-    if (!data) return <div>Data tidak ditemukan</div>;
 
     return (
         <section className="font-poppins">
-            <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
-                <div>
-                    <img src={data.imageURL1} alt={data.name} className="pb-20" />
-                </div>
-                <div className="flex flex-col gap-8 pb-10">
-                    <div className="gap-4 flex flex-col">
-                        <h1 className="font-bold lg:text-2xl text-sm">Deskripsi</h1>
-                        <p className="text-justify text-cust-gray text-xs lg:text-xl">{data.description}</p>
-                    </div>
-                    <div className="gap-4 flex flex-col">
-                        <h1 className="font-bold lg:text-2xl text-sm">Alamat</h1>
-                        <p className="text-cust-gray text-xs lg:text-xl">{data.address}</p>
-                    </div>
-                    <div className="flex gap-36">
-                        <div className="gap-4 flex flex-col">
-                            <h1 className="font-bold lg:text-2xl text-sm">Harga</h1>
-                            <p className="text-cust-gray text-xs lg:text-xl">{data.priceRange}</p>
+            <div>
+                {loading ? (
+                    <>
+                        <div className="min-h-screen pt-28 flex justify-center items-center bg-cust-softblue bg-[url('images/Landing/LandingSection/bgPattern.png')]">
+                            Loading...
                         </div>
-                    </div>
-                    <div className="gap-4 flex flex-col">
-                        <h1 className="font-bold lg:text-2xl text-sm">Contact Person</h1>
-                        <p className="text-cust-gray text-xs lg:text-xl">{data.contact}</p>
-                    </div>
-                </div>
-            </div>
-            <div id="ulasan" className='py-20 lg:px-32 px-10 bg-cust-blue bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
-                <img src={data.imageURL2} alt="" />
-            </div>
-            <div className="py-20 lg:px-32 px-10 bg-cust-softblue">
-                <img src={data.imageURL3} alt="" />
+                    </>) : (
+                    <>
+                        <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+                            <div>
+                                <img src={data.imageURL1} alt={data.name} className="pb-20 rounded-lg w-full xl:h-[60vh] md:h-[40vh] h-[30vh]" />
+                            </div>
+                            <div className="flex flex-col gap-8 pb-10">
+                                <div className="gap-4 flex flex-col">
+                                    <h1 className="font-bold lg:text-2xl text-sm">Deskripsi</h1>
+                                    <p className="text-justify text-cust-gray text-xs lg:text-xl">{data.description}</p>
+                                </div>
+                                <div className="gap-4 flex flex-col">
+                                    <h1 className="font-bold lg:text-2xl text-sm">Alamat</h1>
+                                    <p className="text-cust-gray text-xs lg:text-xl">{data.address}</p>
+                                </div>
+                                <div className="flex gap-36">
+                                    <div className="gap-4 flex flex-col">
+                                        <h1 className="font-bold lg:text-2xl text-sm">Harga</h1>
+                                        <p className="text-cust-gray text-xs lg:text-xl">{data.priceRange}</p>
+                                    </div>
+                                </div>
+                                <div className="gap-4 flex flex-col">
+                                    <h1 className="font-bold lg:text-2xl text-sm">Contact Person</h1>
+                                    <p className="text-cust-gray text-xs lg:text-xl">{data.contact}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ulasan" className='py-20 lg:px-32 px-10 bg-cust-blue bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+                            <img src={data.imageURL2} alt="" />
+                        </div>
+                        <div className="py-20 lg:px-32 px-10 bg-cust-softblue">
+                            <img src={data.imageURL3} alt="" />
+                        </div>
+                    </>
+                )}
             </div>
         </section>
     )
