@@ -133,8 +133,9 @@ const UMKMDetail = () => {
 
                 </div>
             </div>
-            <div id="maskot">
-
+            <div id="maskot" className="lg:px-32 md:px-24 lg:pb-24 pb-14 px-10 bg-cust-softblue lg:pt-40 pt-20">
+                <img src="/images/UMKM/HeroDetailUmkm.webp" alt="Hero" className="hidden md:block"/> 
+                <img src="/images/UMKM/HeroDetailUmkmHP.webp" alt="Hero" className="md:hidden"/> 
             </div>
         </section>
     )

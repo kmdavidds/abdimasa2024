@@ -138,6 +138,9 @@ const WisataDetail = () => {
                     
                 </div>
             </div>
+            <div id="map">
+                
+            </div>
         </section>
     );
 };
