@@ -128,14 +128,23 @@ const UMKMDetail = () => {
                 </div>
             </div>
             <div id="ulasan" className='lg:px-32 px-10 bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
-                <div>
-                    <h1>Ulasan</h1>
+                <div className="text-white">
+                    <h1 className="font-bold text-base lg:text-3xl">Ulasan</h1>
+                    <h2 className="text-sm lg:text-2xl">Terbaru : </h2>
+                    <div>
+                        <div id="ulasan card">
 
+                        </div>
+                    </div>
+                    <h2 className="text-sm lg:text-2xl">Lainnya : </h2>
+                    <div>
+
+                    </div>
                 </div>
             </div>
             <div id="maskot" className="lg:px-32 md:px-24 lg:pb-24 pb-14 px-10 bg-cust-softblue lg:pt-40 pt-20">
-                <img src="/images/UMKM/HeroDetailUmkm.webp" alt="Hero" className="hidden md:block"/> 
-                <img src="/images/UMKM/HeroDetailUmkmHP.webp" alt="Hero" className="md:hidden"/> 
+                <img src="/images/UMKM/HeroDetailUmkm.webp" alt="Hero" className="hidden md:block" />
+                <img src="/images/UMKM/HeroDetailUmkmHP.webp" alt="Hero" className="md:hidden" />
             </div>
         </section>
     )
