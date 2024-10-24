@@ -11,7 +11,7 @@ const Lainnya = () => {
         const fetchData = async () => {
             try {
                 const places = await getWisata();
-                setData(places);
+                setData(places); 
                 setLoading(false);
             } catch (err) {
                 setError(err.message);
@@ -43,7 +43,6 @@ const Lainnya = () => {
                             />
                         ))
                     )}
-
                 </div>
             </div>
         </section>

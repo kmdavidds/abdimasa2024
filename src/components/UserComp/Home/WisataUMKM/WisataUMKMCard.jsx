@@ -35,11 +35,11 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
                 <img
                     src={image}
                     alt={title}
-                    className="w-full h-[175px] md:h-[416px] object-cover"
+                    className="w-full h-[175px] md:h-60 xl:h-[416px] lg:h-72 object-cover"
                 />
-                <div className="p-3 md:p-4 absolute bottom-0 flex flex-col justify-end h-full bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent w-full text-white">
-                    <h3 className="text-xs md:text-2xl font-bold">{title}</h3>
-                    <p className="md:text-base text-[8px] text-opacity-70">{location}</p>
+                <div className="p-3 lg:p-4 absolute bottom-0 flex flex-col justify-end h-full bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent w-full text-white">
+                    <h3 className="text-xs xl:text-2xl lg:text-xl font-bold">{title}</h3>
+                    <p className="lg:text-base text-[8px] text-opacity-70">{location}</p>
                 </div>
             </div>
         )
@@ -51,12 +51,12 @@ const WisataUMKMCard = ({ type, image, title, location, name, priceRange, waLink
                 <img
                     src={image}
                     alt={name}
-                    className="w-full h-[175px] md:h-[416px] object-cover"
+                    className="w-full h-[175px] lg:h-[416px] object-cover"
                 />
-                <div className="p-3 md:p-4 absolute bottom-0 text-white flex justify-between gap-1.5 sm:gap-0 items-end w-full h-full bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent">
+                <div className="p-3 lg:p-4 absolute bottom-0 text-white flex justify-between gap-1.5 sm:gap-0 items-end w-full h-full bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent">
                     <div>
-                        <h3 className="text-xs md:text-2xl font-bold">{name}</h3>
-                        <p className="md:text-base text-[8px] text-opacity-70">{priceRange}</p>
+                        <h3 className="text-xs lg:text-2xl font-bold">{name}</h3>
+                        <p className="lg:text-base text-[8px] text-opacity-70">{priceRange}</p>
                     </div>
                     <a href={""} onClick={waClick} target="_blank" rel="noopener noreferrer" className="text-green-500 bg-white p-2 rounded-full">
                         <IoLogoWhatsapp size={isMobile ? 16 : 36} />

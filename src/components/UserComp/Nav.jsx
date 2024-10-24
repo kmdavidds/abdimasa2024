@@ -20,7 +20,14 @@ export default function Navbar({ variant }) {
         };
     }, []);
 
-    const isActive = (paths) => paths.includes(pathname);
+    const isActive = (paths) => {
+        return paths.some(path => {
+            if (path.includes(':')) {
+                return pathname.startsWith(path.split('/:')[0]);
+            }
+            return pathname === path;
+        });
+    };
 
     const getIconColor = () => {
         if (isActive(["/"])) return "white";
@@ -51,13 +58,12 @@ export default function Navbar({ variant }) {
                 </Link>
             </div>
 
-
             <div className="items-center hidden gap-16 lg:flex xl:gap-20 2xl:gap-24">
                 <Link
                     to="/"
                     className={`${isActive(["/"])
-                        ? "font-semibold text-white hover:border-white"
-                        : isActive(["/profil", "/wisata", "/berita", "/UMKM", "/UMKM/:id"])
+                        ? "font-semibold border-b-2 text-white hover:border-white"
+                        : isActive(["/profil", "/wisata", "/wisata/:id", "/berita", "/UMKM", "/UMKM/:id"])
                             ? "text-cust-blue"
                             : "text-white"
                         } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
@@ -72,7 +78,7 @@ export default function Navbar({ variant }) {
                 <Link
                     to="/profil"
                     className={`${isActive(["/profil"])
-                        ? "text-cust-blue font-semibold "
+                        ? "text-cust-blue font-semibold border-b-2 border-cust-blue"
                         : isActive(["/"])
                             ? "text-white hover:border-white"
                             : "text-cust-blue"
@@ -85,11 +91,10 @@ export default function Navbar({ variant }) {
                     Profil
                 </Link>
 
-
                 <Link
                     to="/wisata"
                     className={`${isActive(["/wisata"])
-                        ? "text-cust-blue font-semibold"
+                        ? "text-cust-blue font-semibold border-b-2 border-cust-blue"
                         : isActive(["/"])
                             ? "text-white hover:border-white"
                             : "text-cust-blue"
@@ -105,7 +110,7 @@ export default function Navbar({ variant }) {
                 <Link
                     to="/UMKM"
                     className={`${isActive(["/UMKM"])
-                        ? "text-cust-blue font-semibold"
+                        ? "text-cust-blue font-semibold border-b-2 border-cust-blue"
                         : isActive(["/"])
                             ? "text-white hover:border-white"
                             : "text-cust-blue"
@@ -121,7 +126,7 @@ export default function Navbar({ variant }) {
                 <Link
                     to="/berita"
                     className={`${isActive(["/berita"])
-                        ? "text-cust-blue font-semibold"
+                        ? "text-cust-blue font-semibold border-b-2 border-cust-blue"
                         : isActive(["/"])
                             ? "text-white hover:border-white"
                             : "text-cust-blue"
