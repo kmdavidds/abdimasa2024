@@ -35,6 +35,17 @@ const WisataDetail = () => {
     if (error) return <p>{error}</p>;
     if (!data) return <div>Data tidak ditemukan</div>;
 
+    const reviewSettings = {
+        infinite: true,
+        slidesToShow: 2.5,
+        slidesToScroll: 1,
+        speed: 500,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        rtl: true,
+    };
+
     const settings = {
         dots: true,
         infinite: true,
@@ -132,21 +143,54 @@ const WisataDetail = () => {
                     </div>
                 </div>
             </div>
-            <div id="ulasan" className='lg:px-32 px-10 bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
-                <div className="text-white">
-                    <h1 className="font-bold text-base lg:text-3xl">Ulasan</h1>
-                    <h2 className="text-sm lg:text-2xl">Terbaru : </h2>
-                    <div>
-                        <div id="ulasan card">
 
+            <div id="ulasan" className=' bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+                <div className="text-white">
+                    <h1 className="font-bold text-base lg:text-3xl lg:px-32 px-10">Ulasan</h1>
+                    <h2 className="text-sm lg:text-2xl mt-4 lg:mt-8 lg:px-32 px-10">Terbaru :</h2>
+
+                    <div className="lg:px-32 px-10">
+                        <div className="border mt-5 gap-3 lg:gap-6 flex flex-col lg:mt-9 bg-cust-softblue py-3 pl-4 lg:py-7 pr-9 lg:pl-8 lg:pr-16 rounded-xl lg:rounded-2xl">
+                            <div className="flex gap-3 items-center">
+                                <img id="profile" src="/images/Wisata/ProfileUlasan.webp" alt="image" className="w-9 h-9 lg:w-16 lg:h-16" />
+                                <ul className="flex flex-col">
+                                    <li id="name" className="font-bold lg:text-xl text-xs text-black">{data.reviews[0].name}</li>
+                                    <li id="date" className="text-[8px] lg:text-base text-cust-gray">{data.reviews[0].date}</li>
+                                </ul>
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <h1 id="title" className="font-bold text-cust-darkblue text-[10px] lg:text-xl">{data.reviews[0].title}</h1>
+                                <p id="description" className="text-cust-gray text-[10px] lg:text-xl">{data.reviews[0].description}</p>
+                            </div>
                         </div>
                     </div>
-                    <h2 className="text-sm lg:text-2xl">Lainnya : </h2>
-                    <div>
 
+                    <h2 className="text-sm lg:text-2xl mt-10 lg:px-32 px-10">Lainnya :</h2>
+                    <div className="mt-6 pb-14 lg:pb-32 lg:pl-32 pl-10">
+                        <Slider {...reviewSettings}>
+                            {data.reviews.slice(1, 6).map((review, index) => (
+                                <div className="">
+                                    <div key={index} className="border bg-cust-softblue lg:rounded-2xl rounded-xl flex flex-col p-3 lg:p-6 lg:h-64 h-32 ">
+                                        <div className="flex gap-3 items-center">
+                                            <img id="profile" src="/images/Wisata/ProfileUlasan.webp" alt="image" className="w-7 h-7 lg:w-14 lg:h-14" />
+                                            <ul className="flex flex-col gap-1">
+                                                <li id="name" className="font-bold lg:text-xl text-xs text-black ml-1">{review.name}</li>
+                                                <li className="flex justify-between">
+                                                    <p className="text-[8px] lg:text-base">⭐⭐⭐⭐⭐</p>
+                                                    <p id="date" className="text-[8px] lg:text-base text-cust-gray">{review.date}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <p id="description" className="text-cust-gray text-[10px] lg:text-xl mt-3 lg:mt-6">{review.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </Slider>
                     </div>
                 </div>
             </div>
+
             <div id="map" className="lg:px-32 px-10 bg-cust-softblue pt-10 lg:pt-29 pb-10 flex flex-col ">
                 <div className='flex justify-center lg:justify-start'>
                     <img src="/images/Wisata/MapTitle.webp" alt="image" className="lg:w-[413px] lg:h-[97px] w-[234px] h-[55px] " />
