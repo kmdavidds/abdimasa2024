@@ -114,6 +114,7 @@ const WisataUMKM = () => {
                                             .map((card, index) => (
                                                     <WisataUMKMCard
                                                         key={index}
+                                                        id={card.id}
                                                         type={activeTab}
                                                         image={card.images[0]}
                                                         title={card.name}

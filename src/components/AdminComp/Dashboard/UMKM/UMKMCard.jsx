@@ -15,12 +15,12 @@ const UMKMCard = ({ image, desc, name, priceRange, contact, handleDelete, id, ra
     const emptyStars = 5 - filledStars;
 
     return (
-        <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray flex rounded-xl border-2 border-cust-sofblue w-full">
-            <div className="w-1/5 my-6 mx-6">
+        <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray flex xl:flex-row flex-col xl:items-start items-center justify-center rounded-xl border-2 border-cust-sofblue w-full">
+            <div className="xl:w-1/5 w-[90%] my-6 mx-6">
                 <img
                     src={image}
                     alt=""
-                    className="rounded-2xl" />
+                    className="rounded-2xl xl:w-40 xl:h-40 w-full h-full" />
             </div>
             <div className="grid w-full pr-6">
                 <div className='text-[30px] font-bold mt-6'>

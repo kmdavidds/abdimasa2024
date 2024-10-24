@@ -2,14 +2,13 @@ import React from 'react';
 import { IoLogoWhatsapp } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
-const UMKMCard = ({ id, image, title, desc, priceRange, nomorWA }) => {
+const UMKMCard = ({ id, image, title, desc, priceRange, nomorWA, rating }) => {
     const navigate = useNavigate();
 
     const waClick = () => {
         const nomorHP = nomorWA;
         window.open(`https://wa.me/${nomorHP}`, '_blank', 'noopener,noreferrer');
     };
-
 
     const handleSelengkapnyaClick = () => {
         navigate(`/UMKM/${id}`);

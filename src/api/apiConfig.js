@@ -1,4 +1,4 @@
-const BASE_URL = 'https://abdimasa-backend.vercel.app:443/api/v1';
+const BASE_URL = 'https://abdimasa-backend.tripled.cloud:443/api/v1';
 
 const API_ENDPOINTS = {
   BASE_URL,

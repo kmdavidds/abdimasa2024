@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaXmark } from "react-icons/fa6";
 
-const SaranCard = ({ name, pengaduan, lampiran }) => {
+const SaranCard = ({ name, pengaduan, lampiran, children }) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const openPopup = () => setIsPopupOpen(true);
@@ -16,7 +16,7 @@ const SaranCard = ({ name, pengaduan, lampiran }) => {
                     {name}
                 </div>
             </div>
-            <div className='flex gap-3'>
+            <div className='flex xl:flex-row flex-col xl:gap-3'>
                 <div className='font-bold'>
                     Pengaduan :
                 </div>
@@ -45,6 +45,9 @@ const SaranCard = ({ name, pengaduan, lampiran }) => {
                     </div>
                 </div>
             )}
+            <div className='w-full flex justify-end mt-6'>
+                {children}
+            </div>
         </div>
     )
 }

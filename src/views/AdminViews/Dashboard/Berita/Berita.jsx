@@ -63,6 +63,7 @@ const BeritaAdmin = () => {
                         news.map(item => (
                             <BeritaCard key={item.id} berita={item}>
                                 <button onClick={() => handleDelete(item.id)} className="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
+                                {/* <button onClick={() => handleEdit(item.id)} className="bg-cust-blue text-white px-4 py-2 rounded">Edit</button> */}
                             </BeritaCard>
                         ))
                     ) : (

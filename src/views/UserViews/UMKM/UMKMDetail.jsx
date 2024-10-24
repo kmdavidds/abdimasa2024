@@ -30,9 +30,7 @@ const UMKMDetail = () => {
         getData();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
-    if (!data) return <div>Data tidak ditemukan</div>;
 
     const settings = {
         dots: true,
@@ -72,7 +70,15 @@ const UMKMDetail = () => {
 
     return (
         <section className="font-poppins">
-            <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+            <div>
+                {loading ? (
+                    <>
+                        <div className="min-h-screen pt-28 flex justify-center items-center bg-cust-softblue bg-[url('images/Landing/LandingSection/bgPattern.png')]">
+                            Loading...
+                        </div>
+                    </>) : (
+                    <>
+                       <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
                 <div className="relative">
                     <Slider ref={sliderRef} {...settings} className="rounded-xl">
                         <div>
@@ -145,6 +151,9 @@ const UMKMDetail = () => {
             <div id="maskot" className="lg:px-32 md:px-24 lg:pb-24 pb-14 px-10 bg-cust-softblue lg:pt-40 pt-20">
                 <img src="/images/UMKM/HeroDetailUmkm.webp" alt="Hero" className="hidden md:block" />
                 <img src="/images/UMKM/HeroDetailUmkmHP.webp" alt="Hero" className="md:hidden" />
+            </div>
+                    </>
+                )}
             </div>
         </section>
     )

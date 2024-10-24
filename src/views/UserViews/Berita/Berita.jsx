@@ -24,7 +24,6 @@ const berita = () => {
         getData();
     }, []);
 
-    if (error) return <div>Error: {error}</div>;
 
     return (
         <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-col flex items-center justify-center py-28">
@@ -32,31 +31,25 @@ const berita = () => {
                 <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728422598/Berita_Desa_znxkqy.png" alt="" className='lg:w-1/4 md:w-1/2 sm:w-1/3 w-1/3' />
             </div>
 
-
-            <div className="justify-center gap-10 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
-                {loading ? (
-                    <div className='w-full flex items-center justify-center'>Loading...</div>
-                ) : (
-                    <>
-                        {data.map((card) => (
-                            <BeritaCard
-                                key={card.id}
-                                id={card.id}
-                                image={card.imageURL}
-                                title={card.title}
-                                desc={card.description}
-                                date={new Date(card.createdAt).toLocaleDateString()}
-                            />
-                        ))}
-                    </>
-                )}
+            {loading ? (<div className='w-full flex items-center justify-center'>Loading...</div>) : (
+                <div className="justify-center w-[90%] gap-10 items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
+                    {data.map((card) => (
+                        <BeritaCard
+                            key={card.id}
+                            id={card.id}
+                            image={card.image1}
+                            title={card.title}
+                            desc={card.description}
+                            date={new Date(card.createdAt).toLocaleDateString()}
+                        />
+                    ))}
+                </div>
+            )}
 
 
-
-            </div>
-
-        </div>
+        </div >
     );
+    if (error) return <div>Error: {error}</div>;
 };
 
 export default berita;

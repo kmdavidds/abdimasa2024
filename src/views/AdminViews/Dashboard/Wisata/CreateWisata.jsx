@@ -340,14 +340,22 @@ const CreateWisata = () => {
                         />
                         {errors.image3 && <p className="text-red-500 mt-1">{errors.image3.message}</p>}
                     </div>
-
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className={`mt-5 w-full py-2 rounded-full text-white ${loading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} transition-all`}
-                    >
-                        {loading ? 'Loading...' : 'Tambah Wisata'}
-                    </button>
+                    <div className='w-full gap-5 flex justify-end'>
+                        <button
+                            type='button'
+                            className='bg-gray-300 text-black text-lg py-3 px-24 rounded-full mt-5'
+                            onClick={() => navigate(-1)}
+                        >
+                            Kembali
+                        </button>
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="py-3 px-24 text-white text-lg bg-blue-500 rounded-full hover:bg-blue-600 mt-5"
+                        >
+                            {loading ? 'Loading...' : 'Tambah Wisata'}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
