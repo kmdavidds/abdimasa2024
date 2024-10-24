@@ -151,7 +151,7 @@ const WisataDetail = () => {
                     </>
                 )}
             </div >
-        </section >
-    )
-}
+        </section>
+    );
+};
 export default WisataDetail;
