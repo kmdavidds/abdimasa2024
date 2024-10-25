@@ -187,7 +187,7 @@ const WisataDetailPopuler = () => {
 
                     <h2 className="text-sm lg:text-2xl mt-10 lg:px-32 px-10">Lainnya :</h2>
                     <div className="mt-6 pb-14 lg:pb-32 lg:pl-32 pl-10">
-                        <Slider {...reviewSettings}>
+                        {/* <Slider {...reviewSettings}>
                             {data.reviews.slice(1, 6).map((review, index) => (
                                 <div className="">
                                     <div key={index} className="border bg-cust-softblue lg:rounded-2xl rounded-xl flex flex-col p-3 lg:p-6 lg:h-64 h-32 ">
@@ -206,7 +206,7 @@ const WisataDetailPopuler = () => {
                                     </div>
                                 </div>
                             ))}
-                        </Slider>
+                        </Slider> */}
                     </div>
                 </div>
             </div>
