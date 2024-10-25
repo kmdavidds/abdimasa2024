@@ -7,7 +7,7 @@ import titleSambutan from "../../../../../public/images/Profile/SambutanSection/
 const Sambutan = () => {
     return (
         <section id='sambutan' className='font-poppins'>
-            <div className="bg-cust-blue bg-[url('images/Profile/SambutanSection/bgPattern.png')] w-full lg:px-32 px-10 pb-44">
+            <div className="bg-cust-blue bg-[url('images/Profile/SambutanSection/bgPattern.webp')] w-full lg:px-32 px-10 pb-44">
                 <div className='flex lg:flex-row flex-col justify-between lg:gap-20 lg:items-end items-center'>
                     <img src={titleSambutan} alt="title" className='w-[243px] lg:hidden' />
                     <div className='flex pt-10'>
