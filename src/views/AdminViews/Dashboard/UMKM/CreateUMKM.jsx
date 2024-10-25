@@ -293,7 +293,7 @@ const CreateUMKM = () => {
                     <div className='flex w-full justify-end gap-5'>
                         <button
                             type='button'
-                            className='bg-gray-300 text-black text-lg py-3 px-14 rounded-full mt-5'
+                            className='bg-gray-300 text-black text-lg xl:px-20 px-8 xl:py-3 py-2 rounded-xl mt-5'
                             onClick={() => navigate(-1)}
                         >
                             Kembali
@@ -301,7 +301,7 @@ const CreateUMKM = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className={`mt-5 px-10 py-2 rounded-full text-white ${loading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} transition-all`}
+                            className={`mt-5 xl:px-20 px-4 xl:py-3 py-2 rounded-xl text-white ${loading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'} transition-all`}
                         >
                             {loading ? 'Loading...' : 'Tambah UMKM'}
                         </button>

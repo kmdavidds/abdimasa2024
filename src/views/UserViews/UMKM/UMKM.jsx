@@ -26,7 +26,7 @@ const Umkm = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-col items-center font-poppins justify-center lg:py-18 py-28 md:py-28">
+    <div className="bg-cust-softblue bg-cover bg-[url('/images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex-col items-center font-poppins justify-center lg:py-18 py-28 md:py-28">
       <div className="flex justify-center items-center w-full">
         <img
           src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728373204/judul_umkm_uxrqpj.png"
