@@ -31,7 +31,7 @@ const Umkm = () => {
         <img
           src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728373204/judul_umkm_uxrqpj.png"
           alt=""
-          className="lg:w-1/4 md:w-1/2 sm:w-3/4 w-full px-4"
+          className="lg:w-[473px] lg:h-[97px] w-[234px] h-[48px]"
         />
       </div>
 
