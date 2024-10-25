@@ -62,7 +62,7 @@ const WisataUMKM = () => {
     }, []);
 
     return (
-        <div className="bg-cust-blue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] w-full flex items-center font-poppins justify-center py-16 md:py-28">
+        <div className="bg-cust-blue bg-cover bg-[url('images/Profile/SambutanSection/bgPattern.webp')] w-full flex items-center font-poppins justify-center py-16 md:py-28">
             <div className='container flex flex-col items-center w-full min-h-full space-y-9 md:space-y-20 relative max-w-[85%]'>
                 <div className='w-full flex justify-end'>
                     {/* Tabs */}
