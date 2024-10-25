@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaAnglesDown } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import bgPattern from '../../../../../public/images/Landing/LandingSection/bgPattern.png'
 
 const Landing = () => {
 
@@ -20,7 +19,7 @@ const Landing = () => {
     };
 
     return (
-        <div className={`bg-cust-blue bg-cover font-poppins bg-${bgPattern} xl:min-h-screen w-full overflow-hidden flex flex-col items-center pt-28 pb-56 sm:pb-0 relative h-full`}>
+        <div className='bg-cust-blue bg-cover font-poppins bg-[url("/images/Profile/SambutanSection/bgPattern.webp")] xl:min-h-screen w-full overflow-hidden flex flex-col items-center pt-28 pb-56 sm:pb-0 relative h-full'>
             <div className='container flex sm:flex-row flex-col items-center justify-center text-white max-w-[80%]'>
                 <div className='sm:w-1/2 w-full flex flex-col gap-5 lg:gap-10 relative mb-5 sm:items-start items-center'>
                     <h1 className='text-[1.875rem] sm:text-[2rem] md:text-[3rem] lg:text-7xl font-bold text-center sm:text-start duration-500'>Desa Toyomarto</h1>
