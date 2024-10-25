@@ -26,7 +26,7 @@ const Lainnya = () => {
 
 
     return (
-        <section className="bg-cust-blue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')] font-poppins py-24">
+        <section className="bg-cust-blue bg-cover bg-[url('/images/Landing/WisataUMKMSection/bgPattern.png')] font-poppins py-24">
             <div>
                 <div className='flex justify-center lg:mb-16 mb-9 md:lg-12'>
                     <img src="https://res.cloudinary.com/ddlo3v9hx/image/upload/v1728371038/wisata_lain_oayyb0.png" alt="" className='lg:w-[473px] lg:h-[97px] w-[234px] h-[48px]' />

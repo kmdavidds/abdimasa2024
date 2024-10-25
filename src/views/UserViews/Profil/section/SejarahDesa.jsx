@@ -3,7 +3,7 @@ import React from 'react'
 const SejarahDesa = () => {
     return (
         <section className='font-poppins'>
-            <div className="bg-cust-blue pt-10 bg-[url('images/Profile/SambutanSection/bgPattern.webp')] w-full lg:px-32 px-10 pb-36">
+            <div className="bg-cust-blue pt-10 bg-[url('/images/Profile/SambutanSection/bgPattern.webp')] w-full lg:px-32 px-10 pb-36">
                 <div className='flex lg:justify-between justify-center items-end mb-16'>
                     <img src="/images/Profile/SejarahSection/sejarahTitle.webp" alt="title" className='lg:w-[430px] lg:h-[97px] w-[243px] h-[55px]' />
                     <img src="/images/Landing/KalenderSection/icon.svg" alt="icon" className='lg:flex hidden'/>
