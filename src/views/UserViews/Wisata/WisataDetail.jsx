@@ -26,7 +26,7 @@ const WisataDetail = () => {
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: 1,
+            items: 1.3,
         },
     };
 
@@ -186,9 +186,12 @@ const WisataDetail = () => {
                                         rtl={false}
                                         partialVisible={true}
                                         itemClass="px-2"
+                                        arrows={false}
+                                        autoPlay={true}
+                                        autoPlaySpeed={2000}
                                     >
                                         {data.reviews.slice(1, 6).map((review, index) => (
-                                            <div key={index} className="border bg-cust-softblue lg:rounded-2xl rounded-xl flex flex-col p-3 lg:p-6 lg:h-64 h-32 ">
+                                            <div key={index} className="border bg-cust-softblue lg:rounded-2xl rounded-xl flex flex-col w-60 lg:w-full md:w-full p-3 lg:p-6 lg:h-64 h-36 ">
                                                 <div className="flex gap-3 items-center">
                                                     <img id="profile" src="/images/Wisata/ProfileUlasan.webp" alt="image" className="w-7 h-7 lg:w-14 lg:h-14" />
                                                     <ul className="flex flex-col gap-1">
