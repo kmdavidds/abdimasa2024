@@ -29,6 +29,7 @@ import WisataAdmin from './views/AdminViews/Dashboard/Wisata/Wisata.jsx';
 import CreateWisata from './views/AdminViews/Dashboard/Wisata/CreateWisata.jsx';
 import PendudukAdmin from './views/AdminViews/Dashboard/Penduduk.jsx';
 import WisataDetail from './views/UserViews/Wisata/WisataDetail.jsx';
+import WisataDetailPopuler from './views/UserViews/Wisata/WisataDetailPopuler.jsx';
 
 const App = createBrowserRouter([
   {
@@ -79,6 +80,16 @@ const App = createBrowserRouter([
       </PageLayout>
     ),
   },
+
+  {
+    path: "/wisata-populer/:id", 
+    element: (
+      <PageLayout>
+        <WisataDetailPopuler />
+      </PageLayout>
+    ),
+  },
+
   {
     path: "/UMKM",
     element: (

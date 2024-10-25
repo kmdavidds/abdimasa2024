@@ -36,6 +36,7 @@ const Lainnya = () => {
                         data.map((place) => (
                             <WisataLainnya
                                 key={place.id}
+                                id={place.id}
                                 rating={place.rating}
                                 image={place.images[0]}
                                 title={place.name}

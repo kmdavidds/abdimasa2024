@@ -1,37 +1,51 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
-import Slider from "react-slick";
-import { wisataDetail } from "../../../api/userApi/Wisata";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import wisataData from '../../../constants/dataDummy';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-const WisataDetail = () => {
+const WisataDetailPopuler = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true); 
     const [currentSlide, setCurrentSlide] = useState(0);
     const sliderRef = useRef(null);
 
     useEffect(() => {
-        const getData = async () => {
-            console.log("ID yang dikirim ke API:", id);
-            try {
-                const response = await wisataDetail(id);
-                console.log("Response dari API:", response);
-                setData(response.place || response);
-                setLoading(false);
-            } catch (err) {
-                setError(err.message);
-                console.log(err);
-                setLoading(false);
-            }
-        };
-
-        getData();
+        const selectedData = wisataData.find((item) => item.id === parseInt(id));
+        if (selectedData) {
+            setData(selectedData);
+            setLoading(false); 
+        } else {
+            setError('Data tidak ditemukan');
+            setLoading(false); 
+        }
     }, [id]);
 
-    if (error) return <p>{error}</p>;
+    if (loading) {
+        return (
+            <div className="min-h-screen pt-28 flex justify-center items-center bg-cust-softblue">
+                Loading...
+            </div>
+        );
+    }
+
+    if (error) {
+        return <p className="text-center text-red-500 mt-20">{error}</p>;
+    }
+
+    const reviewSettings = {
+        infinite: true,
+        slidesToShow: 2.5,
+        slidesToScroll: 1,
+        speed: 500,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        rtl: true,
+    };
 
     const settings = {
         dots: true,
@@ -71,33 +85,38 @@ const WisataDetail = () => {
 
     return (
         <section className="font-poppins">
-            <div>
-                {loading ? (
-                    <>
-                        <div className="min-h-screen pt-28 flex justify-center items-center bg-cust-softblue bg-[url('images/Landing/LandingSection/bgPattern.png')]">
-                            Loading...
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+            <div id="description" className="lg:px-32 px-10 bg-cust-softblue pt-28">
                 <div className="relative">
                     <Slider ref={sliderRef} {...settings} className="rounded-xl">
                         <div>
-                            <img src={data.imageURL1} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
+                            <img
+                                src={data.imageURL1}
+                                alt={data.title}
+                                className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl"
+                            />
                         </div>
                         <div>
-                            <img src={data.imageURL2} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
+                            <img
+                                src={data.imageURL2}
+                                alt={data.title}
+                                className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl"
+                            />
                         </div>
                         <div>
-                            <img src={data.imageURL3} alt={data.name} className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl" />
+                            <img
+                                src={data.imageURL3}
+                                alt={data.title}
+                                className="w-full h-44 md:h-60 lg:h-80 object-cover rounded-xl"
+                            />
                         </div>
                     </Slider>
-                    <div id="title" className="absolute bottom-4 lg:bottom-9 left-4 lg:left-10 text-white">
-                        <h1 className="lg:text-4xl text-base font-bold">{data.name}</h1>
+                    <div
+                        id="title"
+                        className="absolute bottom-4 lg:bottom-9 left-4 lg:left-10 text-white"
+                    >
+                        <h1 className="lg:text-4xl text-base font-bold">{data.title}</h1>
                         <p className="lg:text-xl text-xs font-light">{data.location}</p>
                     </div>
-
                     <div className="absolute bottom-4 lg:bottom-9 right-4 z-10 flex gap-2">
                         <button
                             className="bg-[#ECF5FF] bg-opacity-40 rounded-full text-white px-2 lg:px-4 lg:py-2 text-lg lg:text-3xl"
@@ -117,7 +136,9 @@ const WisataDetail = () => {
                 <div className="flex flex-col gap-8 pb-10 lg:pt-20 pt-7">
                     <div className="gap-4 flex flex-col">
                         <h1 className="font-bold lg:text-2xl text-sm">Deskripsi</h1>
-                        <p className="text-justify text-cust-gray text-xs lg:text-xl">{data.description}</p>
+                        <p className="text-justify text-cust-gray text-xs lg:text-xl">
+                            {data.description}
+                        </p>
                     </div>
                     <div className="gap-4 flex flex-col">
                         <h1 className="font-bold lg:text-2xl text-sm">Alamat</h1>
@@ -126,11 +147,15 @@ const WisataDetail = () => {
                     <div className="flex gap-36">
                         <div className="gap-4 flex flex-col">
                             <h1 className="font-bold lg:text-2xl text-sm">Jam Buka</h1>
-                            <p className="text-cust-gray text-xs lg:text-xl">{data.openingHours}</p>
+                            <p className="text-cust-gray text-xs lg:text-xl">
+                                {data.openingHours}
+                            </p>
                         </div>
                         <div className="gap-4 flex flex-col">
                             <h1 className="font-bold lg:text-2xl text-sm">Jam Tutup</h1>
-                            <p className="text-cust-gray text-xs lg:text-xl">{data.closingHours}</p>
+                            <p className="text-cust-gray text-xs lg:text-xl">
+                                {data.closingHours}
+                            </p>
                         </div>
                     </div>
                     <div className="gap-4 flex flex-col">
@@ -139,7 +164,6 @@ const WisataDetail = () => {
                     </div>
                 </div>
             </div>
-
             <div id="ulasan" className=' bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
                 <div className="text-white">
                     <h1 className="font-bold text-base lg:text-3xl lg:px-32 px-10">Ulasan</h1>
@@ -163,7 +187,7 @@ const WisataDetail = () => {
 
                     <h2 className="text-sm lg:text-2xl mt-10 lg:px-32 px-10">Lainnya :</h2>
                     <div className="mt-6 pb-14 lg:pb-32 lg:pl-32 pl-10">
-                        {/* <div>
+                        {/* <Slider {...reviewSettings}>
                             {data.reviews.slice(1, 6).map((review, index) => (
                                 <div className="">
                                     <div key={index} className="border bg-cust-softblue lg:rounded-2xl rounded-xl flex flex-col p-3 lg:p-6 lg:h-64 h-32 ">
@@ -182,7 +206,7 @@ const WisataDetail = () => {
                                     </div>
                                 </div>
                             ))}
-                        </div> */}
+                        </Slider> */}
                     </div>
                 </div>
             </div>
@@ -197,10 +221,8 @@ const WisataDetail = () => {
                     <img src="/images/Wisata/MapHeroHP.webp" alt="image" className="lg:hidden w-72 pt-16" />
                 </div>
             </div>
-                    </>
-                )}
-            </div >
         </section>
     );
 };
-export default WisataDetail;
+
+export default WisataDetailPopuler;
