@@ -69,7 +69,7 @@ const WisataAdmin = () => {
                         <p className="text-2xl">Loading data wisata...</p>
                     </div>
                 ) : (
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-[95%]'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full xl:w-[95%] items-center justify-center'>
                         {places.length > 0 ? (
                             places.map(place => (
                                 <WisataCard
@@ -78,7 +78,7 @@ const WisataAdmin = () => {
                                     title={place.name}
                                     location={place.location}
                                 >
-                                    <button onClick={() => handleDelete(place.id)} className="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
+                                    <button onClick={() => handleDelete(place.id)} className="bg-red-500 text-white px-4 py-2 text-sm xl:text-base rounded">Hapus</button>
                                 </WisataCard>
                             ))
                         ) : (

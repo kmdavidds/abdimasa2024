@@ -69,7 +69,7 @@ const UMKMAdmin = () => {
                         <p className="text-2xl">Loading data UMKM...</p>
                     </div>
                 ) : (
-                    <div className='items-center w-full flex flex-wrap justify-center mt-14 mx-auto gap-6'>
+                    <div className='items-center xl:w-full w-[80%] flex flex-wrap justify-center mt-14 mx-auto gap-6'>
                         {umkms.length > 0 ? (
                             umkms.map((umkm, index) => (
                                 <UMKMCard

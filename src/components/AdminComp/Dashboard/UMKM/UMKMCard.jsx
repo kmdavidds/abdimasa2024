@@ -15,25 +15,25 @@ const UMKMCard = ({ image, desc, name, priceRange, contact, handleDelete, id, ra
     const emptyStars = 5 - filledStars;
 
     return (
-        <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray flex xl:flex-row flex-col xl:items-start items-center justify-center rounded-xl border-2 border-cust-sofblue w-full">
+        <div className="bg-gradient-to-b from-cust-blue via-cust-softblue to-gray flex xl:flex-row flex-col xl:items-start items-center justify-center rounded-xl border-2 border-cust-sofblue w-full p-3">
             <div className="xl:w-1/5 w-[90%] my-6 mx-6">
                 <img
                     src={image}
                     alt=""
-                    className="rounded-2xl xl:w-40 xl:h-40 w-full h-full" />
+                    className="rounded-2xl xl:w-40 xl:h-40 w-full h-40" />
             </div>
             <div className="grid w-full pr-6">
-                <div className='text-[30px] font-bold mt-6'>
+                <div className='xl:text-[30px] text-lg font-bold mt-6'>
                     {name}
                 </div>
-                <div className='text-[20px] text-cust-gray text-justify mt-2'>
+                <div className='xl:text-[20px] text-sm text-cust-gray text-justify mt-2 line-clamp-3'>
                     {desc}
                 </div>
-                <div className='text-[20px] font-bold text-cust-blue text-justify mt-2'>
+                <div className='xl:text-[20px] text-sm font-bold text-cust-blue text-justify mt-2'>
                     {priceRange}
                 </div>
-                <div className="flex items-center mt-4">
-                    <div className="flex text-yellow-400 text-[26px]">
+                <div className="flex xl:flex-row flex-col xl:items-center mt-4">
+                    <div className="flex text-yellow-400 xl:text-[26px] text-lg">
                         {Array(filledStars).fill(0).map((_, index) => (
                             <span key={index}>⭐</span>
                         ))}
@@ -47,7 +47,7 @@ const UMKMCard = ({ image, desc, name, priceRange, contact, handleDelete, id, ra
                             className="text-green-500 rounded-full text-3xl">
                             <IoLogoWhatsapp />
                         </a>
-                        <button onClick={() => handleDelete(id)} className="bg-red-500 text-white rounded-xl text-xl px-4 py-2 ">
+                        <button onClick={() => handleDelete(id)} className="bg-red-500 text-white rounded-xl xl:text-xl text-base px-4 py-2 ">
                             Hapus
                         </button>
                     </div>
