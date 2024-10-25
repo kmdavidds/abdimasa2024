@@ -112,17 +112,17 @@ const CreateBerita = () => {
                     />
                     {errors.image1 && <p className="text-red-500 mt-1">{errors.image1.message}</p>}
                 </div>
-                <div className=' w-full justify-end flex gap-4'>
+                <div className=' w-full justify-end flex xl:gap-4 gap-2'>
                     <button
                         type='button'
-                        className='bg-gray-300 text-black rounded-xl px-20 py-3'
+                        className='bg-gray-300 text-black rounded-xl xl:px-20 px-8 xl:py-3 py-2'
                         onClick={() => navigate(-1)}
                     >
                         Kembali
                     </button>
                     <button
                         type='submit'
-                        className='bg-blue-500 text-white rounded-xl px-20 py-3'
+                        className='bg-blue-500 text-white rounded-xl xl:px-20 px-8 xl:py-3 py-2'
                         disabled={loading}
                     >
                         {loading ? 'Menambahkan...' : 'Tambah Berita'}

@@ -5,7 +5,7 @@ import wisataData from '../../../../constants/dataDummy'
 
 const Populer = () => {
     return (
-        <section className="font-poppins bg-cust-softblue bg-cover bg-[url('images/Landing/WisataUMKMSection/bgPattern.png')]">
+        <section className="font-poppins bg-cust-softblue bg-cover bg-[url('/images/Landing/WisataUMKMSection/bgPattern.png')]">
             <div className='flex flex-col lg:pt-48 pt-32 md:pb-36 pb-9 px-5 lg:px-0'>
                 <div className='flex justify-center lg:mb-16 mb-9 md:lg-12'>
                     <img 

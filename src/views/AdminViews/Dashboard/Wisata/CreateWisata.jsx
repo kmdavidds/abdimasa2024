@@ -343,7 +343,7 @@ const CreateWisata = () => {
                     <div className='w-full gap-5 flex justify-end'>
                         <button
                             type='button'
-                            className='bg-gray-300 text-black text-lg py-3 px-24 rounded-full mt-5'
+                            className='bg-gray-300 text-black text-lg xl:px-20 px-8 xl:py-3 py-2 rounded-xl mt-5'
                             onClick={() => navigate(-1)}
                         >
                             Kembali
@@ -351,7 +351,7 @@ const CreateWisata = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="py-3 px-24 text-white text-lg bg-blue-500 rounded-full hover:bg-blue-600 mt-5"
+                            className="xl:px-20 px-4 xl:py-3 py-2 text-white text-lg bg-blue-500 rounded-xl hover:bg-blue-600 mt-5"
                         >
                             {loading ? 'Loading...' : 'Tambah Wisata'}
                         </button>

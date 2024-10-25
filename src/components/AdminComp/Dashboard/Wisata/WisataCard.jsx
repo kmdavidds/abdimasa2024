@@ -1,6 +1,6 @@
 const WisataCard = ({ image, title, location, children }) => {
     return (
-        <div className="bg-white relative font-poppins rounded-lg overflow-hidden w-full md:w-full md:max-w-[360px] max-w-[150px] max-h-[175px] md:max-h-[416px]">
+        <div className="bg-white relative font-poppins rounded-lg overflow-hidden w-full md:w-full md:max-w-[360px] h-full max-h-[200px] md:max-h-[416px]">
             <img
                 src={image}
                 alt={title}

@@ -94,13 +94,13 @@ const WisataDetailPopuler = () => {
             <div>
                 {loading ? (
                     <>
-                        <div className="min-h-screen pt-28 flex justify-center items-center bg-cust-softblue bg-[url('images/Landing/LandingSection/bgPattern.png')]">
+                        <div className="min-h-screen pt-28 flex justify-center items-center bg-cust-softblue bg-[url('/images/Landing/LandingSection/bgPattern.png')]">
                             Loading...
                         </div>
                     </>
                 ) : (
                     <>
-                        <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+                        <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("/images/Landing/LandingSection/bgPattern.png")]'>
                 <div className="relative">
                     <Slider ref={sliderRef} {...settings} className="rounded-xl">
                         <div>
@@ -163,7 +163,7 @@ const WisataDetailPopuler = () => {
             {data.reviews.length > 0 && (
     <div
         id="ulasan"
-        className='bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'
+        className='bg-cust-blue pt-16 bg-[url("/images/Landing/LandingSection/bgPattern.png")]'
     >
         <div className="text-white">
             <h1 className="font-bold text-base lg:text-3xl lg:px-32 px-10">Ulasan</h1>
