@@ -4,23 +4,40 @@ import wisataData from '../../../constants/dataDummy';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const WisataDetailPopuler = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true);
     const [currentSlide, setCurrentSlide] = useState(0);
     const sliderRef = useRef(null);
+
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 2.5,
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1.3,
+        },
+    };
 
     useEffect(() => {
         const selectedData = wisataData.find((item) => item.id === parseInt(id));
         if (selectedData) {
             setData(selectedData);
-            setLoading(false); 
+            setLoading(false);
         } else {
             setError('Data tidak ditemukan');
-            setLoading(false); 
+            setLoading(false);
         }
     }, [id]);
 
@@ -35,17 +52,6 @@ const WisataDetailPopuler = () => {
     if (error) {
         return <p className="text-center text-red-500 mt-20">{error}</p>;
     }
-
-    const reviewSettings = {
-        infinite: true,
-        slidesToShow: 2.5,
-        slidesToScroll: 1,
-        speed: 500,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        rtl: true,
-    };
 
     const settings = {
         dots: true,
@@ -164,13 +170,13 @@ const WisataDetailPopuler = () => {
                     </div>
                 </div>
             </div>
-            <div id="ulasan" className=' bg-cust-blue pt-16 bg-[url("images/Landing/LandingSection/bgPattern.png")]'>
+            <div id="ulasan" className="bg-cust-blue pt-16 bg-[url('images/Landing/LandingSection/bgPattern.png')]">
                 <div className="text-white">
                     <h1 className="font-bold text-base lg:text-3xl lg:px-32 px-10">Ulasan</h1>
                     <h2 className="text-sm lg:text-2xl mt-4 lg:mt-8 lg:px-32 px-10">Terbaru :</h2>
 
-                    <div className="lg:px-32 px-10">
-                        <div className="border mt-5 gap-3 lg:gap-6 flex flex-col lg:mt-9 bg-cust-softblue py-3 pl-4 lg:py-7 pr-9 lg:pl-8 lg:pr-16 rounded-xl lg:rounded-2xl">
+                    <div className="lg:px-32 px-10 flex">
+                        <div id='review' className="border mt-5 gap-3 lg:gap-6 flex flex-col lg:mt-9 bg-cust-softblue py-3 pl-4 lg:py-7 pr-9 lg:pl-8 lg:pr-16 rounded-xl lg:rounded-2xl">
                             <div className="flex gap-3 items-center">
                                 <img id="profile" src="/images/Wisata/ProfileUlasan.webp" alt="image" className="w-9 h-9 lg:w-16 lg:h-16" />
                                 <ul className="flex flex-col">
@@ -183,30 +189,41 @@ const WisataDetailPopuler = () => {
                                 <p id="description" className="text-cust-gray text-[10px] lg:text-xl">{data.reviews[0].description}</p>
                             </div>
                         </div>
+
+                        <div id='rating' className='hidden lg:block'>
+                            {data.rating / 10}
+                        </div>
                     </div>
 
                     <h2 className="text-sm lg:text-2xl mt-10 lg:px-32 px-10">Lainnya :</h2>
                     <div className="mt-6 pb-14 lg:pb-32 lg:pl-32 pl-10">
-                        {/* <Slider {...reviewSettings}>
+                        <Carousel
+                            responsive={responsive}
+                            infinite={true}
+                            rtl={false}
+                            partialVisible={true}
+                            itemClass="px-2"
+                            arrows={false}
+                            autoPlay={true}
+                            autoPlaySpeed={2000}
+                        >
                             {data.reviews.slice(1, 6).map((review, index) => (
-                                <div className="">
-                                    <div key={index} className="border bg-cust-softblue lg:rounded-2xl rounded-xl flex flex-col p-3 lg:p-6 lg:h-64 h-32 ">
-                                        <div className="flex gap-3 items-center">
-                                            <img id="profile" src="/images/Wisata/ProfileUlasan.webp" alt="image" className="w-7 h-7 lg:w-14 lg:h-14" />
-                                            <ul className="flex flex-col gap-1">
-                                                <li id="name" className="font-bold lg:text-xl text-xs text-black ml-1">{review.name}</li>
-                                                <li className="flex justify-between">
-                                                    <p className="text-[8px] lg:text-base">⭐⭐⭐⭐⭐</p>
-                                                    <p id="date" className="text-[8px] lg:text-base text-cust-gray">{review.date}</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <p id="description" className="text-cust-gray text-[10px] lg:text-xl mt-3 lg:mt-6">{review.description}</p>
+                                <div key={index} className="border bg-cust-softblue lg:rounded-2xl rounded-xl flex flex-col w-64 lg:w-full md:w-full p-3 lg:p-6 lg:h-64 h-36 ">
+                                    <div className="flex gap-3 items-center">
+                                        <img id="profile" src="/images/Wisata/ProfileUlasan.webp" alt="image" className="w-7 h-7 lg:w-14 lg:h-14" />
+                                        <ul className="flex flex-col gap-1">
+                                            <li id="name" className="font-bold lg:text-xl text-xs text-black ml-1">{review.name}</li>
+                                            <li className="flex justify-between">
+                                                <p className="text-[8px] lg:text-base">⭐⭐⭐⭐⭐</p>
+                                                <p id="date" className="text-[8px] lg:text-base text-cust-gray">{review.date}</p>
+                                            </li>
+                                        </ul>
                                     </div>
+
+                                    <p id="description" className="text-cust-gray text-[10px] lg:text-xl mt-3 lg:mt-6">{review.description}</p>
                                 </div>
                             ))}
-                        </Slider> */}
+                        </Carousel>
                     </div>
                 </div>
             </div>
