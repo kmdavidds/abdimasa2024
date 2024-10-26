@@ -1,4 +1,5 @@
-// src/data/dataDummy.js
+import axios from 'axios';
+
 const wisataData = [
     {
         id: 1,

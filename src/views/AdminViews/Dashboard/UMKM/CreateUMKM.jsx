@@ -269,7 +269,7 @@ const CreateUMKM = () => {
                     </div>
 
                     <div>
-                        <label className="block font-medium">URL Gambar Produk 2 <span className="text-red-500">*</span></label>
+                        <label className="block font-medium">Upload Gambar Produk 2 <span className="text-red-500">*</span></label>
                         <input
                             type="file"
                             accept="image/*"
@@ -280,7 +280,7 @@ const CreateUMKM = () => {
                     </div>
 
                     <div>
-                        <label className="block font-medium">URL Gambar Produk 3 <span className="text-red-500">*</span></label>
+                        <label className="block font-medium">Upload Gambar Produk 3 <span className="text-red-500">*</span></label>
                         <input
                             type="file"
                             accept="image/*"
