@@ -66,7 +66,7 @@ export default function Navbar({ variant }) {
                         : isActive(["/profil", "/wisata", "/wisata/:id", "/berita", "/UMKM", "/UMKM/:id"])
                             ? "text-cust-blue"
                             : "text-white"
-                        } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
+                        } ${isScrolled ? "text-white border-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         setClick(false);
@@ -82,7 +82,7 @@ export default function Navbar({ variant }) {
                         : isActive(["/"])
                             ? "text-white hover:border-white"
                             : "text-cust-blue"
-                        } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
+                        } ${isScrolled ? "text-white border-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         setClick(false);
@@ -98,7 +98,7 @@ export default function Navbar({ variant }) {
                         : isActive(["/"])
                             ? "text-white hover:border-white"
                             : "text-cust-blue"
-                        } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
+                        } ${isScrolled ? "text-white border-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         setClick(false);
@@ -114,7 +114,7 @@ export default function Navbar({ variant }) {
                         : isActive(["/"])
                             ? "text-white hover:border-white"
                             : "text-cust-blue"
-                        } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
+                        } ${isScrolled ? "text-white border-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         setClick(false);
@@ -130,7 +130,7 @@ export default function Navbar({ variant }) {
                         : isActive(["/"])
                             ? "text-white hover:border-white"
                             : "text-cust-blue"
-                        } ${isScrolled ? "text-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
+                        } ${isScrolled ? "text-white border-white hover:border-white" : ""} hover:border-b-2 hover:border-cust-blue`}
                     onClick={() => {
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         setClick(false);

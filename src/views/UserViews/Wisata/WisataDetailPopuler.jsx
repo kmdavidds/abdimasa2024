@@ -112,7 +112,7 @@ const WisataDetailPopuler = () => {
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                                 </svg>
-                                kembali
+                                Kembali
                             </div>
                             <div className="relative">
                                 <Slider ref={sliderRef} {...settings} className="rounded-xl">
