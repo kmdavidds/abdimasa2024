@@ -34,7 +34,7 @@ const FormLogin = () => {
     return (
         <div className="w-full flex items-center justify-center max-h-screen">
             <div className="container max-w-lg p-8 rounded-lg">
-                <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
+                <form onSubmit={handleSubmit(onSubmit)} className='lg:space-y-8 space-y-4'>
                     {/* Input Email */} 
                     <div className="mb-4">
                         <label htmlFor='id' className="block text-gray-700 font-bold mb-2">Username</label>
@@ -42,7 +42,7 @@ const FormLogin = () => {
                             type="text"
                             {...register('id')}
                             placeholder="Masukkan username"
-                            className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-2 border text-xs lg:text-base rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.id && (
                             <p className="text-red-500 text-sm mt-1">{errors.id.message}</p>
@@ -56,7 +56,7 @@ const FormLogin = () => {
                             type="password"
                             {...register('password')}
                             placeholder="Masukkan Password"
-                            className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-2 border text-xs lg:text-base rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.password && (
                             <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
@@ -68,7 +68,7 @@ const FormLogin = () => {
                         <button
                             type="button"
                             onClick={handleForgotPassword}
-                            className="text-blue-500 hover:underline"
+                            className="text-blue-500 hover:underline text-xs lg:text-base"
                         >
                             Lupa kata sandi?
                         </button>
@@ -78,7 +78,7 @@ const FormLogin = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full"
+                        className="w-full bg-blue-500 hover:bg-blue-600 text-xs lg:text-base text-white font-bold py-2 px-4 rounded-full"
                     >
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
