@@ -18,19 +18,19 @@ const schema = z.object({
     rating: z.number()
         .min(1, { message: 'Rating minimal 1' })
         .max(5, { message: 'Rating maksimal 5' }),
-    imageURL1: z.any().refine(file => file instanceof File, {
+    image1: z.any().refine(file => file instanceof File, {
         message: "Gambar 1 harus diunggah"
     }),
-    imageURL2: z.any().refine(file => file instanceof File, {
+    image2: z.any().refine(file => file instanceof File, {
         message: "Gambar 2 harus diunggah"
     }),
-    imageURL3: z.any().refine(file => file instanceof File, {
+    image3: z.any().refine(file => file instanceof File, {
         message: "Gambar 3 harus diunggah"
     }),
 });
 
 const CreateUMKM = () => {
-    const [fileNames, setFileNames] = useState({ imageURL1: '', imageURL2: '', imageURL3: '' });
+    const [fileNames, setFileNames] = useState({ image1: '', image2: '', image3: '' });
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -51,9 +51,9 @@ const CreateUMKM = () => {
             contact: '',
             mapURL: '',
             rating: 0,
-            imageURL1: null,
-            imageURL2: null,
-            imageURL3: null,
+            image1: null,
+            image2: null,
+            image3: null,
         },
     });
 
@@ -85,15 +85,15 @@ const CreateUMKM = () => {
             formData.append('rating', data.rating || 0);
 
             // Append image files
-            formData.append('imageURL1', data.imageURL1);
-            formData.append('imageURL2', data.imageURL2);
-            formData.append('imageURL3', data.imageURL3);
+            formData.append('image1', data.image1);
+            formData.append('image2', data.image2);
+            formData.append('image3', data.image3);
 
             const response = await createUMKM(formData);
 
             Swal.fire('Success!', 'Data UMKM berhasil ditambahkan.', 'success');
             reset();
-            setFileNames({ imageURL1: '', imageURL2: '', imageURL3: '' });
+            setFileNames({ image1: '', image2: '', image3: '' });
             navigate('/admin/umkm');
         } catch (error) {
             console.error("Error details:", {
@@ -262,10 +262,10 @@ const CreateUMKM = () => {
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={(e) => handleFileChange(e, 'imageURL1')}
+                            onChange={(e) => handleFileChange(e, 'image1')}
                             className="mt-2 px-4 py-2 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                         />
-                        {errors.imageURL1 && <p className="text-red-500 mt-1">{errors.imageURL1.message}</p>}
+                        {errors.image1 && <p className="text-red-500 mt-1">{errors.image1.message}</p>}
                     </div>
 
                     <div>
@@ -273,10 +273,10 @@ const CreateUMKM = () => {
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={(e) => handleFileChange(e, 'imageURL2')}
+                            onChange={(e) => handleFileChange(e, 'image2')}
                             className="mt-2 px-4 py-2 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                         />
-                        {errors.imageURL2 && <p className="text-red-500 mt-1">{errors.imageURL2.message}</p>}
+                        {errors.image2 && <p className="text-red-500 mt-1">{errors.image2.message}</p>}
                     </div>
 
                     <div>
@@ -284,10 +284,10 @@ const CreateUMKM = () => {
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={(e) => handleFileChange(e, 'imageURL3')}
+                            onChange={(e) => handleFileChange(e, 'image3')}
                             className="mt-2 px-4 py-2 border-2 rounded-full border-gray-300 focus:border-blue-500 focus:outline-none"
                         />
-                        {errors.imageURL3 && <p className="text-red-500 mt-1">{errors.imageURL3.message}</p>}
+                        {errors.image3 && <p className="text-red-500 mt-1">{errors.image3.message}</p>}
                     </div>
 
                     <div className='flex w-full justify-end gap-5'>
