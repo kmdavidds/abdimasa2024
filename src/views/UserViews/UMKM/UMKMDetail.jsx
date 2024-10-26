@@ -103,6 +103,19 @@ const UMKMDetail = () => {
                     </>) : (
                     <>
                         <div id="description" className='lg:px-32 px-10 bg-cust-softblue pt-28 bg-[url("/images/Landing/LandingSection/bgPattern.png")]'>
+                            <div className='text-cust-blue font-bold flex items-center text-xl mt-10 mb-10 cursor-pointer' onClick={() => window.location.href = "/UMKM"}>
+                                <svg
+                                    className="w-6 h-6 mr-2"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                </svg>
+                                Kembali
+                            </div>
                             <div className="relative">
                                 <Slider ref={sliderRef} {...settings} className="rounded-xl">
                                     <div>
