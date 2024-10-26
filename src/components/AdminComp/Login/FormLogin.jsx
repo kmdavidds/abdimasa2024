@@ -35,7 +35,7 @@ const FormLogin = () => {
         <div className="w-full flex items-center justify-center max-h-screen">
             <div className="container max-w-lg p-8 rounded-lg">
                 <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
-                    {/* Input Email */}
+                    {/* Input Email */} 
                     <div className="mb-4">
                         <label htmlFor='id' className="block text-gray-700 font-bold mb-2">Username</label>
                         <input
