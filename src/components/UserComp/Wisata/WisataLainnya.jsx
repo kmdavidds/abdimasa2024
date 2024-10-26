@@ -30,7 +30,7 @@ export const WisataLainnya = ({ image, title, desc, id, rating }) => {
             <div className='border rounded-2xl bg-cust-softblue mb-11'>
                 <div className='flex flex-col lg:flex-row gap-8 gap lg:p-7 p-5 items-center'>
                     <div className='flex justify-center items-center lg:w-1/5 w-4/5 md:w-2/5'>
-                        <img src={image} alt="" className='xl:w-60 xl:h-60 w-60 h-40' />
+                        <img src={image} alt="" className='xl:w-60 xl:h-60 w-60 h-40 rounded-2xl' />
                     </div>
                     <div className='flex flex-col gap-2 lg:w-4/5 md:px-7 px-2'>
                         <h1 className='font-bold lg:text-3xl text-sm'>{title}</h1>
